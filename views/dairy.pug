@@ -1,0 +1,541 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Dairy products
+  link(type='image/x-icon' rel='icon' href='/images/favicon.ico')
+  link(rel='stylesheet' href='/bootstrap-5.2.0-dist/css/bootstrap.css')
+  link(rel='stylesheet' href='/main.css')
+ 
+ 
+// nav bar
+nav.navbar.navbar-expand-lg
+  .container-fluid
+    a.navbar-brand(href='index.html#')
+      img(src='/images/onlinelogomaker-091022-1346-6665.png' alt='')
+    button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+      span.navbar-toggler-icon
+    #navbarSupportedContent.collapse.navbar-collapse
+      ul.navbar-nav.me-auto.mb-2.mb-lg-0
+        li.nav-item
+          a.nav-link.active(aria-current='page' href='/index.html' style='color: #fff;') Home
+        li.nav-item
+          a.nav-link.active(aria-current='page' href='about-us.html' style='color: #fff;') About us
+        li.nav-item.dropdown
+          a.nav-link.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
+            | Categories
+          ul.dropdown-menu
+            li
+              a.dropdown-item(href='/horticulture.html') Horticuture
+            li
+              a.dropdown-item(href='/poultry.html') Poultry
+            li
+              a.dropdown-item(href='/dairy.html') Dairy
+      // modal sign up
+      .buttonlogin
+        button.btn(type='button' data-bs-toggle='modal' data-bs-target='#ModalForm')
+          | Log in
+        #ModalForm.modal.fade(tabindex='-1' aria-labelledby='ModalFormLabel' aria-hidden='true')
+          .modal-dialog.modal-dialog-centered
+            .modal-content
+              .modal-body
+                button.btn-close.btn-close-white(type='button' data-bs-dismiss='modal' aria-label='Close')
+                .myform.bg-dark
+                  h1.text-center Login Form
+                  form
+                    .mb-3.mt-4
+                      label.form-label(for='exampleInputEmail1') Email address
+                      input#exampleInputEmail1.form-control(type='email' aria-describedby='emailHelp')
+                    .mb-3
+                      label.form-label(for='exampleInputPassword1') Password
+                      input#exampleInputPassword1.form-control(type='password')
+                    button.btn-11.btn-light.mt-3(type='submit') LOGIN
+                    p
+                      | Not a member? 
+                      a(href='#') Signup now
+      // second modal sign up
+      .buttonSign
+        button.btn(type='button' data-bs-toggle='modal' data-bs-target='#ModalForm')
+          | Sign up
+        #ModalForm.modal.fade(tabindex='-1' aria-labelledby='ModalFormLabel' aria-hidden='true')
+          .modal-dialog.modal-dialog-centered
+            .modal-content
+              .modal-body
+                button.btn-close.btn-close-white(type='button' data-bs-dismiss='modal' aria-label='Close')
+                .myform.bg-dark
+                  h1.text-center Login Form
+                  form
+                    .mb-3.mt-4
+                      label.form-label(for='exampleInputEmail1') Email address
+                      input#exampleInputEmail1.form-control(type='email' aria-describedby='emailHelp')
+                    .mb-3
+                      label.form-label(for='exampleInputPassword1') Password
+                      input#exampleInputPassword1.form-control(type='password')
+                    button.btn-11.btn-light.mt-3(type='submit') LOGIN
+                    p
+                      | Not a member? 
+                      a(href='#') Signup now
+// prodcuts section starts
+.fouth-section
+  // <h1 class="heading"> latest <span>products</span> </h1>
+  .container-fluid.sellingItems
+    .row.row-cols-2.row-cols-lg-5.g-2.g-lg-3.row2
+      .col
+        .top-selling
+          .card.mycard(style='width: 14rem;')
+            span.discount -12%
+            a(href='')
+              img.card-img-top(src='/images/p17.jpg' alt='...')
+            .card-body.mybody
+              p.card-text Pigeon
+              .price
+                | UG 50000 
+                span UG 70000
+              .my-last-btn
+                button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+      .col
+        .top-selling
+          .card.mycard(style='width: 14rem;')
+            span.discount -6%
+            a(href='')
+              img.card-img-top(src='/images/p19.jpg' alt='...')
+            .card-body.mybody
+              p.card-text Duck
+              .price
+                | UG 33000 
+                span UG 48000
+              .my-last-btn
+                button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+      .col
+        .top-selling
+          .card.mycard(style='width: 14rem;')
+            span.discount -10%
+            a(href='')
+              img.card-img-top(src='/images/h31.jpg' alt='...')
+            .card-body.mybody
+              p.card-text Brazilian Flowers
+              .price
+                | UG 1000 
+                span UG 120000
+              .my-last-btn
+                button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+      .col
+        .top-selling
+          .card.mycard(style='width: 14rem;')
+            span.discount -10%
+            a(href='')
+              img.card-img-top(src='/images/p29.jpg' alt='...')
+            .card-body.mybody
+              p.card-text Eggs
+              .price
+                | UG 500 
+                span UG 600
+              .my-last-btn
+                button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+      .col
+        .top-selling
+          .card.mycard(style='width: 14rem;')
+            span.discount -10%
+            a(href='')
+              img.card-img-top(src='/images/p29.jpg' alt='...')
+            .card-body.mybody
+              p.card-text Eggs
+              .price
+                | UG 500 
+                span UG 600
+              .my-last-btn
+                button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+.fouth-section
+  // <h1 class="heading"> latest <span>products</span> </h1>
+  .container-fluid.sellingItems
+    .row.row-cols-2.row-cols-lg-5.g-2.g-lg-3.row2
+      .col
+        .top-selling
+          .card.mycard(style='width: 14rem;')
+            span.discount -12%
+            a(href='')
+              img.card-img-top(src='/images/p17.jpg' alt='...')
+            .card-body.mybody
+              p.card-text Pigeon
+              .price
+                | UG 50000 
+                span UG 70000
+              .my-last-btn
+                button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+      .col
+        .top-selling
+          .card.mycard(style='width: 14rem;')
+            span.discount -6%
+            a(href='')
+              img.card-img-top(src='/images/p19.jpg' alt='...')
+            .card-body.mybody
+              p.card-text Duck
+              .price
+                | UG 33000 
+                span UG 48000
+              .my-last-btn
+                button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+      .col
+        .top-selling
+          .card.mycard(style='width: 14rem;')
+            span.discount -10%
+            a(href='')
+              img.card-img-top(src='/images/h31.jpg' alt='...')
+            .card-body.mybody
+              p.card-text Brazilian Flowers
+              .price
+                | UG 1000 
+                span UG 120000
+              .my-last-btn
+                button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+      .col
+        .top-selling
+          .card.mycard(style='width: 14rem;')
+            span.discount -10%
+            a(href='')
+              img.card-img-top(src='/images/p29.jpg' alt='...')
+            .card-body.mybody
+              p.card-text Eggs
+              .price
+                | UG 500 
+                span UG 600
+              .my-last-btn
+                button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+      .col
+        .top-selling
+          .card.mycard(style='width: 14rem;')
+            span.discount -10%
+            a(href='')
+              img.card-img-top(src='/images/p29.jpg' alt='...')
+            .card-body.mybody
+              p.card-text Eggs
+              .price
+                | UG 500 
+                span UG 600
+              .my-last-btn
+                button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+.fouth-section
+  // <h1 class="heading"> latest <span>products</span> </h1>
+  .container-fluid.sellingItems
+    .row.row-cols-2.row-cols-lg-5.g-2.g-lg-3.row2
+      .col
+        .top-selling
+          .card.mycard(style='width: 14rem;')
+            span.discount -12%
+            a(href='')
+              img.card-img-top(src='/images/p17.jpg' alt='...')
+            .card-body.mybody
+              p.card-text Pigeon
+              .price
+                | UG 50000 
+                span UG 70000
+              .my-last-btn
+                button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+      .col
+        .top-selling
+          .card.mycard(style='width: 14rem;')
+            span.discount -6%
+            a(href='')
+              img.card-img-top(src='/images/p19.jpg' alt='...')
+            .card-body.mybody
+              p.card-text Duck
+              .price
+                | UG 33000 
+                span UG 48000
+              .my-last-btn
+                button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+      .col
+        .top-selling
+          .card.mycard(style='width: 14rem;')
+            span.discount -10%
+            a(href='')
+              img.card-img-top(src='/images/h31.jpg' alt='...')
+            .card-body.mybody
+              p.card-text Brazilian Flowers
+              .price
+                | UG 1000 
+                span UG 120000
+              .my-last-btn
+                button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+      .col
+        .top-selling
+          .card.mycard(style='width: 14rem;')
+            span.discount -10%
+            a(href='')
+              img.card-img-top(src='/images/p29.jpg' alt='...')
+            .card-body.mybody
+              p.card-text Eggs
+              .price
+                | UG 500 
+                span UG 600
+              .my-last-btn
+                button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+      .col
+        .top-selling
+          .card.mycard(style='width: 14rem;')
+            span.discount -10%
+            a(href='')
+              img.card-img-top(src='/images/p29.jpg' alt='...')
+            .card-body.mybody
+              p.card-text Eggs
+              .price
+                | UG 500 
+                span UG 600
+              .my-last-btn
+                button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+.fouth-section
+  // <h1 class="heading"> latest <span>products</span> </h1>
+  .container-fluid.sellingItems
+    .row.row-cols-2.row-cols-lg-5.g-2.g-lg-3.row2
+      .col
+        .top-selling
+          .card.mycard(style='width: 14rem;')
+            span.discount -12%
+            a(href='')
+              img.card-img-top(src='/images/p17.jpg' alt='...')
+            .card-body.mybody
+              p.card-text Pigeon
+              .price
+                | UG 50000 
+                span UG 70000
+              .my-last-btn
+                button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+      .col
+        .top-selling
+          .card.mycard(style='width: 14rem;')
+            span.discount -6%
+            a(href='')
+              img.card-img-top(src='/images/p19.jpg' alt='...')
+            .card-body.mybody
+              p.card-text Duck
+              .price
+                | UG 33000 
+                span UG 48000
+              .my-last-btn
+                button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+      .col
+        .top-selling
+          .card.mycard(style='width: 14rem;')
+            span.discount -10%
+            a(href='')
+              img.card-img-top(src='/images/h31.jpg' alt='...')
+            .card-body.mybody
+              p.card-text Brazilian Flowers
+              .price
+                | UG 1000 
+                span UG 120000
+              .my-last-btn
+                button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+      .col
+        .top-selling
+          .card.mycard(style='width: 14rem;')
+            span.discount -10%
+            a(href='')
+              img.card-img-top(src='/images/p29.jpg' alt='...')
+            .card-body.mybody
+              p.card-text Eggs
+              .price
+                | UG 500 
+                span UG 600
+              .my-last-btn
+                button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+      .col
+        .top-selling
+          .card.mycard(style='width: 14rem;')
+            span.discount -10%
+            a(href='')
+              img.card-img-top(src='/images/p29.jpg' alt='...')
+            .card-body.mybody
+              p.card-text Eggs
+              .price
+                | UG 500 
+                span UG 600
+              .my-last-btn
+                button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+.fouth-section
+  // <h1 class="heading"> latest <span>products</span> </h1>
+  .container-fluid.sellingItems
+    .row.row-cols-2.row-cols-lg-5.g-2.g-lg-3.row2
+      .col
+        .top-selling
+          .card.mycard(style='width: 14rem;')
+            span.discount -12%
+            a(href='')
+              img.card-img-top(src='/images/p17.jpg' alt='...')
+            .card-body.mybody
+              p.card-text Pigeon
+              .price
+                | UG 50000 
+                span UG 70000
+              .my-last-btn
+                button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+      .col
+        .top-selling
+          .card.mycard(style='width: 14rem;')
+            span.discount -6%
+            a(href='')
+              img.card-img-top(src='/images/p19.jpg' alt='...')
+            .card-body.mybody
+              p.card-text Duck
+              .price
+                | UG 33000 
+                span UG 48000
+              .my-last-btn
+                button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+      .col
+        .top-selling
+          .card.mycard(style='width: 14rem;')
+            span.discount -10%
+            a(href='')
+              img.card-img-top(src='/images/h31.jpg' alt='...')
+            .card-body.mybody
+              p.card-text Brazilian Flowers
+              .price
+                | UG 1000 
+                span UG 120000
+              .my-last-btn
+                button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+      .col
+        .top-selling
+          .card.mycard(style='width: 14rem;')
+            span.discount -10%
+            a(href='')
+              img.card-img-top(src='/images/p29.jpg' alt='...')
+            .card-body.mybody
+              p.card-text Eggs
+              .price
+                | UG 500 
+                span UG 600
+              .my-last-btn
+                button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+      .col
+        .top-selling
+          .card.mycard(style='width: 14rem;')
+            span.discount -10%
+            a(href='')
+              img.card-img-top(src='/images/p29.jpg' alt='...')
+            .card-body.mybody
+              p.card-text Eggs
+              .price
+                | UG 500 
+                span UG 600
+              .my-last-btn
+                button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+.fouth-section
+  // <h1 class="heading"> latest <span>products</span> </h1>
+  .container-fluid.sellingItems
+    .row.row-cols-2.row-cols-lg-5.g-2.g-lg-3.row2
+      .col
+        .top-selling
+          .card.mycard(style='width: 14rem;')
+            span.discount -12%
+            a(href='')
+              img.card-img-top(src='/images/p17.jpg' alt='...')
+            .card-body.mybody
+              p.card-text Pigeon
+              .price
+                | UG 50000 
+                span UG 70000
+              .my-last-btn
+                button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+      .col
+        .top-selling
+          .card.mycard(style='width: 14rem;')
+            span.discount -6%
+            a(href='')
+              img.card-img-top(src='/images/p19.jpg' alt='...')
+            .card-body.mybody
+              p.card-text Duck
+              .price
+                | UG 33000 
+                span UG 48000
+              .my-last-btn
+                button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+      .col
+        .top-selling
+          .card.mycard(style='width: 14rem;')
+            span.discount -10%
+            a(href='')
+              img.card-img-top(src='/images/h31.jpg' alt='...')
+            .card-body.mybody
+              p.card-text Brazilian Flowers
+              .price
+                | UG 1000 
+                span UG 120000
+              .my-last-btn
+                button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+      .col
+        .top-selling
+          .card.mycard(style='width: 14rem;')
+            span.discount -10%
+            a(href='')
+              img.card-img-top(src='/images/p29.jpg' alt='...')
+            .card-body.mybody
+              p.card-text Eggs
+              .price
+                | UG 500 
+                span UG 600
+              .my-last-btn
+                button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+      .col
+        .top-selling
+          .card.mycard(style='width: 14rem;')
+            span.discount -10%
+            a(href='')
+              img.card-img-top(src='/images/p29.jpg' alt='...')
+            .card-body.mybody
+              p.card-text Eggs
+              .price
+                | UG 500 
+                span UG 600
+              .my-last-btn
+                button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+// footer
+footer.footer
+  .container-last
+    .logo
+      a.navbar-brand(href='index.html#')
+        img(src='/images/onlinelogomaker-091022-1346-6665.png' alt='')
+    .payment-method
+      h5 Payment methods
+      ul
+        li
+          a(href='/payment.html')
+            img(src='/images/Payment_-_Airtel-02.png' alt='')
+        li
+          a(href='/payment.html')
+            img(src='/images/mtn.png' alt='')
+        li
+          a(href='/payment.html')
+            img(src='/images/money.jpg' alt='')
+    .follow-us
+      h5 Stay with us on
+      ul
+        li
+          a(href='https://www.facebook.com/profile.php?id=100086467246132')
+            img(src='/images/facebook.svg' alt='facebook')
+        li
+          a(href='https://twitter.com/UfarmMasajja')
+            img(src='/images/twitter.svg' alt='twitter')
+        li
+          a(href='https://www.instagram.com/ufarm_masajja/')
+            img(src='/images/square-instagram.svg' alt='square-instagram')
+        //
+          <li>
+          <a href="">
+          <img src="/images/envelope-solid.svg" alt="email ">
+          </a>
+          </li>
+    .support
+      h5 Support
+      ul
+        li
+          a(href='/contact-us.html') Contact us
+        li
+          a(href='/how-to-buy.html') Help
+        li
+          a(href='/termsandcondition.html') Terms and condition
+  .copyright
+    article &amp;copycopyright All rights reserved
+script(src='/bootstrap-5.2.0-dist/js/bootstrap.bundle.js')

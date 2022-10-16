@@ -1,0 +1,290 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Contacts
+  link(rel='icon' type='image/x-icon' href='/images/favicon.ico')
+  link(rel='stylesheet' href='/bootstrap-5.2.0-dist/css/bootstrap.css')
+  link(rel='stylesheet' href='/main.css')
+  style.
+    .contacts{
+    background-image: url(/images/img-2.jpg);
+    background-position: center;
+    height: 40vh;
+    border: 1px solid #f0f0f0;
+    }
+    .color-section{
+    width: 100%;
+    height: 24vh;
+    padding: 1rem auto;
+    margin: 2rem 0;
+    background-color: #fff;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.3);
+    }
+    .contact-us h2{
+    text-align: center;
+    /* padding: 1rem auto; */
+    margin-top: 3.5rem;
+    color: #3db83a;
+    font-weight: 800;
+    }
+    .details-of-how-to-contact{
+    width: 100%;
+    height: 20vh;
+    padding: 1rem auto;
+    /* margin: 2rem 0; */
+    background-color: #fff;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.3);
+    }
+    .call-us{
+    width: 80%;
+    height: 18vh;
+    background-color: #fff;
+    border: 3px solid #fff;
+    border-radius: 5px;
+    box-shadow: 7px 7px 7px 7px rgba(0, 0, 0, 0.3);
+    margin-left: 2rem;
+    margin-top: -3rem;
+    }
+    .call{
+    width: 80%;
+    height: 18vh;
+    background-color: #fff;
+    border: 3px solid #fff;
+    border-radius: 5px;
+    box-shadow: 7px 7px 7px 7px rgba(0, 0, 0, 0.3);
+    margin-left: 2rem;
+    margin-top: -3rem;
+    }
+    .reach-us{
+    text-align: center;
+    color: #000;
+    margin-top: 1rem;
+    }
+    .reach-us h3{
+    font-size: 20px;
+    font-weight: 800;
+    color: #3db83a;
+    }
+    .reach-us h5{
+    font-size: 16px;
+    font-weight: 700;
+    }
+    .simple-form{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    }
+    #myform-message{
+    border-radius: 5px;
+    background-color: #fff;
+    width: 100%;
+    border: 1px solid #f0f0ff;
+    box-shadow: 3px 3px 3px 3px rgb(0, 0, 0, 0.3);
+    }
+    .form-message h4{
+    font-weight: bold;
+    text-align: center;
+    color: #3db83a;
+    }
+    .out-line-form{
+    margin-left: 1rem;
+    display: block;
+    padding: 10px;
+    }
+    .out-line-form label{
+    display: block;
+    }
+    .out-line-form input {
+    border: 2px solid #f0f0f0;
+    padding: 10px ;
+    border-radius: 5px;
+    }
+    .out-line-form textarea{
+    border: 3px solid #f0f0f0;
+    border-radius: 5px;
+    /* padding: 3px 10px; */
+    }
+    @media (max-width:768px){
+    .call-us{
+    width: 50%;
+    height: ;
+    }
+    .call{
+    width: 100%;
+    }
+    .reach-us h3{
+    font-size: 16px;
+    }
+    .reach-us h5{
+    font-size: 11px;
+    }
+    }
+    @media (max-width:450px){
+    .call-us{
+    width: 100%;
+    margin-left: 0.1rem;
+    }
+    .call{
+    width: 100%;
+    margin-left: 0.1rem;
+    }
+    .reach-us{
+    }
+    .reach-us h3{
+    }
+    .reach-us h5{
+    }
+    }
+// nav bar
+nav.navbar.navbar-expand-lg
+  .container-fluid
+    a.navbar-brand(href='index.html#')
+      img(src='/images/onlinelogomaker-091022-1346-6665.png' alt='')
+    button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+      span.navbar-toggler-icon
+    #navbarSupportedContent.collapse.navbar-collapse
+      ul.navbar-nav.me-auto.mb-2.mb-lg-0
+        li.nav-item
+          a.nav-link.active(aria-current='page' href='/index.html' style='color: #fff;') Home
+        li.nav-item
+          a.nav-link.active(aria-current='page' href='about-us.html' style='color: #fff;') About us
+        li.nav-item.dropdown
+          a.nav-link.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
+            | Categories
+          ul.dropdown-menu
+            li
+              a.dropdown-item(href='/horticulture.html') Horticuture
+            li
+              a.dropdown-item(href='/poultry.html') Poultry
+            li
+              a.dropdown-item(href='/dairy.html') Dairy
+      // modal login
+      .buttonlogin
+        button.btn(type='button' data-bs-toggle='modal' data-bs-target='#ModalForm')
+          | Log in
+      // Button trigger modal
+      button.btn(type='button' data-bs-toggle='modal' data-bs-target='#Backdrop')
+        | Sign up
+      // Modal
+      #Backdrop.modal.fade(data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true')
+        .modal-dialog
+          .modal-content
+            .modal-header
+              h3(style='color: #000;') Register as:
+              button.btn-close.mb-4.pb-4.btn-close-black(type='button' data-bs-dismiss='modal' aria-label='Close')
+            .modal-body(style='color: #000;')
+              .container
+                .row
+                  .col-2
+                  .col
+                    .navLinks
+                      ul
+                        li
+                          a(href='/AO.html') Agriculture Officer
+                        li
+                          a(href='/FO.html') FarmerOne
+                        li
+                          a(href='/urban_farmer_form.html') Urban farmer
+                        li
+                          a(href='/normaluser.html') Normal user
+// nav bar stops here
+// contacts us section starts here
+.contacts
+  .container
+    .row
+      .col-2
+      .col
+        .color-section
+          .contact-us
+            h2 Contact us
+      .col-2
+.details-of-how-to-contact
+  .container
+    .row
+      .col-6
+        .call-us
+          .reach-us
+            h3 Call us directly on
+            h5 +256776452454
+      .col-6
+        .call
+          .reach-us
+            h3 Email us on
+            h5 ufarmmasajja@gmail.com
+.simple-form
+  .container
+    .row
+      .col
+      .col
+        .form-message
+          h4 Send us a message below 
+          form#myform-message(action='' name='myform-message' method='post')
+            .out-line-form
+              label(for='' id='') Name:
+              input#fname(type='text' name='fname')
+              small#error
+            .out-line-form
+              label(for='' id='') Phone number:
+              input#phone-number(type='text' name='phone-number')
+              small#error
+            .out-line-form
+              label(for='' id='') Message:
+              textarea(name='' id='' cols='30' rows='10')
+              small#error
+            .fo-signup
+              button.btn-1(type='submit' style='margin-left: 8rem; margin-bottom: 10px;') Submit
+      .col
+// contact us section starts here
+// footer
+footer.footer(id='#foot_last')
+  .container-last
+    .logo
+      a.navbar-brand(href='index.html#')
+        img(src='/images/onlinelogomaker-091022-1346-6665.png' alt='')
+    .payment-method
+      h5 Payment methods
+      ul
+        li
+          a(href='/payment.html')
+            img(src='/images/Payment_-_Airtel-02.png' alt='')
+        li
+          a(href='/payment.html')
+            img(src='/images/mtn.png' alt='')
+        li
+          a(href='payment.html')
+            img(src='/images/money.jpg' alt='')
+    .follow-us
+      h5 Stay with us on
+      ul
+        li
+          a(href='https://www.facebook.com/profile.php?id=100086467246132')
+            img(src='/images/facebook.svg' alt='facebook')
+        li
+          a(href='https://twitter.com/UfarmMasajja')
+            img(src='/images/twitter.svg' alt='twitter')
+        li
+          a(href='https://www.instagram.com/ufarm_masajja/')
+            img(src='/images/square-instagram.svg' alt='square-instagram')
+        //
+          li>
+          <a href="">
+          <img src="/images/envelope-solid.svg" alt="email ">
+          </a>
+          </li><
+    .support
+      h5 Support
+      ul
+        li
+          a(href='/contact-us.html') Contact us
+        li
+          a(href='/how-to-buy.html') Help
+        li
+          a(href='/termsandcondition.html') Terms and condition
+  .copyright
+    article &amp;copycopyright All rights reserved
+script(src='/bootstrap-5.2.0-dist/js/bootstrap.bundle.js')

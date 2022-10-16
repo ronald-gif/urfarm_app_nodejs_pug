@@ -1,0 +1,414 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Horticulture
+  link(type='image/x-icon' rel='icon' href='/images/favicon.ico')
+  link(rel='stylesheet' href='/bootstrap-5.2.0-dist/css/bootstrap.css')
+  link(rel='stylesheet' href='/main.css')
+ 
+// nav bar
+nav.navbar.navbar-expand-lg
+  .container-fluid
+    a.navbar-brand(href='index.html#')
+      img(src='/images/onlinelogomaker-091022-1346-6665.png' alt='')
+    button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+      span.navbar-toggler-icon
+    #navbarSupportedContent.collapse.navbar-collapse
+      ul.navbar-nav.me-auto.mb-2.mb-lg-0
+        li.nav-item
+          a.nav-link.active(aria-current='page' href='/index.html' style='color: #fff;') Home
+        li.nav-item
+          a.nav-link.active(aria-current='page' href='about-us.html' style='color: #fff;') About us
+        li.nav-item.dropdown
+          a.nav-link.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
+            | Categories
+          ul.dropdown-menu
+            li
+              a.dropdown-item(href='/horticulture.html') Horticuture
+            li
+              a.dropdown-item(href='/poultry.html') Poultry
+            li
+              a.dropdown-item(href='/dairy.html') Dairy
+      // modal login
+      .buttonlogin
+        button.btn(type='button' data-bs-toggle='modal' data-bs-target='#ModalForm')
+          | Log in
+      // Button trigger modal
+      button.btn(type='button' data-bs-toggle='modal' data-bs-target='#Backdrop')
+        | Sign up
+      // Modal
+      #Backdrop.modal.fade(data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true')
+        .modal-dialog
+          .modal-content
+            .modal-header
+              h3(style='color: #000;') Register as:
+              button.btn-close.mb-4.pb-4.btn-close-black(type='button' data-bs-dismiss='modal' aria-label='Close')
+            .modal-body(style='color: #000;')
+              .container
+                .row
+                  .col-2
+                  .col
+                    .navLinks
+                      ul
+                        li
+                          a(href='/AO.html') Agriculture Officer
+                        li
+                          a(href='/FO.html') FarmerOne
+                        li
+                          a(href='/urban_farmer_form.html') Urban farmer
+                        li
+                          a(href='/normaluser.html') Normal user
+// prodcuts section starts
+.fouth-section
+  .container-fluid.sellingItems
+    .row
+      .col
+        .top-selling
+          .card.mycard(style='width: 15rem;')
+            span.discount -12%
+            a(href='')
+              img.card-img-top(src='/images/h29.jpg' alt='...')
+            .card-body.mybody
+              p.card-text flowers
+              .price
+                | UG 50000 
+                span UG 70000
+              button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+      .col
+        .top-selling
+          .card.mycard(style='width: 15rem;')
+            span.discount -6%
+            a(href='')
+              img.card-img-top(src='/images/img-9.jpg' alt='...')
+            .card-body.mybody
+              p.card-text flowers
+              .price
+                | UG 33000 
+                span UG 48000
+              button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+      .col
+        .top-selling
+          .card.mycard(style='width: 15rem;')
+            span.discount -10%
+            a(href='')
+              img.card-img-top(src='/images/img-8.jpg' alt='...')
+            .card-body.mybody
+              p.card-text Brazilian Flowers
+              .price
+                | UG 100000 
+                span UG 120000
+              button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+      .col
+        .top-selling
+          .card.mycard(style='width: 15rem;')
+            span.discount -10%
+            a(href='')
+              img.card-img-top(src='/images/img-7.jpg' alt='...')
+            .card-body.mybody
+              p.card-text flowers
+              .price
+                | UG 500 
+                span UG 600
+              button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+.fouth-section
+  .container-fluid.sellingItems
+    .row
+      .col
+        .top-selling
+          .card.mycard(style='width: 15rem;')
+            span.discount -12%
+            a(href='')
+              img.card-img-top(src='/images/img-6.jpg' alt='...')
+            .card-body.mybody
+              p.card-text Flowers
+              .price
+                | UG 50000 
+                span UG 70000
+              button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+      .col
+        .top-selling
+          .card.mycard(style='width: 15rem;')
+            span.discount -6%
+            a(href='')
+              img.card-img-top(src='/images/img-5.jpg' alt='...')
+            .card-body.mybody
+              p.card-text flowers
+              .price
+                | UG 33000 
+                span UG 48000
+              button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+      .col
+        .top-selling
+          .card.mycard(style='width: 15rem;')
+            span.discount -10%
+            a(href='')
+              img.card-img-top(src='/images/img-4.jpg' alt='...')
+            .card-body.mybody
+              p.card-text Rose Flowers
+              .price
+                | UG 100000 
+                span UG 120000
+              button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+      .col
+        .top-selling
+          .card.mycard(style='width: 15rem;')
+            span.discount -10%
+            a(href='')
+              img.card-img-top(src='/images/img-3.jpg' alt='...')
+            .card-body.mybody
+              p.card-text flowers
+              .price
+                | UG 500 
+                span UG 600
+              button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+.fouth-section
+  .container-fluid.sellingItems
+    .row
+      .col
+        .top-selling
+          .card.mycard(style='width: 15rem;')
+            span.discount -12%
+            a(href='')
+              img.card-img-top(src='/images/h29.jpg' alt='...')
+            .card-body.mybody
+              p.card-text flowers
+              .price
+                | UG 50000 
+                span UG 70000
+              button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+      .col
+        .top-selling
+          .card.mycard(style='width: 15rem;')
+            span.discount -6%
+            a(href='')
+              img.card-img-top(src='/images/img-9.jpg' alt='...')
+            .card-body.mybody
+              p.card-text flowers
+              .price
+                | UG 33000 
+                span UG 48000
+              button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+      .col
+        .top-selling
+          .card.mycard(style='width: 15rem;')
+            span.discount -10%
+            a(href='')
+              img.card-img-top(src='/images/img-8.jpg' alt='...')
+            .card-body.mybody
+              p.card-text Brazilian Flowers
+              .price
+                | UG 100000 
+                span UG 120000
+              button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+      .col
+        .top-selling
+          .card.mycard(style='width: 15rem;')
+            span.discount -10%
+            a(href='')
+              img.card-img-top(src='/images/img-7.jpg' alt='...')
+            .card-body.mybody
+              p.card-text flowers
+              .price
+                | UG 500 
+                span UG 600
+              button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+.fouth-section
+  .container-fluid.sellingItems
+    .row
+      .col
+        .top-selling
+          .card.mycard(style='width: 15rem;')
+            span.discount -12%
+            a(href='')
+              img.card-img-top(src='/images/img-6.jpg' alt='...')
+            .card-body.mybody
+              p.card-text Flowers
+              button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+      .col
+        .top-selling
+          .card.mycard(style='width: 15rem;')
+            span.discount -6%
+            a(href='')
+              img.card-img-top(src='/images/img-5.jpg' alt='...')
+            .card-body.mybody
+              p.card-text flowers
+              .price
+                | UG 33000 
+                span UG 48000
+              button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+      .col
+        .top-selling
+          .card.mycard(style='width: 15rem;')
+            span.discount -10%
+            a(href='')
+              img.card-img-top(src='/images/img-4.jpg' alt='...')
+            .card-body.mybody
+              p.card-text Rose Flowers
+              .price
+                | UG 100000 
+                span UG 120000
+              button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+      .col
+        .top-selling
+          .card.mycard(style='width: 15rem;')
+            span.discount -10%
+            a(href='')
+              img.card-img-top(src='/images/img-3.jpg' alt='...')
+            .card-body.mybody
+              p.card-text flowers
+              .price
+                | UG 500 
+                span UG 600
+              button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+.fouth-section
+  .container-fluid.sellingItems
+    .row
+      .col
+        .top-selling
+          .card.mycard(style='width: 15rem;')
+            span.discount -12%
+            a(href='')
+              img.card-img-top(src='/images/h29.jpg' alt='...')
+            .card-body.mybody
+              p.card-text flowers
+              .price
+                | UG 50000 
+                span UG 70000
+              button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+      .col
+        .top-selling
+          .card.mycard(style='width: 15rem;')
+            span.discount -6%
+            a(href='')
+              img.card-img-top(src='/images/img-9.jpg' alt='...')
+            .card-body.mybody
+              p.card-text flowers
+              .price
+                | UG 33000 
+                span UG 48000
+              button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+      .col
+        .top-selling
+          .card.mycard(style='width: 15rem;')
+            span.discount -10%
+            a(href='')
+              img.card-img-top(src='/images/img-8.jpg' alt='...')
+            .card-body.mybody
+              p.card-text Brazilian Flowers
+              .price
+                | UG 100000 
+                span UG 120000
+              button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+      .col
+        .top-selling
+          .card.mycard(style='width: 15rem;')
+            span.discount -10%
+            a(href='')
+              img.card-img-top(src='/images/img-7.jpg' alt='...')
+            .card-body.mybody
+              p.card-text flowers
+              .price
+                | UG 500 
+                span UG 600
+              button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+.fouth-section
+  .container-fluid.sellingItems
+    .row
+      .col
+        .top-selling
+          .card.mycard(style='width: 15rem;')
+            span.discount -12%
+            a(href='')
+              img.card-img-top(src='/images/img-6.jpg' alt='...')
+            .card-body.mybody
+              p.card-text Flowers
+              .price
+                | UG 50000 
+                span UG 70000
+              button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+      .col
+        .top-selling
+          .card.mycard(style='width: 15rem;')
+            span.discount -6%
+            a(href='')
+              img.card-img-top(src='/images/img-5.jpg' alt='...')
+            .card-body.mybody
+              p.card-text flowers
+              .price
+                | UG 33000 
+                span UG 48000
+              button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+      .col
+        .top-selling
+          .card.mycard(style='width: 15rem;')
+            span.discount -10%
+            a(href='')
+              img.card-img-top(src='/images/img-4.jpg' alt='...')
+            .card-body.mybody
+              p.card-text Rose Flowers
+              .price
+                | UG 100000 
+                span UG 120000
+              button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+      .col
+        .top-selling
+          .card.mycard(style='width: 15rem;')
+            span.discount -10%
+            a(href='')
+              img.card-img-top(src='/images/img-3.jpg' alt='...')
+            .card-body.mybody
+              p.card-text flowers
+              .price
+                | UG 500 
+                span UG 600
+              button.btn.btn-outline-success.thisbutton(type='submit') Add To Cart
+// footer
+footer.footer
+  .container-last
+    .logo
+      a.navbar-brand(href='index.html#')
+        img(src='/images/onlinelogomaker-091022-1346-6665.png' alt='')
+    .payment-method
+      h5 Payment methods
+      ul
+        li
+          a(href='/payment.html')
+            img(src='/images/Payment_-_Airtel-02.png' alt='')
+        li
+          a(href='/payment.html')
+            img(src='/images/mtn.png' alt='')
+        li
+          a(href='/payment.html')
+            img(src='/images/money.jpg' alt='')
+    .follow-us
+      h5 Stay with us on
+      ul
+        li
+          a(href='https://www.facebook.com/profile.php?id=100086467246132')
+            img(src='/images/facebook.svg' alt='facebook')
+        li
+          a(href='https://twitter.com/UfarmMasajja')
+            img(src='/images/twitter.svg' alt='twitter')
+        li
+          a(href='https://www.instagram.com/ufarm_masajja/')
+            img(src='/images/square-instagram.svg' alt='square-instagram')
+        //
+          <li>
+          <a href="">
+          <img src="/images/envelope-solid.svg" alt="email ">
+          </a>
+          </li>
+    .support
+      h5 Support
+      ul
+        li
+          a(href='/contact-us.html') Contact us
+        li
+          a(href='/how-to-buy.html') Help
+        li
+          a(href='/termsandcondition.html') Terms and condition
+  .copyright
+    article &amp;copycopyright All rights reserved
+script(src='/bootstrap-5.2.0-dist/js/bootstrap.bundle.js')

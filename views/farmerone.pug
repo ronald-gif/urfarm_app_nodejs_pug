@@ -1,0 +1,178 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title UFarm
+  link(rel='icon' type='image/x-icon' href='/images/favicon.ico')
+  link(rel='stylesheet' href='/bootstrap-5.2.0-dist/css/bootstrap.css')
+  link(rel='stylesheet' href='/main.css')
+// nav bar
+nav.navbar.navbar-expand-lg
+  .container-fluid
+    a.navbar-brand(href='index.html#')
+      img(src='/images/onlinelogomaker-091022-1346-6665.png' alt='')
+    button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+      span.navbar-toggler-icon
+    #navbarSupportedContent.collapse.navbar-collapse
+      ul.navbar-nav.me-auto.mb-2.mb-lg-0
+        li.nav-item
+          a.nav-link.active(aria-current='page' href='/index.html' style='color: #fff;') Home
+        li.nav-item
+          a.nav-link.active(aria-current='page' href='about-us.html' style='color: #fff;') About us
+        li.nav-item.dropdown
+          a.nav-link.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
+            | Categories
+          ul.dropdown-menu
+            li
+              a.dropdown-item(href='/horticulture.html') Horticuture
+            li
+              a.dropdown-item(href='/poultry.html') Poultry
+            li
+              a.dropdown-item(href='/dairy.html') Dairy
+      // modal login
+      .buttonlogin
+        button.btn(type='button' data-bs-toggle='modal' data-bs-target='#ModalForm')
+          | Log in
+      // Button trigger modal
+      button.btn(type='button' data-bs-toggle='modal' data-bs-target='#Backdrop')
+        | Sign up
+      // Modal
+      #Backdrop.modal.fade(data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true')
+        .modal-dialog
+          .modal-content
+            .modal-header
+              h3(style='color: #000;') Register as:
+              button.btn-close.mb-4.pb-4.btn-close-black(type='button' data-bs-dismiss='modal' aria-label='Close')
+            .modal-body(style='color: #000;')
+              .container
+                .row
+                  .col-2
+                  .col
+                    .navLinks
+                      ul
+                        li
+                          a(href='/AO.html') Agriculture Officer
+                        li
+                          a(href='/FO.html') FarmerOne
+                        li
+                          a(href='/urban_farmer_form.html') Urban farmer
+                        li
+                          a(href='/normaluser.html') Normal user
+// farmerOne registration
+.myform1
+  h3 farmerOne registration
+  form#myFormToRegister(action='/' name='registration')
+    .container.thisForm
+      .row.mb-4
+        .col
+          #error1.form-outline
+            label.form-label(for='form3Example1') First name:
+            input#firstName.firstName(type='text' name='firstname')
+            small.error
+        .col
+          #error2.form-outline
+            label.form-label(for='form3Example1') Second name:
+            input#secondname.secondName(type='text' name='secondname')
+            small.error
+        .col
+          #error3.form-outline
+            label.form-label(for='form3Example1') Phone number:
+            input#telephone.telephone(type='text' name='telephone')
+            small.error
+      .row.mb-4
+        .col
+          #error5.form-outline
+            label.form-label(for='currentDate')  Current date:
+            input#currentdate.currentDate(type='date' name='currentdate')
+        .col
+          #error6.form-outline
+            label.form-label(for='exampleInputEmail1') Date of birth:
+            input#DOB.DOB(type='date' name='dateofbirth' style='padding-right: 5px;')
+            small.error
+        .col
+          #error7.form-outline
+            label.form-label(for='form3Example1') Unique number/ID:
+            input#uniquenumber.uniqueNumber(type='text' name='uniquenumber')
+            small.error
+      .row.mb-4
+        .col
+          #error8.form-outline
+            label.form-label NIN Number:
+            input#nin.nin(type='text' name='nin')
+            small.error
+        .col
+          #error9.form-outline
+            label.form-label Location:
+            input#location(type='text' name='location')
+            small.error
+        .col
+          #error10.form-outline
+            label.form-label(for='form3Example1') Residence type:
+            select#residence(name='residence')
+              option(value='') select residence type
+              option#permanent(value='permanent') Permanent
+              option#temporary(value='temporary') Temporary
+            small.error
+      .row.mb-4
+        .col
+          #error11.form-outline
+            label.form-label Password:
+            input#password.password(type='password' name='password')
+            small.error
+        .col
+          #error12.form-outline
+            label.form-label(for='form3Example1') Confirm Password:
+            input#confirmpassword.confirmpassword(type='password' name='confirmpassword')
+            small.error
+        .col
+          #error13.form-outline
+            label.form-label(for='form3Example1') Direction to your home:
+            input#directiontohome.directiontohome(type='text')
+            small.error
+      .row.mb-4
+        .col
+          #error14.form-outline
+            label.form-label(for='form3Example1') Years spent in masajja :
+            input#yearsspent.yearsspent(type='text' name='yearsspent')
+            small.error
+        .col
+          #error15.form-outline.form-o
+            label(for='gender') Gender:
+            select#gender(name='gender')
+              option(value='') Select gender
+              option(value='male') Male
+              option(value='female') Female
+            small.error
+        .col-4
+          #error16.form-outline.form-o
+            label(for='ward') Ward:
+            select#myward.values-for-wards(name='ward')
+              option(value='') Select ward
+              option(value='ward1') LC1
+              option(value='ward2') LC2
+              option(value='ward3') LC3
+              option(value='ward4') LC4
+            small.error
+      .row.mb-4
+        .col
+          #error17.form-outline.radio
+            label(for='lang') Activities:
+            .radio
+              input#horticulture(type='checkbox' name='horticulture' value='horticulture')
+              span Horticulture
+              input#dairy(type='checkbox' name='dairy' value='dairy')
+              span Dairy 
+              input#poultry(type='checkbox' name='poultry' value='poultry')
+              span Poultry
+              br
+            small.error
+      .row.mb-4
+        .col
+          .mb-3.form-check
+            input#exampleCheck1.form-check-input(type='checkbox')
+            label.form-check-label(for='exampleCheck1') Comfirm
+          .fo-signup
+            button.btn-1(type='submit') Submit
+script(src='/bootstrap-5.2.0-dist/js/bootstrap.bundle.js')
+//- script(src='/script.js')

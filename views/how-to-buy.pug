@@ -1,0 +1,216 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title how to buy
+  link(rel='icon' type='image/x-icon' href='/images/favicon.ico')
+  link(rel='stylesheet' href='/bootstrap-5.2.0-dist/css/bootstrap.css')
+  link(rel='stylesheet' href='/main.css')
+  style.
+    .text-to-help h3{
+    font-size: 30px;
+    font-weight: bold;
+    color: #000;
+    padding: 1rem 0px 1rem;
+    margin-left: 2rem;
+    }
+    .text-to-help h5{
+    color: #282828;
+    font-size: 19px;
+    font-weight: 600;
+    }
+    .text-to-help p{
+    font-size: 16px;
+    color: #7e7a7a;
+    text-align: left;
+    padding-top: 2px;
+    }
+    .second-text h3{
+    font-size: 30px;
+    font-weight: bold;
+    color: #000;
+    padding: 1rem 0px 1rem;
+    margin-left: 2rem;
+    }
+    .second-text h5{
+    color: #282828;
+    font-size: 19px;
+    font-weight: 600;
+    }
+    .second-text p{
+    font-size: 16px;
+    color: #7e7a7a;
+    text-align: left;
+    padding-top: 2px;
+    }
+// nav bar
+nav.navbar.navbar-expand-lg
+  .container-fluid
+    a.navbar-brand(href='index.html#')
+      img(src='/images/onlinelogomaker-091022-1346-6665.png' alt='')
+    button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+      span.navbar-toggler-icon
+    #navbarSupportedContent.collapse.navbar-collapse
+      ul.navbar-nav.me-auto.mb-2.mb-lg-0
+        li.nav-item
+          a.nav-link.active(aria-current='page' href='/index.html' style='color: #fff;') Home
+        li.nav-item
+          a.nav-link.active(aria-current='page' href='about-us.html' style='color: #fff;') About us
+        li.nav-item.dropdown
+          a.nav-link.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
+            | Categories
+          ul.dropdown-menu
+            li
+              a.dropdown-item(href='/horticulture.html') Horticuture
+            li
+              a.dropdown-item(href='/poultry.html') Poultry
+            li
+              a.dropdown-item(href='/dairy.html') Dairy
+      // modal login
+      .buttonlogin
+        button.btn(type='button' data-bs-toggle='modal' data-bs-target='#ModalForm')
+          | Log in
+      // Button trigger modal
+      button.btn(type='button' data-bs-toggle='modal' data-bs-target='#Backdrop')
+        | Sign up
+      // Modal
+      #Backdrop.modal.fade(data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true')
+        .modal-dialog
+          .modal-content
+            .modal-header
+              h3(style='color: #000;') Register as:
+              button.btn-close.mb-4.pb-4.btn-close-black(type='button' data-bs-dismiss='modal' aria-label='Close')
+            .modal-body(style='color: #000;')
+              .container
+                .row
+                  .col-2
+                  .col
+                    .navLinks
+                      ul
+                        li
+                          a(href='/AO.html') Agriculture Officer
+                        li
+                          a(href='/FO.html') FarmerOne
+                        li
+                          a(href='/urban_farmer_form.html') Urban farmer
+                        li
+                          a(href='/normaluser.html') Normal user
+// how to buy section starts here
+.how-to-buy
+  .container-fluid
+    .row
+      .col-6
+        .text-to-help
+          h3 How to buy on Ufarm?
+          h5 1. Search for the item.
+          p
+            | Find what you need using search panel. We have over a million products
+            | choose precisely what you are looking for.
+        .text-to-help
+          h5 2. Click on the product you want
+          p
+            | By clicking on it will be automatically added to cart, then choose the payment method you prefer
+        .text-to-help
+          h5 3. Take your item and choose a delivery method
+          p
+            | We check our venders carefully, but it&rsquo;s continuously way better to check twice, right? Meet a dealer in an open place and be
+            | beyond any doubt to pay as it were after collecting your thing..
+        .text-to-help
+          h5 4. Leave your feedback about our services
+          p
+            | Feel free to tell us approximately your purchase. Your feedback will be distributed online on the seller&rsquo;s page and will be exceptionally accommodating
+            | for other buyers. Let&rsquo;s construct a secure and proficient trade community together!
+      .col-4
+        .myImage
+          img(src='/images/first.svg' alt='')
+  #support.container
+    .row
+      .col-7
+        .myImage
+          img(src='/images/third.svg' alt='')
+      .col
+        .second-text
+          h3 Security | Safety
+          h5 Note
+          p
+            | We are profoundly centered on the security and can illuminate any issues in short-terms. That&apos;s why we request you, merciful, to leave review after purchasing. In case you
+            | run into any issues with a dealer, you&apos;ll report us and UFarm Group will check this vender as soon as possible.
+        .second-text
+          h5 Security Tips
+          p - Don&apos;t share your password with anyone
+          p - It&apos;s always better to do cash on delivery
+          p - Check the item BEFORE you buy it
+  // how to sale
+  .how-to-buy
+    .container-fluid
+      .row
+        .col-6
+          .text-to-help
+            h3 How to sale on Ufarm?
+            h5 1. Register.
+            p
+              | Register using the forms, fill out all the required fields. Make sure you&rsquo;re entering correct information, so your clients could reach you!
+          .text-to-help
+            h5 2. Make photos of your products
+            p
+              | Use a camera or smartphone to take a ton of pictures. Ensure that they portray your item as best they can.
+          .text-to-help
+            h5 3. Contact FarmerOne for approval and uploads them
+            p
+              | Contact FarmerOne, who is in charge of vetting any products that will be put on the site, and be sure to include quality images.
+          .text-to-help
+            h5 4. Start selling
+            p
+              | Your products will be listed immediately after meeting all the requirements, at which point you will start getting orders from customers.
+        .col-4
+          .myImage
+            img(src='/images/second.svg' alt='')
+  // footer
+  footer.footer
+    .container-last
+      .logo
+        a.navbar-brand(href='index.html#')
+          img(src='/images/onlinelogomaker-091022-1346-6665.png' alt='')
+      .payment-method
+        h5 Payment methods
+        ul
+          li
+            a(href='/payment.html')
+              img(src='/images/Payment_-_Airtel-02.png' alt='')
+          li
+            a(href='/payment.html')
+              img(src='/images/mtn.png' alt='')
+          li
+            a(href='/payment.html')
+              img(src='/images/money.jpg' alt='')
+      .follow-us
+        h5 Stay with us on
+        ul
+          li
+            a(href='https://www.facebook.com/profile.php?id=100086467246132')
+              img(src='/images/facebook.svg' alt='facebook')
+          li
+            a(href='https://twitter.com/UfarmMasajja')
+              img(src='/images/twitter.svg' alt='twitter')
+          li
+            a(href='https://www.instagram.com/ufarm_masajja/')
+              img(src='/images/square-instagram.svg' alt='square-instagram')
+          //
+            <li>
+            <a href="">
+            <img src="/images/envelope-solid.svg" alt="email ">
+            </a>
+            </li>
+      .support
+        h5 Support
+        ul
+          li
+            a(href='/contact-us.html') Contact us
+          li
+            a(href='/how-to-buy.html') Help
+          li
+            a(href='/termsandcondition.html') Terms and condition
+    .copyright
+      article &amp;copycopyright All rights reserved
+  script(src='/bootstrap-5.2.0-dist/js/bootstrap.bundle.js')
