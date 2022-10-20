@@ -62,7 +62,7 @@ nav.navbar.navbar-expand-lg
 // farmerOne registration
 .myform1
   h3 Urban farmer registration
-  form#myFormToRegister(action='/' name='registration')
+  form#myFormToRegister(action='/urbanFarmer' name='registration' method="POST")
     .container.thisForm
       .row.mb-4
         .col
@@ -144,6 +144,12 @@ nav.navbar.navbar-expand-lg
               span Poultry
               br
             small.error
+        .col-4
+          #error16.form-outline.form-o
+            label(for='role') Role:
+            select#role.values-for-wards(name='role')
+              option(value='') Select role
+              option(value='Urban farmer') urban farmer
       .row.mb-4
         .col
           .mb-3.form-check

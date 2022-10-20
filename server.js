@@ -22,7 +22,7 @@ const AO = require('./Routes/AO_routes');
 const urbanfarmer = require('./Routes/urbanFarmer_routes');
 const products = require('./Routes/produce_routes');
 const registerPublic = require('./Routes/register_public');
-const uploads = require('./Routes/upload_images');
+const uploads = require('./Routes/upload_Products');
 const login = require('./Routes/authenticate');
 const dashboards = require('./Routes/dashboards')
 

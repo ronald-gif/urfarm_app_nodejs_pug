@@ -107,6 +107,12 @@ nav.navbar.navbar-expand-lg
             label.form-label(for='form3Example1') Confirm Password:
             input#confirmpassword.confirmpassword(type='password' name='confirmpassword')
             small.error
+        .col
+          #error16.form-outline.form-o
+            label(for='role') Role:
+            select#role.values-for-wards(name='role')
+              option(value='') Select role
+              option(value='Agriculture officer') Agric officer
       .row.mb-4
         .col
           .mb-3.form-check

@@ -21,8 +21,8 @@ router.post('/farmerone', async (req, res) => {
                 if(error){
                     throw error
                 }
-                // res.redirect('/register')
-                res.send('Registration succussfull')
+                res.redirect('/login')
+                // res.send('Registration succussfull')
             })
         }
        
