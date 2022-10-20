@@ -62,7 +62,7 @@ nav.navbar.navbar-expand-lg
 // farmerOne registration
 .myform1
   h3 farmerOne registration
-  form#myFormToRegister(action='/' name='registration')
+  form(action='/farmerone' name='registration' method='POST')
     .container.thisForm
       .row.mb-4
         .col
@@ -108,7 +108,7 @@ nav.navbar.navbar-expand-lg
             small.error
         .col
           #error10.form-outline
-            label.form-label(for='form3Example1') Residence type:
+            label.form-label Residence type:
             select#residence(name='residence')
               option(value='') select residence type
               option#permanent(value='permanent') Permanent
@@ -128,7 +128,7 @@ nav.navbar.navbar-expand-lg
         .col
           #error13.form-outline
             label.form-label(for='form3Example1') Direction to your home:
-            input#directiontohome.directiontohome(type='text')
+            input#directiontohome.directiontohome(type='text' name='direction')
             small.error
       .row.mb-4
         .col
@@ -141,8 +141,8 @@ nav.navbar.navbar-expand-lg
             label(for='gender') Gender:
             select#gender(name='gender')
               option(value='') Select gender
-              option(value='male') Male
-              option(value='female') Female
+              option(value='male' name='gender') Male
+              option(value='female' name='gender') Female
             small.error
         .col-4
           #error16.form-outline.form-o
@@ -159,14 +159,20 @@ nav.navbar.navbar-expand-lg
           #error17.form-outline.radio
             label(for='lang') Activities:
             .radio
-              input#horticulture(type='checkbox' name='horticulture' value='horticulture')
+              input#horticulture(type='checkbox' name='activities' value='horticulture')
               span Horticulture
-              input#dairy(type='checkbox' name='dairy' value='dairy')
+              input#dairy(type='checkbox' name='activities' value='dairy')
               span Dairy 
-              input#poultry(type='checkbox' name='poultry' value='poultry')
+              input#poultry(type='checkbox' name='activites' value='poultry')
               span Poultry
               br
             small.error
+        .col-4
+          #error16.form-outline.form-o
+            label(for='role') Role:
+            select#role.values-for-wards(name='role')
+              option(value='') Select role
+              option(value='farmerone') Farmerone
       .row.mb-4
         .col
           .mb-3.form-check
@@ -174,5 +180,7 @@ nav.navbar.navbar-expand-lg
             label.form-check-label(for='exampleCheck1') Comfirm
           .fo-signup
             button.btn-1(type='submit') Submit
+  form(action="/logout" method="POST") 
+            button.btn-1(type='submit') logout
 script(src='/bootstrap-5.2.0-dist/js/bootstrap.bundle.js')
 //- script(src='/script.js')

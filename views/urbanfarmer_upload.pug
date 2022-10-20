@@ -1,0 +1,138 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title UFarm
+  link(rel='icon' type='image/x-icon' href='/images/favicon.ico')
+  link(rel='stylesheet' href='/bootstrap-5.2.0-dist/css/bootstrap.css')
+  link(rel='stylesheet' href='main.css')
+// nav bar
+nav.navbar.navbar-expand-lg
+  .container-fluid
+    a.navbar-brand(href='index.html#')
+      img(src='/images/onlinelogomaker-091022-1346-6665.png' alt='')
+    button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+      span.navbar-toggler-icon
+    #navbarSupportedContent.collapse.navbar-collapse
+      ul.navbar-nav.me-auto.mb-2.mb-lg-0
+        li.nav-item
+          a.nav-link.active(aria-current='page' href='/index.html' style='color: #fff;') Home
+        li.nav-item
+          a.nav-link.active(aria-current='page' href='about-us.html' style='color: #fff;') About us
+        li.nav-item.dropdown
+          a.nav-link.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
+            | Categories
+          ul.dropdown-menu
+            li
+              a.dropdown-item(href='/horticulture.html') Horticuture
+            li
+              a.dropdown-item(href='/poultry.html') Poultry
+            li
+              a.dropdown-item(href='/dairy.html') Dairy
+// farmerOne registration
+.myform1
+  h3 Urban farmer Upload
+  form#myFormToRegister(action='/upload' Method="POST" )
+    .container.thisForm
+      .row.mb-4
+        .col
+          #error1.form-outline
+            label.form-label(for='form3Example1') Product Name:
+            input#productname.productname(type='text' name='productname')
+            small.error
+        .col
+          #error10.form-outline
+            label.form-label(for='form3Example1') Product category:
+            select#category.category(name='category')
+              option(value='' id='') Select category
+              option#horticulture(value='horticulture') Horticuture
+              option#dairy(value='dairy') Dairy
+              option#poultry(value='poultry') Poultry
+        .col
+          #error3.form-outline
+            label.form-label(for='form3Example1') Product Price:
+            input#productprice.productprice(type='text' placeholder='Ugx' name='productprice')
+            small.error
+      .row.mb-4
+        .col
+          #error5.form-outline
+            label.form-label(for='currentDate')  Product weight:
+            input#productweight.productweight(type='text' name='productweight')
+        .col
+          #error6.form-outline
+            label.form-label(for='exampleInputEmail1') Farmer ID:
+            select#farmerid(type='text' name='farmerid')
+                if currentUser 
+                    option(value= current._id) #{currentUser.surname + "" + currentUser.uniquenumber}
+            small.error
+        .col
+          #error7.form-outline
+            label.form-label(for='form3Example1') Location:
+            input#location.location(type='text' name='location')
+            small.error
+      .row.mb-4
+        .col
+          #error8.form-outline
+            label.form-label(for='exampleInputPassword1') select image of the product:
+            input#uploadimage.uploadimage(type='file' name='uploadimage')
+            small.error
+        .col-4
+          #error7.form-outline
+            label.form-label(for='form3Example1') Date of Upload:
+            input#dateofupload.dateofupload(type='date' name='dateofupload')
+            small.error
+      .row.mb-4
+        .col
+          #error14.form-outline
+            label.form-label(for='form3Example1') Full Name:
+            input#yearsspent.yearsspent(type='text' name='fullname')
+            small.error
+        .col
+          #error15.form-outline.form-o
+            label(for='gender') Gender:
+            select#gender.gender(name='gender')
+              option(value='male') Select gender
+              option(value='male') Male
+              option(value='female') Female
+        .col-4
+          #error16.form-outline.form-o
+            label(for='ward') Ward:
+            select#my_ward.values-for-wards(name='ward')
+              option(value='ward1') LC1
+              option(value='ward2') LC2
+              option(value='ward3') LC3
+              option(value='ward4') LC4
+            small.error
+      .row.mb-4
+        .col
+          #error15.form-outline.form-o
+            label Mode of payment:
+            select#Modeofpayment.Modeofpayment(name='modeofpayment')
+              option(value='') Select mode of payment
+              option(value='mobile') Mobile Money
+              option(value='cash') Cash on Delivery
+        .col
+          #error15.form-outline.form-o
+            label(for='DeliveryMethod') Delivery Method:
+            select#gender.DeliveryMethod(name='deliveryMethod')
+              option(value='') Select Delivery Method
+              option(value='') Pick Up
+              option(value='') Home Delivery
+        .col
+          #error15.form-outline.form-o
+            label Produce Type:
+            select#producetype.producetype(name='producetype')
+              option(value='') Select Produec Type
+              option(value='') Organic
+              option(value='') Non Organic
+      .row.mb-4
+        .col
+          .fo-signup
+            button.btn-1(type='submit') Upload
+        .col
+        .col-2
+          .fo-signup
+            button.btn-1(type='submit') Delete
+script(src='/bootstrap-5.2.0-dist/js/bootstrap.bundle.js')
+//- script(src='/script.js')
