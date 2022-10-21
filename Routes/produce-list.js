@@ -33,5 +33,24 @@ router.get('/producelist',async (req, res) => {
    
 });
 
+//get route for update product
+router.get('/produce/update/:id', async (req, res) => {
+	try {
+		const updateProduct = await Upload.findOne({_id:req.params.id});
+		res.render('productUpdate',{product:updateProduct});
+	} catch (error) {
+		res.status(400).send('Unable to upadate product');
+	}
+});
+
+router.post('/produce/update', async (req, res) => {
+	try {
+		await Upload.findOneAndUpdate({_id:req.query.id}, req.body);
+		res.redirect('/producelist');
+	} catch (error) {
+		res.status(400).send('Unable to upadate product');
+	}
+});
+
 
 module.exports = router
