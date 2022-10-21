@@ -33,10 +33,10 @@ router.post('/farmerone', async (req, res) => {
    
 });
 
-router.get('/farmeronelist', async (req, res) => {
+router.get('/urbanfarmerlist', async (req, res) => {
     try {
-        let items = await Enrollment.find({role: "farmerone"});
-        res.render('farmeroneList', {farmerones:items})
+        let items = await Enrollment.find({role: "Urban farmer"});
+        res.render('urbanfarmerlist', {farmerones:items})
     } catch (error) {
         res.status(404).send("we can not process your request now")
         

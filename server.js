@@ -25,7 +25,7 @@ const registerPublic = require('./Routes/register_public');
 const uploads = require('./Routes/upload_Products');
 const login = require('./Routes/authenticate');
 const dashboards = require('./Routes/dashboards')
-
+const produceList = require('./Routes/produce-list')
 // Instantiation
 const server = express();
 
@@ -76,7 +76,7 @@ server.use('/', registerPublic);
 server.use('/', uploads)
 server.use('/', login)
 server.use('/', dashboards)
-
+server.use('/', produceList)
 // for invalid url
 server.get('*', (req, res)=>{
     res.send('404! this page doesnot exist')

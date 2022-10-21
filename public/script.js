@@ -242,10 +242,11 @@
 
 
 
-var validate = () => {
+// each urbanFarmer in urbanFarmers 
+// option(value = urbanFarmer._id) #{urbanFarmer.uniquenumber}
 
-}
-
+// if currentUser 
+                // option(value = currentUser._id) #{currentUser.ward}
 
 
 

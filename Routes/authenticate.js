@@ -7,7 +7,18 @@ router.get('/login', (req, res) => {
 })
 
 router.post('/login', passport.authenticate('local', {failureRedirect: "/login"}), (req, res) => {
-    res.redirect('/farmerone')
+    req.session.user = req.user;
+    console.log("This is the user:", req.session.user);
+    if(req.user.role == "Agriculture officer"){
+        res.redirect('/AO-dashboard')
+    }else if(req.user.role == "farmerone"){
+        res.redirect('/FO-dashboard')
+    }else if(req.user.role == "Urban farmer"){
+        res.redirect('/urban-dashboard')
+    }else{
+        res.send('Your session has ended or your are not a registered user')
+    }
+    // res.redirect('/upload')
 });
 
 router.post('/logout', (req, res) => {

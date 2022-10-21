@@ -30,13 +30,6 @@ nav.navbar.navbar-expand-lg
               a.dropdown-item(href='/poultry.html') Poultry
             li
               a.dropdown-item(href='/dairy.html') Dairy
-      // modal login
-      .buttonlogin
-        button.btn(type='button' data-bs-toggle='modal' data-bs-target='#ModalForm')
-          | Log in
-      // Button trigger modal
-      button.btn(type='button' data-bs-toggle='modal' data-bs-target='#Backdrop')
-        | Sign up
       // Modal
       #Backdrop.modal.fade(data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true')
         .modal-dialog
@@ -63,19 +56,19 @@ nav.navbar.navbar-expand-lg
 .myform1
   h3 Login form
   form(action='/login' name='registration' method='POST')
-    .container.thisForm
+    .container.thisForm 
       .row.mb-4
-        .col
+        .col-12
           #error1.form-outline
             label.form-label(for='form3Example1') User ID:
             input#firstName.firstName(type='text' name='uniquenumber')
             small.error
-        .col
+        .col-12
           #error2.form-outline
             label.form-label Password:
             input#secondname.secondName(type='password' name='password')
             small.error
 
-          button.btn-1(type='submit') Login
+      button.btn-1(type='submit') Login
 script(src='/bootstrap-5.2.0-dist/js/bootstrap.bundle.js')
 //- script(src='/script.js')

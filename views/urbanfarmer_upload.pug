@@ -30,6 +30,8 @@ nav.navbar.navbar-expand-lg
               a.dropdown-item(href='/poultry.html') Poultry
             li
               a.dropdown-item(href='/dairy.html') Dairy
+      form(action="/logout" method="POST") 
+            button.btn-1(type='submit') logout        
 // farmerOne registration
 .myform1
   h3 Urban farmer Upload
@@ -63,8 +65,9 @@ nav.navbar.navbar-expand-lg
           #error6.form-outline
             label.form-label(for='farmerid') Farmer ID:
             select#farmerid(type='text' name='farmerid')
-              each urbanFarmer in urbanFarmers 
-                option(value = urbanFarmer._id) #{urbanFarmer.uniquenumber}
+              if urbanFarmers.length 
+                  each urbanFarmer in urbanFarmers
+                    option(value = urbanFarmer._id) #{urbanFarmer.uniquenumber}
             small.error
         .col
           #error7.form-outline
@@ -99,10 +102,9 @@ nav.navbar.navbar-expand-lg
           #error16.form-outline.form-o
             label(for='ward') Ward:
             select#my_ward.values-for-wards(name='ward')
-              option(value='ward1') LC1
-              option(value='ward2') LC2
-              option(value='ward3') LC3
-              option(value='ward4') LC4
+               if urbanFarmers.length 
+                  each urbanFarmer in urbanFarmers
+                    option(value = urbanFarmer._id) #{urbanFarmer.ward}
             small.error
       .row.mb-4
         .col

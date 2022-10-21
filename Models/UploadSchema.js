@@ -40,7 +40,8 @@ const uploadSchema = new mongoose.Schema({
         type: String,
     },
     ward: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Enrollment'
     },
     modeofpayment: {
         type: String,
@@ -51,11 +52,17 @@ const uploadSchema = new mongoose.Schema({
     producetype: {
         type: String,
     },
-    // status: {
-    //     type: String,
-    //     default: "Pnding",
-    //     enum: ["Pending", "Approved"]
-    // }
+    status: {
+        type: String,
+        default: "Pending",
+        enum: ["Pending", "Approved"]
+    },
+    availability: {
+        type: String, 
+        default: "available",
+        enum: ["available", "booked", "N/A"] 
+      }
+    
 });
 
 module.exports = mongoose.model('Upload', uploadSchema)
