@@ -161,15 +161,20 @@ p a:hover {
 
 }
 .thisForm{
-  margin-top: 10px;
+  margin-top: 8px;
   padding: 10px 20px;
   margin-bottom: 1rem;
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 7px 7px 7px 7px rgba(0, 0, 0, 0.3);
+  width: 1000px;
+}
+.ao-form{
   width: 800px;
 }
-
+.mb-5{
+  margin-bottom: 10px;
+}
 .thisForm h3 {
   font-size: 1.5em;
   text-align: center;
@@ -530,6 +535,9 @@ p a:hover {
 
   }
 
+  .thisForm{
+    width: 600px;
+  }
   .container-last .logo{
     padding: 1rem 10px;
   }
@@ -597,6 +605,9 @@ p a:hover {
 
   }
 
+  .thisForm{
+    width: 400px;
+  }
   .container-last .logo{
     padding: 1rem 10px;
   }

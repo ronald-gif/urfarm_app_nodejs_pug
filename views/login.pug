@@ -3,72 +3,34 @@ head
   meta(charset='UTF-8')
   meta(http-equiv='X-UA-Compatible' content='IE=edge')
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  title UFarm
+  title login
   link(rel='icon' type='image/x-icon' href='/images/favicon.ico')
   link(rel='stylesheet' href='/bootstrap-5.2.0-dist/css/bootstrap.css')
-  link(rel='stylesheet' href='/main.css')
-// nav bar
-nav.navbar.navbar-expand-lg
-  .container-fluid
-    a.navbar-brand(href='index.html#')
-      img(src='/images/onlinelogomaker-091022-1346-6665.png' alt='')
-    button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
-      span.navbar-toggler-icon
-    #navbarSupportedContent.collapse.navbar-collapse
-      ul.navbar-nav.me-auto.mb-2.mb-lg-0
-        li.nav-item
-          a.nav-link.active(aria-current='page' href='/index.html' style='color: #fff;') Home
-        li.nav-item
-          a.nav-link.active(aria-current='page' href='about-us.html' style='color: #fff;') About us
-        li.nav-item.dropdown
-          a.nav-link.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
-            | Categories
-          ul.dropdown-menu
-            li
-              a.dropdown-item(href='/horticulture.html') Horticuture
-            li
-              a.dropdown-item(href='/poultry.html') Poultry
-            li
-              a.dropdown-item(href='/dairy.html') Dairy
-      // Modal
-      #Backdrop.modal.fade(data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true')
-        .modal-dialog
-          .modal-content
-            .modal-header
-              h3(style='color: #000;') Register as:
-              button.btn-close.mb-4.pb-4.btn-close-black(type='button' data-bs-dismiss='modal' aria-label='Close')
-            .modal-body(style='color: #000;')
-              .container
-                .row
-                  .col-2
-                  .col
-                    .navLinks
-                      ul
-                        li
-                          a(href='/AO.html') Agriculture Officer
-                        li
-                          a(href='/FO.html') FarmerOne
-                        li
-                          a(href='/urban_farmer_form.html') Urban farmer
-                        li
-                          a(href='/normaluser.html') Normal user
-// farmerOne registration
-.myform1
-  h3 Login form
-  form(action='/login' name='registration' method='POST')
-    .container.thisForm 
-      .row.mb-4
-        .col-12
-          #error1.form-outline
-            label.form-label(for='form3Example1') User ID:
-            input#firstName.firstName(type='text' name='uniquenumber')
-            small.error
-        .col-12
-          #error2.form-outline
-            label.form-label Password:
-            input#secondname.secondName(type='password' name='password')
-            small.error
-
-      button.btn-1(type='submit') Login
+section.vh-50(style='background-color: #9A616D;')
+  .container.py-5.h-100
+    .row.d-flex.justify-content-center.align-items-center.h-100
+      .col.col-xl-10
+        .card(style='border-radius: 1rem;')
+          .row.g-0
+            .col-md-6.col-lg-5.d-none.d-md-block
+              img.img-fluid(src='/images/gardening (1).jpg' alt='login form' style='border-radius: 1rem 0 0 1rem;')
+            .col-md-6.col-lg-7.d-flex.align-items-center
+              .card-body.p-4.p-lg-5.text-black
+                form(action='/login' name='registration' method='POST')
+                  .d-flex.align-items-center.mb-3.pb-1
+                    img(src='/images/onlinelogomaker-091022-1346-6665.png' alt='')
+                  h5.fw-normal.mb-3.pb-3(style='letter-spacing: 1px;') Login into your account
+                  .form-outline.mb-4
+                    label.form-label(for='form2Example17') Unique Number/ID
+                    input#form2Example17.form-control.form-control-lg(type='text' name='uniquenumber')
+                  .form-outline.mb-4
+                    label.form-label(for='form2Example27') Password
+                    input#form2Example27.form-control.form-control-lg(type='password' name='password')
+                  .pt-1.mb-4
+                    button.btn.btn-dark.btn-lg.btn-block(type='submit') Login
+                  p.mb-5.pb-lg-2(style='color: #393f81;')
+                    | Don&apos;t have an account? 
+                    a(href='/farmerone' style='color: #393f81;') Register here
+                  a.small.text-muted(href='/terms-and-conditions') Terms of use.
+                  a.small.text-muted(href='/terms-and-conditions') Privacy policy
 script(src='/bootstrap-5.2.0-dist/js/bootstrap.bundle.js')
-//- script(src='/script.js')

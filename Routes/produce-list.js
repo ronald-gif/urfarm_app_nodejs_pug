@@ -52,5 +52,14 @@ router.post('/produce/update', async (req, res) => {
 	}
 });
 
+// Delete product
+router.post('/produce/delete', async (req, res) => {
+	try {
+		await Upload.deleteOne({_id:req.body.id});
+		res.redirect('back');
+	} catch (error) {
+		res.status(400).send('Unable to delete product');
+	}
+});
 
 module.exports = router

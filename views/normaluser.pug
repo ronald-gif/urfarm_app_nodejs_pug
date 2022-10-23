@@ -17,9 +17,9 @@ nav.navbar.navbar-expand-lg
     #navbarSupportedContent.collapse.navbar-collapse
       ul.navbar-nav.me-auto.mb-2.mb-lg-0
         li.nav-item
-          a.nav-link.active(aria-current='page' href='/index.html' style='color: #fff;') Home
+          a.nav-link.active(aria-current='page' href='/home' style='color: #fff;') Home
         li.nav-item
-          a.nav-link.active(aria-current='page' href='about-us.html' style='color: #fff;') About us
+          a.nav-link.active(aria-current='page' href='/about-us' style='color: #fff;') About us
         li.nav-item.dropdown
           a.nav-link.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
             | Categories
@@ -32,8 +32,8 @@ nav.navbar.navbar-expand-lg
               a.dropdown-item(href='/dairy.html') Dairy
       // modal login
       .buttonlogin
-        button.btn(type='button' data-bs-toggle='modal' data-bs-target='#ModalForm')
-          | Log in
+        a(href='/login')
+          button.btn(type='button') Login
       // Button trigger modal
       button.btn(type='button' data-bs-toggle='modal' data-bs-target='#Backdrop')
         | Sign up
@@ -52,13 +52,13 @@ nav.navbar.navbar-expand-lg
                     .navLinks
                       ul
                         li
-                          a(href='/AO.html') Agriculture Officer
+                          a(href='/AO') Agriculture Officer
                         li
-                          a(href='/FO.html') FarmerOne
+                          a(href='/farmerone') FarmerOne
                         li
-                          a(href='/urban_farmer_form.html') Urban farmer
+                          a(href='/urbanFarmer') Urban farmer
                         li
-                          a(href='/normaluser.html') Normal user
+                          a(href='/public') Normal user
 // farmerOne registration
 .myform1
   h3 Register here to continue

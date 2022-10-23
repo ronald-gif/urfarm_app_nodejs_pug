@@ -7,11 +7,11 @@ const connectEnsureLogin = require('connect-ensure-login')
 router.get('/AO-dashboard', connectEnsureLogin.ensureLoggedIn(), (req, res) => {
     req.session.user = req.user;
     if(req.user.role == "Agriculture officer"){
-        res.redirect("/AO-dashboard")
-        res.send('This page is only accessed by Agriculture officer')
+        res.render("AO_dashboard")
+       
     }else{
+        res.send('This page is only accessed by Agriculture officer') 
         
-        res.render('AO_dashboard')
     }
    
 });

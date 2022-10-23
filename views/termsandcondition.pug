@@ -39,16 +39,16 @@ head
 // nav bar
 nav.navbar.navbar-expand-lg
   .container-fluid
-    a.navbar-brand(href='index.html#')
+    a.navbar-brand(href='/home')
       img(src='/images/onlinelogomaker-091022-1346-6665.png' alt='')
     button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
       span.navbar-toggler-icon
     #navbarSupportedContent.collapse.navbar-collapse
       ul.navbar-nav.me-auto.mb-2.mb-lg-0
         li.nav-item
-          a.nav-link.active(aria-current='page' href='/index.html' style='color: #fff;') Home
+          a.nav-link.active(aria-current='page' href='/home' style='color: #fff;') Home
         li.nav-item
-          a.nav-link.active(aria-current='page' href='about-us.html' style='color: #fff;') About us
+          a.nav-link.active(aria-current='page' href='/about-us' style='color: #fff;') About us
         li.nav-item.dropdown
           a.nav-link.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
             | Categories
@@ -61,8 +61,8 @@ nav.navbar.navbar-expand-lg
               a.dropdown-item(href='/dairy.html') Dairy
       // modal login
       .buttonlogin
-        button.btn(type='button' data-bs-toggle='modal' data-bs-target='#ModalForm')
-          | Log in
+        a(href='/login')
+          button.btn(type='button') Login
       // Button trigger modal
       button.btn(type='button' data-bs-toggle='modal' data-bs-target='#Backdrop')
         | Sign up
@@ -81,13 +81,13 @@ nav.navbar.navbar-expand-lg
                     .navLinks
                       ul
                         li
-                          a(href='/AO.html') Agriculture Officer
+                          a(href='/AO') Agriculture Officer
                         li
-                          a(href='/FO.html') FarmerOne
+                          a(href='/farmerone') FarmerOne
                         li
-                          a(href='/urban_farmer_form.html') Urban farmer
+                          a(href='/urbanFarmer') Urban farmer
                         li
-                          a(href='/normaluser.html') Normal user
+                          a(href='/public') Normal user
 .container
   .row
     .col
@@ -120,19 +120,19 @@ nav.navbar.navbar-expand-lg
 footer.footer(id='#foot_last')
   .container-last
     .logo
-      a.navbar-brand(href='index.html#')
+      a.navbar-brand(href='/home')
         img(src='/images/onlinelogomaker-091022-1346-6665.png' alt='')
     .payment-method
       h5 Payment methods
       ul
         li
-          a(href='/payment.html')
+          a(href='/payment')
             img(src='/images/Payment_-_Airtel-02.png' alt='')
         li
-          a(href='/payment.html')
+          a(href='/payment')
             img(src='/images/mtn.png' alt='')
         li
-          a(href='payment.html')
+          a(href='payment')
             img(src='/images/money.jpg' alt='')
     .follow-us
       h5 Stay with us on
@@ -156,11 +156,11 @@ footer.footer(id='#foot_last')
       h5 Support
       ul
         li
-          a(href='/contact-us.html') Contact us
+          a(href='/contact-us') Contact us
         li
-          a(href='/how-to-buy.html') Help
+          a(href='/how-to-buy') Help
         li
-          a(href='/termsandcondition.html') Terms and condition
+          a(href='/terms-and-conditions') Terms and condition
   .copyright
     article &amp;copycopyright All rights reserved
 script(src='/bootstrap-5.2.0-dist/js/bootstrap.bundle.js')
