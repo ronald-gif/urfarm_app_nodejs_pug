@@ -4,6 +4,7 @@ head
   meta(http-equiv='X-UA-Compatible' content='IE=edge')
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
   title urban farmer List
+  link(rel='icon' type='image/x-icon' href='/images/favicon.ico')
   link(rel='stylesheet' href='/bootstrap-5.2.0-dist/css/bootstrap.css')
   link(rel='stylesheet' href='main.css')
 // nav bar
@@ -16,9 +17,9 @@ nav.navbar.navbar-expand-lg
     #navbarSupportedContent.collapse.navbar-collapse
       ul.navbar-nav.me-auto.mb-2.mb-lg-0
         li.nav-item
-          a.nav-link.active(aria-current='page' href='/index.html' style='color: #fff;') Home
+          a.nav-link.active(aria-current='page' href='/home' style='color: #fff;') Home
         li.nav-item
-          a.nav-link.active(aria-current='page' href='about-us.html' style='color: #fff;') About us
+          a.nav-link.active(aria-current='page' href='/about-us' style='color: #fff;') About us
         li.nav-item.dropdown
           a.nav-link.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
             | Categories
@@ -42,20 +43,20 @@ table.table.table-bordered
       th(scope='col') Update
       th(scope='col') Delete
   tbody
-      if farmerones.length 
-          each farmeronelist in farmerones
+      if urbanfarmers.length 
+          each urbanfarmerlist in urbanfarmers
               tr
-                td #{farmeronelist.firstname}
-                td #{farmeronelist.secondname}
-                td #{farmeronelist.gender}
-                td #{farmeronelist.uniquenumber}
-                td #{farmeronelist.ward}
-                td #{farmeronelist.nin}
+                td #{urbanfarmerlist.firstname}
+                td #{urbanfarmerlist.secondname}
+                td #{urbanfarmerlist.gender}
+                td #{urbanfarmerlist.uniquenumber}
+                td #{urbanfarmerlist.ward}
+                td #{urbanfarmerlist.nin}
                 td
                     a
-                        button.btn.btn-primary.btn-block(href='/farmerOne/update/'+farmeronelist._id) Update
+                        button.btn.btn-primary.btn-block(href='/urbanfarmer/update/'+urbanfarmerlist._id) Update
                 td
-                    form(method="post" action='/farmerOne/delete')
-                        input(type="hidden", placeholder="", name="id", value=farmeronelist._id)
+                    form(method="post" action='/urbanfarmer/delete')
+                        input(type="hidden", placeholder="", name="id", value=urbanfarmerlist._id)
                         button.btn.btn-danger.btn-block(type="submit") Delete
 script(src='/public/bootstrap-5.2.0-dist/js/bootstrap.bundle.js')

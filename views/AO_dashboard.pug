@@ -17,7 +17,7 @@ head
       a.list-group-item.list-group-item-action.bg-transparent.second-text.active(href='#')
         i.fas.fa-tachometer-alt.me-2
         | Dashboard
-      a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='#')
+      a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='/farmeronelist')
         i.fas.fa-project-diagram.me-2
         | Farmer One
       a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='/urbanfarmerlist')
@@ -26,7 +26,7 @@ head
       a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='/producelist')
         i.fas.fa-paperclip.me-2
         | Products
-      a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='#')
+      a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='/producelist')
         i.fas.fa-shopping-cart.me-2
         | Bookings and order
       a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='#')
@@ -35,10 +35,6 @@ head
       a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='#')
         i.fas.fa-comment-dots.me-2
         | Delivery
-      a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='#')
-        i.fas.fa-map-marker-alt.me-2
-      a.list-group-item.list-group-item-action.bg-transparent.text-danger.fw-bold(href='#')
-        i.fas.fa-power-off.me-2
   // /#sidebar-wrapper
   // Page Content
   #page-content-wrapper
@@ -55,18 +51,14 @@ head
               i.fas.fa-user.me-2
               | Agri Officer
             ul.dropdown-menu(aria-labelledby='navbarDropdown')
-              li
-                a.dropdown-item(href='#') Profile
-              li
-                a.dropdown-item(href='#') Settings
-              li
-                a.dropdown-item(href='#') Logout
+              form(action="/logout" method="POST") 
+                 button.btn-1(type='submit') logout
     .container-fluid.px-4
       .row.g-3.my-2
         .col-md-3
           .p-3.bg-white.shadow-sm.d-flex.justify-content-around.align-items-center.rounded
             div
-              a(href='') Products
+              a(href='/producelist') Products
             i.fas.fa-gift.fs-1.primary-text.border.rounded-full.secondary-bg.p-3
         .col-md-3
           .p-3.bg-white.shadow-sm.d-flex.justify-content-around.align-items-center.rounded

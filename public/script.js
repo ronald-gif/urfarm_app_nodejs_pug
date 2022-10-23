@@ -38,8 +38,16 @@ const error18 = document.getElementById('error18')
 
 
 
+form.onsubmit((e) =>{
+    validateInputs();
+})
+    // e.preventDefault();
+
+    
+
+
 form.addEventListener('submit', e => {
-    e.preventDefault();
+    // e.preventDefault();
 
     validateInputs();
 });

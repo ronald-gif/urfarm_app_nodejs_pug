@@ -3,7 +3,7 @@ head
   meta(charset='UTF-8')
   meta(http-equiv='X-UA-Compatible' content='IE=edge')
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  title Product List
+  title FarmerOne List
   link(rel='icon' type='image/x-icon' href='/images/favicon.ico')
   link(rel='stylesheet' href='/bootstrap-5.2.0-dist/css/bootstrap.css')
   link(rel='stylesheet' href='main.css')
@@ -17,47 +17,46 @@ nav.navbar.navbar-expand-lg
     #navbarSupportedContent.collapse.navbar-collapse
       ul.navbar-nav.me-auto.mb-2.mb-lg-0
         li.nav-item
-          a.nav-link.active(aria-current='page' href='/index.html' style='color: #fff;') Home
+          a.nav-link.active(aria-current='page' href='/home' style='color: #fff;') Home
         li.nav-item
-          a.nav-link.active(aria-current='page' href='about-us.html' style='color: #fff;') About us
+          a.nav-link.active(aria-current='page' href='/about-us' style='color: #fff;') About us
         li.nav-item.dropdown
           a.nav-link.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
             | Categories
           ul.dropdown-menu
             li
-              a.dropdown-item(href='/horticulture.html') Horticuture
+              a.dropdown-item(href='/horticulture') Horticuture
             li
-              a.dropdown-item(href='/poultry.html') Poultry
+              a.dropdown-item(href='/poultry') Poultry
             li
-              a.dropdown-item(href='/dairy.html') Dairy
+              a.dropdown-item(href='/dairy') Dairy
 
 table.table.table-bordered
   thead.table-dark
     tr
-      th(scope='col') product name
-      th(scope='col') category
-      th(scope='col') product price
-      th(scope='col') product weight
-      th(scope='col') mode of payment
-      th(scope='col') product image
+      th(scope='col') First Name
+      th(scope='col') Second Name
+      th(scope='col') Gender
+      th(scope='col') Unique Number
+      th(scope='col') Ward
+      th(scope='col') NIN
       th(scope='col') Update
       th(scope='col') Delete
   tbody
-      if products.length 
-          each product in products
+      if farmerones.length 
+          each farmeronelist in farmerones
               tr
-                td #{product.productname}
-                td #{product.category}
-                td #{product.productprice}
-                td #{product.productweight}
-                td #{product.modeofpayment}
-                td 
-                    img(src="/"+product.uploadimage, alt="image" width ='150px' height='150px')  
+                td #{farmeronelist.firstname}
+                td #{farmeronelist.secondname}
+                td #{farmeronelist.gender}
+                td #{farmeronelist.uniquenumber}
+                td #{farmeronelist.ward}
+                td #{farmeronelist.nin}
                 td
                     a
-                        button.btn.btn-primary.btn-block(href='/produce/update/'+product._id) Update
+                        button.btn.btn-primary.btn-block(href='/farmerOne/update/'+farmeronelist._id) Update
                 td
-                    form(method="post" action='/produce/delete')
-                        input(type="hidden", placeholder="", name="id", value=product._id)
+                    form(method="post" action='/farmerOne/delete')
+                        input(type="hidden", placeholder="", name="id", value=farmeronelist._id)
                         button.btn.btn-danger.btn-block(type="submit") Delete
 script(src='/public/bootstrap-5.2.0-dist/js/bootstrap.bundle.js')

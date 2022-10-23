@@ -35,6 +35,17 @@ router.post('/urbanFarmer', async (req, res) => {
    
 });
 
+router.get('/urbanfarmerlist', async (req, res) => {
+    try {
+        let items = await Enrollment.find({role: "Urban farmer"});
+        res.render('urbanfarmerlist', {urbanfarmers:items})
+    } catch (error) {
+        res.status(404).send("we can not process your request now")
+        
+    }
+   
+})
+
 // router.get('/urbanfarmerlist', async (req, res) => {
 //     try {
 //         let items = await Enrollment.find({role: "Urban farmer"});

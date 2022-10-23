@@ -17,9 +17,9 @@ nav.navbar.navbar-expand-lg
     #navbarSupportedContent.collapse.navbar-collapse
       ul.navbar-nav.me-auto.mb-2.mb-lg-0
         li.nav-item
-          a.nav-link.active(aria-current='page' href='/index.html' style='color: #fff;') Home
+          a.nav-link.active(aria-current='page' href='/home' style='color: #fff;') Home
         li.nav-item
-          a.nav-link.active(aria-current='page' href='about-us.html' style='color: #fff;') About us
+          a.nav-link.active(aria-current='page' href='/about-us' style='color: #fff;') About us
         li.nav-item.dropdown
           a.nav-link.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
             | Categories
@@ -53,13 +53,13 @@ nav.navbar.navbar-expand-lg
               option#poultry(value='poultry') Poultry
         .col
           #error3.form-outline
-            label.form-label(for='form3Example1') Product Price:
+            label.form-label(for='form3Example1') Unit Price:
             input#productprice.productprice(type='text' placeholder='Ugx' name='productprice')
             small.error
       .row.mb-4
         .col
           #error5.form-outline
-            label.form-label(for='currentDate')  Product weight:
+            label.form-label(for='currentDate')  Qauntity:
             input#productweight.productweight(type='text' name='productweight')
         .col
           #error6.form-outline
@@ -71,7 +71,7 @@ nav.navbar.navbar-expand-lg
             small.error
         .col
           #error7.form-outline
-            label.form-label(for='form3Example1') Location:
+            label.form-label(for='form3Example1') Direction:
             input#location.location(type='text' name='location')
             small.error
       .row.mb-4
