@@ -17,9 +17,9 @@ nav.navbar.navbar-expand-lg
     #navbarSupportedContent.collapse.navbar-collapse
       ul.navbar-nav.me-auto.mb-2.mb-lg-0
         li.nav-item
-          a.nav-link.active(aria-current='page' href='/index.html' style='color: #fff;') Home
+          a.nav-link.active(aria-current='page' href='/home' style='color: #fff;') Home
         li.nav-item
-          a.nav-link.active(aria-current='page' href='about-us.html' style='color: #fff;') About us
+          a.nav-link.active(aria-current='page' href='/about-us' style='color: #fff;') About us
         li.nav-item.dropdown
           a.nav-link.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
             | Categories
@@ -30,12 +30,12 @@ nav.navbar.navbar-expand-lg
               a.dropdown-item(href='/poultry.html') Poultry
             li
               a.dropdown-item(href='/dairy.html') Dairy
-      form(action="/produce/update?id="+product._id method="POST") 
+      form(action="/produce/update/?id="+product._id method="POST") 
             button.btn-1(type='submit') logout        
 // farmerOne registration
 .myform1
-  h3 Update Form
-  form#myFormToRegister(action='/upload' Method="POST")
+  h3 Update Product
+  form#myFormToRegister(action='/produce/update/?id='+product._id Method="POST")
     .container.thisForm
       .row.mb-4
         .col
@@ -70,7 +70,7 @@ nav.navbar.navbar-expand-lg
       .row.mb-4
         .col
           .fo-signup
-            button.btn-1(type='submit') Upload
+            button.btn-1(type='submit') Update
         .col
         .col-2
           .fo-signup

@@ -17,9 +17,9 @@ nav.navbar.navbar-expand-lg
     #navbarSupportedContent.collapse.navbar-collapse
       ul.navbar-nav.me-auto.mb-2.mb-lg-0
         li.nav-item
-          a.nav-link.active(aria-current='page' href='/index.html' style='color: #fff;') Home
+          a.nav-link.active(aria-current='page' href='/home' style='color: #fff;') Home
         li.nav-item
-          a.nav-link.active(aria-current='page' href='about-us.html' style='color: #fff;') About us
+          a.nav-link.active(aria-current='page' href='/about-us' style='color: #fff;') About us
         li.nav-item.dropdown
           a.nav-link.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
             | Categories
@@ -30,7 +30,8 @@ nav.navbar.navbar-expand-lg
               a.dropdown-item(href='/poultry.html') Poultry
             li
               a.dropdown-item(href='/dairy.html') Dairy
-
+      form(action="/logout" method="POST") 
+            button.btn-1(type='submit') logout 
 table.table.table-bordered
   thead.table-dark
     tr
@@ -39,23 +40,31 @@ table.table.table-bordered
       th(scope='col') product price
       th(scope='col') product weight
       th(scope='col') mode of payment
+      th(scope='col') product Status
+      th(scope='col') product Availability
       th(scope='col') product image
       th(scope='col') Update
+      th(scope='col') Approved
       th(scope='col') Delete
   tbody
       if products.length 
           each product in products
+            if product.status == "Pending"
               tr
                 td #{product.productname}
                 td #{product.category}
                 td #{product.productprice}
                 td #{product.productweight}
                 td #{product.modeofpayment}
+                td #{product.status}
+                td #{product.availability}
                 td 
                     img(src="/"+product.uploadimage, alt="image" width ='150px' height='150px')  
                 td
-                    a
-                        button.btn.btn-primary.btn-block(href='/produce/update/'+product._id) Update
+                    a.btn.btn-secondary.btn-block(href='/produce/update/'+product._id) Update
+                td
+                    a.btn.btn-primary.btn-block(href='/produce/approved/'+product._id) Approved
+                   
                 td
                     form(method="post" action='/produce/delete')
                         input(type="hidden", placeholder="", name="id", value=product._id)

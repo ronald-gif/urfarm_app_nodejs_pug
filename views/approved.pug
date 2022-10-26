@@ -3,10 +3,10 @@ head
   meta(charset='UTF-8')
   meta(http-equiv='X-UA-Compatible' content='IE=edge')
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  title urban farmer List
+  title Approvals
   link(rel='icon' type='image/x-icon' href='/images/favicon.ico')
   link(rel='stylesheet' href='/bootstrap-5.2.0-dist/css/bootstrap.css')
-  link(rel='stylesheet' href='main.css')
+  link(rel='stylesheet' href='/main.css')
 // nav bar
 nav.navbar.navbar-expand-lg
   .container-fluid
@@ -30,35 +30,23 @@ nav.navbar.navbar-expand-lg
               a.dropdown-item(href='/poultry.html') Poultry
             li
               a.dropdown-item(href='/dairy.html') Dairy
-      form(action="/logout" method="POST") 
-             button.btn-1(type='submit') logout 
-
-table.table.table-bordered
-  thead.table-dark
-    tr
-      th(scope='col') First Name
-      th(scope='col') Second Name
-      th(scope='col') Gender
-      th(scope='col') Unique Number
-      th(scope='col') Ward
-      th(scope='col') NIN
-      th(scope='col') Update
-      th(scope='col') Delete
-  tbody
-      if urbanfarmers.length 
-          each urbanfarmerlist in urbanfarmers
-              tr
-                td #{urbanfarmerlist.firstname}
-                td #{urbanfarmerlist.secondname}
-                td #{urbanfarmerlist.gender}
-                td #{urbanfarmerlist.uniquenumber}
-                td #{urbanfarmerlist.ward}
-                td #{urbanfarmerlist.nin}
-                td
-                    a
-                        button.btn.btn-primary.btn-block(href='/urbanfarmer/update/'+urbanfarmerlist._id) Update
-                td
-                    form(method="post" action='/urbanfarmer/delete')
-                        input(type="hidden", placeholder="", name="id", value=urbanfarmerlist._id)
-                        button.btn.btn-danger.btn-block(type="submit") Delete
-script(src='/public/bootstrap-5.2.0-dist/js/bootstrap.bundle.js')
+      form(action="/produce/update/?id="+product._id method="POST") 
+            button.btn-1(type='submit') logout        
+// farmerOne registration
+.myform1
+  h3 Approve this Product
+  form#myFormToRegister(action='/produce/approved/?id='+product._id Method="POST")
+    .container.thisForm
+      .row.mb-4
+        .col
+          .form-outline
+            label.form-label(for='status') Status:
+            select(name="status") 
+                option(value="Pending" selected = product.status === 'Pending') Pending
+                option(value="Approved" selected = product.status === 'Approved') Approve 
+      .row.mb-4          
+       .col
+          .fo-signup
+            button.btn-1(type='submit') Approve
+script(src='/bootstrap-5.2.0-dist/js/bootstrap.bundle.js')
+//- script(src='/script.js')

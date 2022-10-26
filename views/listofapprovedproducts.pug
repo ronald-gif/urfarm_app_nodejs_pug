@@ -3,7 +3,7 @@ head
   meta(charset='UTF-8')
   meta(http-equiv='X-UA-Compatible' content='IE=edge')
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  title urban farmer List
+  title Product List
   link(rel='icon' type='image/x-icon' href='/images/favicon.ico')
   link(rel='stylesheet' href='/bootstrap-5.2.0-dist/css/bootstrap.css')
   link(rel='stylesheet' href='main.css')
@@ -31,34 +31,31 @@ nav.navbar.navbar-expand-lg
             li
               a.dropdown-item(href='/dairy.html') Dairy
       form(action="/logout" method="POST") 
-             button.btn-1(type='submit') logout 
+                         button.btn-1(type='submit') logout 
 
 table.table.table-bordered
   thead.table-dark
     tr
-      th(scope='col') First Name
-      th(scope='col') Second Name
-      th(scope='col') Gender
-      th(scope='col') Unique Number
-      th(scope='col') Ward
-      th(scope='col') NIN
-      th(scope='col') Update
-      th(scope='col') Delete
+      th(scope='col') product name
+      th(scope='col') category
+      th(scope='col') product price
+      th(scope='col') Qauntity
+      th(scope='col') mode of payment
+      th(scope='col') product image
+      th(scope='col') change availability
+      
   tbody
-      if urbanfarmers.length 
-          each urbanfarmerlist in urbanfarmers
+      if products.length 
+          each product in products
+            if product.status == "Approved"
               tr
-                td #{urbanfarmerlist.firstname}
-                td #{urbanfarmerlist.secondname}
-                td #{urbanfarmerlist.gender}
-                td #{urbanfarmerlist.uniquenumber}
-                td #{urbanfarmerlist.ward}
-                td #{urbanfarmerlist.nin}
+                td #{product.productname}
+                td #{product.category}
+                td #{product.unitprice}
+                td #{product.qauntity}
+                td #{product.modeofpayment}
+                td 
+                    img(src="/"+product.uploadimage, alt="image" width ='150px' height='150px')  
                 td
-                    a
-                        button.btn.btn-primary.btn-block(href='/urbanfarmer/update/'+urbanfarmerlist._id) Update
-                td
-                    form(method="post" action='/urbanfarmer/delete')
-                        input(type="hidden", placeholder="", name="id", value=urbanfarmerlist._id)
-                        button.btn.btn-danger.btn-block(type="submit") Delete
+                    a.btn.btn-primary.btn-block(href='/produce/availability/'+product._id) Availability
 script(src='/public/bootstrap-5.2.0-dist/js/bootstrap.bundle.js')

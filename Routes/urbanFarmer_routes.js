@@ -1,10 +1,11 @@
 const express = require('express');
 // const router = require('./farmerOne_routes');
 const router = express.Router();
+const connectEnsureLogin = require('connect-ensure-login')
 
 // importing model
 const Enrollment = require('../Models/UserSchema')
-
+const Upload = require('../Models/UploadSchema')
 // Ccreating routes
 
 router.get('/urbanFarmer', (req, res) => {
@@ -45,6 +46,21 @@ router.get('/urbanfarmerlist', async (req, res) => {
     }
    
 })
+
+// router.get('/urban-dashboard', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
+//     req.session.user = req.user
+//     try {
+//         const productOwner = await Upload.find({owner:req.user});
+//         res.render('urban_dashboard', {title: 'producelist', produces:ownerproducts});
+//     } catch (error) {
+//        res.status(400).send("No products found in the database") 
+//     }
+    
+// });
+
+router.get('/urban-dashboard', (req, res) => {
+        res.render('urban_dashboard');   
+});
 
 // router.get('/urbanfarmerlist', async (req, res) => {
 //     try {

@@ -47,64 +47,35 @@ head
       #navbarSupportedContent.collapse.navbar-collapse
         ul.navbar-nav.ms-auto.mb-2.mb-lg-0
           li.nav-item.dropdown
-            a#navbarDropdown.nav-link.dropdown-toggle.second-text.fw-bold(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
+            a#navbarDropdown.nav-link.dropdown-toggle.second-text.fw-bold(href='/urbanfarmerlist' role='button' data-bs-toggle='dropdown' aria-expanded='false')
               i.fas.fa-user.me-2
               | Urban farmer
             ul.dropdown-menu(aria-labelledby='navbarDropdown')
-              li
-                a.dropdown-item(href='#') Log out
-            //-   li
-                a.dropdown-item(href='#') Settings
-              li
-                a.dropdown-item(href='#') Logout
+              form(action="/logout" method="POST") 
+                 button.btn(type='submit') logout
     .container-fluid.px-4
       .row.g-3.my-2
         .col-md-3
           .p-3.bg-white.shadow-sm.d-flex.justify-content-around.align-items-center.rounded
             div
               a(href='/upload') Upload Product
-            i.fas.fa-gift.fs-1.primary-text.border.rounded-full.secondary-bg.p-3
         .col-md-3
           .p-3.bg-white.shadow-sm.d-flex.justify-content-around.align-items-center.rounded
             div
-              a(href='') Sales
-            i.fas.fa-hand-holding-usd.fs-1.primary-text.border.rounded-full.secondary-bg.p-3
+              a(href='/producelist') Pending products
         .col-md-3
           .p-3.bg-white.shadow-sm.d-flex.justify-content-around.align-items-center.rounded
             div
-              a(href='') Deliveries
-            i.fas.fa-truck.fs-1.primary-text.border.rounded-full.secondary-bg.p-3
-        //
-          <div class="col-md-3">
-          <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
-          <div>
-          <h3 class="fs-2">%25</h3>
-          <p class="fs-5">Increase</p>
-          </div>
-          <i class="fas fa-chart-line fs-1 primary-text border rounded-full secondary-bg p-3"></i>
-          </div>
-          </div>
+              a(href='/approvedlist') Approved products
       .row.my-5
         h3.fs-4.mb-3 Orders
         .col
           table.table.bg-white.rounded.shadow-sm.table-hover
             thead
               tr
-                // <th scope="col" width="50">#</th>
                 th(scope='col') Products
                 th(scope='col') Price
-                
             tbody
-              //
-                <tr>
-                <th scope="row">1</th>
-                <td>Television</td>
-                <td>Jonny</td>
-                <td>$1200</td>
-                </tr>
-                <tr>
-                
-// /#page-content-wrapper
 script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js')
 script.
   var el = document.getElementById("wrapper");

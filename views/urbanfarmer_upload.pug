@@ -25,11 +25,11 @@ nav.navbar.navbar-expand-lg
             | Categories
           ul.dropdown-menu
             li
-              a.dropdown-item(href='/horticulture.html') Horticuture
+              a.dropdown-item(href='/horticulture') Horticuture
             li
-              a.dropdown-item(href='/poultry.html') Poultry
+              a.dropdown-item(href='/poultry') Poultry
             li
-              a.dropdown-item(href='/dairy.html') Dairy
+              a.dropdown-item(href='/dairy') Dairy
       form(action="/logout" method="POST") 
             button.btn-1(type='submit') logout        
 // farmerOne registration
@@ -53,15 +53,16 @@ nav.navbar.navbar-expand-lg
               option#poultry(value='poultry') Poultry
         .col
           #error3.form-outline
-            label.form-label(for='form3Example1') Unit Price:
-            input#productprice.productprice(type='text' placeholder='Ugx' name='productprice')
+            label.form-label(for='form3Example1') Unit Price(ugx):
+            input#productprice.productprice(type='text' placeholder='Ugx' name='unitprice')
             small.error
       .row.mb-4
-        .col
-          #error5.form-outline
-            label.form-label(for='currentDate')  Qauntity:
-            input#productweight.productweight(type='text' name='productweight')
-        .col
+        .col-4
+          #error7.form-outline
+            label.form-label(for='qauntity') Qauntity:
+            input#location.location(type='text' name='qauntity')
+            small.error
+        .col-4
           #error6.form-outline
             label.form-label(for='farmerid') Farmer ID:
             select#farmerid(type='text' name='farmerid')
@@ -69,35 +70,25 @@ nav.navbar.navbar-expand-lg
                   each urbanFarmer in urbanFarmers
                     option(value = urbanFarmer._id) #{urbanFarmer.uniquenumber}
             small.error
-        .col
-          #error7.form-outline
-            label.form-label(for='form3Example1') Direction:
-            input#location.location(type='text' name='location')
-            small.error
-      .row.mb-4
-        .col
-          #error8.form-outline
-            label.form-label(for='exampleInputPassword1') select image of the product:
-            input#uploadimage.uploadimage(type='file' name='uploadimage')
-            small.error
         .col-4
           #error7.form-outline
-            label.form-label(for='form3Example1') Date of Upload:
+            label.form-label(for='date') Date:
             input#dateofupload.dateofupload(type='date' name='dateofupload')
             small.error
       .row.mb-4
         .col
-          #error14.form-outline
-            label.form-label(for='form3Example1') Full Name:
-            input#fullname.fullname(type="text" name="fullname")
+          #error8.form-outline
+            label.form-label(for='uploadimage') select image of the product:
+            input#uploadimage.uploadimage(type='file' name='uploadimage')
             small.error
         .col
-          #error15.form-outline.form-o
-            label(for='gender') Gender:
-            select#gender.gender(name='gender')
-              option(value='male') Select gender
-              option(value='male') Male
-              option(value='female') Female
+          #error14.form-outline
+            label.form-label(for='fullname') Name:
+            select#fullname(type='text' name='fullname')
+              if urbanFarmers.length 
+                  each urbanFarmer in urbanFarmers
+                    option(value = urbanFarmer._id) #{urbanFarmer.firstname +" " + urbanFarmer.secondname}
+            small.error
         .col-4
           #error16.form-outline.form-o
             label(for='ward') Ward:
@@ -105,7 +96,7 @@ nav.navbar.navbar-expand-lg
                if urbanFarmers.length 
                   each urbanFarmer in urbanFarmers
                     option(value = urbanFarmer._id) #{urbanFarmer.ward}
-            small.error
+            small.error 
       .row.mb-4
         .col
           #error15.form-outline.form-o

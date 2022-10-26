@@ -3,41 +3,32 @@ const mongoose = require('mongoose');
 const uploadSchema = new mongoose.Schema({
     productname: {
         type: String,
-        // required : true,
+        required : true,
         trim: true
     },
     category: {
         type: String,
     },
-    productprice: {
+    unitprice: {
         type: Number,
     },
-    productweight: {
-        type: Number,
+    qauntity: {
+        type: String,
+        trim: true
     },
     farmerid: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Enrollment'
-        
-    },
-    location: {
-        type: String,
-        trim: true
-    },
-    uploadimage: {
-        type: String,
-        
+        ref: 'Enrollment' 
     },
     dateofupload: {
         type: Date,
-        // required : true,
+    },
+    uploadimage: {
+        type: String,   
     },
     fullname: {
-        type: String,
-        trim: true
-    },
-    gender: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Enrollment' 
     },
     ward: {
         type: mongoose.Schema.Types.ObjectId,
