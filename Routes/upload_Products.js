@@ -24,8 +24,14 @@ var upload = multer({ storage: storage });
 // Creating route that enables urban farmers to upload a product
 // route for uploading a product only when someone has logged in
 router.get('/upload', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
-	let urbanFarmerList = await Enrollment.find({role: 'Urban farmer'})
-    res.render('urbanfarmer_upload',{urbanFarmers:urbanFarmerList});
+	req.session.user = req.user
+		try {
+			let urbanfarmer = await Enrollment.find({role: 'Urban farmer'})
+   			 res.render('urbanfarmer_upload',{ title: 'profile', urbanFarmers:urbanfarmer});
+		} catch (error) {
+			res.status(400).send('unable to upload products')
+		}
+	
 });
 
 

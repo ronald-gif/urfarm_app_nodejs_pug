@@ -51,6 +51,10 @@ const uploadSchema = new mongoose.Schema({
     producetype: {
         type: String,
     },
+    owner:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Enrollment'
+    },
     status: {
         type: String,
         default: "Pending",

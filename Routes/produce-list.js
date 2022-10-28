@@ -22,7 +22,7 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 // route for listing the produce
-router.get('/producelist',async (req, res) => {
+router.get('/producelist', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
 	try {
 		let product = await Upload.find()
         res.render('produce-list', {products:product});
@@ -99,7 +99,7 @@ router.get('/produce/availability/:id', async (req, res) => {
 router.post('/produce/availability', async (req, res) => {
 	try {
 		await Upload.findOneAndUpdate({_id:req.query.id}, req.body);
-		res.redirect('/approvedlist');
+		res.redirect('/urban-dashboard');
 	} catch (error) {
 		res.status(400).send('Unable to approve product');
 	}
@@ -162,12 +162,11 @@ router.get('/FO-dashboard', connectEnsureLogin.ensureLoggedIn(), async (req, res
 router.get('/urban-dashboard', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
     req.session.user = req.user
     try {
-        const productOwner = await Upload.find({firstname:req.user});
+        const productOwner = await Upload.find({fullname:req.user});
         res.render('urban_dashboard', {title: 'produce list', produces:productOwner});
     } catch (error) {
        res.status(400).send("No products found in the database") 
     }
-    
 });
 
 // aggregations
