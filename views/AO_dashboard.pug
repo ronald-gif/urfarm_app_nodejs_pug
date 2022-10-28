@@ -32,9 +32,9 @@ head
       a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='/producelist')
         i.fas.fa-shopping-cart.me-2
         | Bookings and order
-      a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='#')
+      a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='/reports')
         i.fas.fa-gift.me-2
-        | Sales
+        | Reports
       a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='#')
         i.fas.fa-comment-dots.me-2
         | Delivery
@@ -89,27 +89,27 @@ head
           table.table.bg-white.rounded.shadow-sm.table-hover
             thead
               tr
-                // <th scope="col" width="50">#</th>
-                th(scope='col') Products
-                th(scope='col') Price
-                th(scope='col') Urban farmer
-                th(scope='col') ID
+                th(scope='col') First Name
+                th(scope='col') Second Name
+                th(scope='col') Gender
+                th(scope='col') Unique Number
+                th(scope='col') Ward
+                th(scope='col') Activity
+                th(scope='col') Phone number
+                th(scope='col') Update
             tbody
-              //
-                <tr>
-                <th scope="row">1</th>
-                <td>Television</td>
-                <td>Jonny</td>
-                <td>$1200</td>
-                </tr>
-                </tbody>
-                </table>
-                </div>
-                </div>
-                </div>
-                </div>
-                </div>
-                <!-- /#page-content-wrapper
+                //- if farmerones.length 
+                //-   each farmerone in farmerones
+                //-     tr
+                //-       td #{farmerone.firstname}
+                //-       td #{farmerone.secondname}
+                //-       td #{farmerone.gender}
+                //-       td #{farmerone.uniquenumber}
+                //-       td #{farmerone.ward}
+                //-       td #{farmerone.activities}
+                //-       td #{farmerone.telephone}
+                //-       td
+                //-           a.btn.btn-primary.btn-block(href='/farmerone/update/'+farmerone._id) Update
         script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js')
         script.
           var el = document.getElementById("wrapper");

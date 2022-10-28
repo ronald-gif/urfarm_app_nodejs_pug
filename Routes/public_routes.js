@@ -4,9 +4,14 @@ const router = express.Router();
 
 
 // creating routes
-router.get('/home', (req, res) => {
-    res.render('index');
-});
+// router.get('/home', async (req, res) => {
+//     try {
+//         let availableproducts = await 
+//     } catch (error) {
+        
+//     }
+//     res.render('index');
+// });
 
 router.get('/about-us', (req, res) => {
     res.render('about-us');

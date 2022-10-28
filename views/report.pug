@@ -1,0 +1,41 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Product List
+  link(rel='icon' type='image/x-icon' href='/images/favicon.ico')
+  link(rel='stylesheet' href='/bootstrap-5.2.0-dist/css/bootstrap.css')
+  link(rel='stylesheet' href='main.css')
+
+
+h1 List of Products
+.container
+    .row
+        .col-md-3.mx-4
+            h4.mb-5 Poultry Report
+                .card.card-custom.mx-2.mb-3(style='width: 18rem;')
+                    .card-body
+                        h6 Products Quantity: #{totalP.totalQuantity}
+                        h6 Revenue Projection: #{new Intl.NumberFormat().format(totalP.totalCost)} UGX
+
+                       
+                        p.card-text            
+        .col-md-3.mx-4
+            h4.mb-5 Dairy Report
+                .card.card-custom.mx-2.mb-3(style='width: 18rem;')
+                    .card-body
+                        h6 Products Quantity: #{totalD.totalQuantity}
+                        h6 Revenue Projection: #{new   Intl.NumberFormat().format(totalD.totalCost)} UGX
+
+                        p.card-text
+            
+        .col-md-3.mx-4
+            h4.mb-5 Horticulture Report
+                .card.card-custom.mx-2.mb-3(style='width: 18rem;')
+                    .card-body
+                        h6 Products Quantity: #{totalH.totalQuantity}
+                        h6 Revenue Projection: #{new   Intl.NumberFormat().format(totalH.totalCost)} UGX 
+                            
+                        p.card-text
+    

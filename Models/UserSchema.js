@@ -21,20 +21,16 @@ const userSchema = new mongoose.Schema({
     },
     currentdate: {
         type: Date,
-        required: true, 
     },
     dateofbirth: {
         type: Date,
-        required: true,
     },
     uniquenumber: {
         type: String,
-        required: true,
         trim: true
     },
     nin: {
         type: String,
-        required: true,
         trim: true
     },
     farmerlocation: {
@@ -64,7 +60,6 @@ const userSchema = new mongoose.Schema({
     },
     gender: {
         type: String,
-        required: true
     },
     ward: {
         type: String,

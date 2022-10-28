@@ -35,13 +35,53 @@ router.post('/farmerone', async (req, res) => {
 
 router.get('/farmeronelist', async (req, res) => {
     try {
-        let items = await Enrollment.find({role: "farmerone"});
-        res.render('farmeronelist', {farmerones:items})
+        let farmerone = await Enrollment.find({role: "farmerone"});
+        res.render('farmeronelist', {farmerones:farmerone})
     } catch (error) {
         res.status(404).send("we can not process your request now")
         
     }
    
-})
+});
+
+router.get('/farmerone/update/:id', async (req, res) => {
+	try {
+		const updateFarmerone = await Enrollment.findOne({_id:req.params.id});
+		res.render('farmerone-update',{farmerone:updateFarmerone});
+
+	} catch (error) {
+		res.status(400).send('Unable to upadate farmerone');
+	}
+});
+
+router.post('/farmerone/update', async (req, res) => {
+	try {
+		await Enrollment.findOneAndUpdate({_id:req.query.id}, req.body);
+		res.redirect('/farmeronelist');
+	} catch (error) {
+		res.status(400).send('Unable to upadate farmerone');
+	}
+});
+
+// router.get('/farmerone/update/:id', async (req, res) => {
+// 	try {
+// 		const updateFarmerone = await Enrollment.findOne({_id:req.params.id});
+// 		res.render('farmerone-update',{farmerone:updateFarmerone});
+
+// 	} catch (error) {
+// 		res.status(400).send('Unable to upadate farmerone');
+// 	}
+// });
+
+// router.post('/farmerone/update', async (req, res) => {
+// 	try {
+// 		await Enrollment.findOneAndUpdate({_id:req.query.id}, req.body);
+// 		res.redirect('/farmeronelist');
+// 	} catch (error) {
+// 		res.status(400).send('Unable to upadate farmerone');
+// 	}
+// });
+
+
 
 module.exports = router

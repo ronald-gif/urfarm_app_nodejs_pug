@@ -3,10 +3,10 @@ head
   meta(charset='UTF-8')
   meta(http-equiv='X-UA-Compatible' content='IE=edge')
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  title Product List
+  title UFarm
   link(rel='icon' type='image/x-icon' href='/images/favicon.ico')
   link(rel='stylesheet' href='/bootstrap-5.2.0-dist/css/bootstrap.css')
-  link(rel='stylesheet' href='main.css')
+  link(rel='stylesheet' href='/main.css')
 // nav bar
 nav.navbar.navbar-expand-lg
   .container-fluid
@@ -30,34 +30,29 @@ nav.navbar.navbar-expand-lg
               a.dropdown-item(href='/poultry.html') Poultry
             li
               a.dropdown-item(href='/dairy.html') Dairy
-      form(action="/logout" method="POST") 
-                         button.btn-1(type='submit') logout 
-
-table.table.table-bordered
-  thead.table-dark
-    tr
-      th(scope='col') product name
-      th(scope='col') category
-      th(scope='col') product price
-      th(scope='col') Qauntity
-      th(scope='col') mode of payment
-      th(scope='col') Availability status
-      th(scope='col') product image
-      th(scope='col') change availability
-      
-  tbody
-      if products.length 
-          each product in products
-            if product.status == "Approved"
-              tr
-                td #{product.productname}
-                td #{product.category}
-                td #{product.unitprice}
-                td #{product.qauntity}
-                td #{product.modeofpayment}
-                td #{product.availability}
-                td 
-                    img(src="/"+product.uploadimage, alt="image" width ='150px' height='150px')  
-                td
-                    a.btn.btn-primary.btn-block(href='/produce/availability/'+product._id) Availability
-script(src='/public/bootstrap-5.2.0-dist/js/bootstrap.bundle.js')
+      form(action="/farmerone/update/?id="+farmerone._id method="POST") 
+            button.btn-1(type='submit') logout        
+// farmerOne registration
+.myform1
+  h3 Update farmerone
+  form#myFormToRegister(action='/farmerone/update/?id='+farmerone._id Method="POST")
+    .container.thisForm
+      .row.mb-4
+        .col
+            #error3.form-outline
+            label Phone number:
+            input#telephone.telephone(type='text' name='telephone' value = farmerone.telephone)
+            small.error
+        .col
+          #error15.form-outline.form-o
+            label Activities:
+            select#activities.activities(name='activities')
+              option(value='horticulture' selected = farmerone.activities === "horticulture") Horticulture
+              option(value='poultry' selected = farmerone.activities === "poultry") Poultry
+              option(value='dairy' selected = farmerone.activities === "dairy") Dairy
+      .row.mb-4
+        .col
+          .fo-signup
+            button.btn-1(type='submit') Update
+script(src='/bootstrap-5.2.0-dist/js/bootstrap.bundle.js')
+//- script(src='/script.js')

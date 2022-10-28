@@ -11,8 +11,11 @@
   }
 
   :root{
-    --pink:#e84393;
-    --green:#3db83a;
+    /* --pink:#e84393; */
+    --pink:#12bbeb;
+    /* --green:#3db83a; */
+    --green:#2e0219;
+    --pelette1:#4a001f
 }
 
 
@@ -272,7 +275,7 @@ p a:hover {
   }
 
   .masajja{
-    color:#16dd12 ;
+    color:var(--pink) ;
     font-weight: bold;
    
   }
@@ -313,7 +316,7 @@ p a:hover {
 .fouth-section{
     margin: 1rem 4rem;
     padding: 18px 10px;
-    border: 1px solid rgb(252, 249, 249);
+    /* border: 1px solid rgb(252, 249, 249); */
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 5px 5px 5px 5px rgba(0,0,0, 0.3);
@@ -346,6 +349,9 @@ p a:hover {
  border-radius: 5px;
  box-shadow: 5px 5px 5px 5px rgba(0,0,0, 0.3);
 }
+ul li{
+  display: inline-block;
+}
 .top-selling img{
     width: 10px;
     /* padding-top: -1rem; */
@@ -353,16 +359,16 @@ p a:hover {
 }
 
 
- .discount{
+ /* .discount{ */
   /* position: absolute; */
   /* top:1rem; left:1rem; */
-  padding:.4rem 0.5rem;
+  /* padding:.4rem 0.5rem;
   font-size: 1rem;
   color:var(--pink);
   background:rgba(255, 51, 153,.05);
   z-index: 1;
-  border-radius: .1rem;
- }
+  border-radius: .1rem; */
+ /* } */
 
 .price{
   font-size: 1rem;

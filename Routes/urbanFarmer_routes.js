@@ -58,7 +58,7 @@ router.get('/urbanfarmerlist', async (req, res) => {
     
 // });
 
-router.get('/urban-dashboard', (req, res) => {
+router.get('/urban-dashboard',  (req, res) => {
         res.render('urban_dashboard');   
 });
 

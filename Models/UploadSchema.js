@@ -6,6 +6,14 @@ const uploadSchema = new mongoose.Schema({
         required : true,
         trim: true
     },
+    firstname: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Enrollment' 
+    },
+    secondname: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Enrollment' 
+    },
     category: {
         type: String,
     },
@@ -13,7 +21,7 @@ const uploadSchema = new mongoose.Schema({
         type: Number,
     },
     qauntity: {
-        type: String,
+        type: Number,
         trim: true
     },
     farmerid: {

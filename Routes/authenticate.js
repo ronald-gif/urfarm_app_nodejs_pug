@@ -27,7 +27,7 @@ router.post('/logout', (req, res) => {
             if(error){
                 res.status(400).send('Unable to logout')
             }else{
-                return res.redirect('/login')
+                return res.redirect('/home')
             }
         })
     }

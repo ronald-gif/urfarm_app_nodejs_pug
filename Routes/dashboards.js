@@ -4,17 +4,17 @@ const connectEnsureLogin = require('connect-ensure-login')
 
 // creating routes
 
-router.get('/AO-dashboard', connectEnsureLogin.ensureLoggedIn(), (req, res) => {
-    req.session.user = req.user;
-    if(req.user.role == "Agriculture officer"){
-        res.render("AO_dashboard")
+// router.get('/AO-dashboard', connectEnsureLogin.ensureLoggedIn(), (req, res) => {
+//     req.session.user = req.user;
+//     if(req.user.role == "Agriculture officer"){
+//         res.render("AO_dashboard")
        
-    }else{
-        res.send('This page is only accessed by Agriculture officer') 
+//     }else{
+//         res.send('This page is only accessed by Agriculture officer') 
         
-    }
+//     }
    
-});
+// });
 // router.get('/AO-dashboard', (req, res) => {
 //     res.render("AO_dashboard")
 // })

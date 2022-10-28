@@ -38,13 +38,11 @@ table.table.table-bordered
       th(scope='col') product name
       th(scope='col') category
       th(scope='col') product price
-      th(scope='col') product weight
       th(scope='col') mode of payment
       th(scope='col') product Status
       th(scope='col') product Availability
       th(scope='col') product image
       th(scope='col') Update
-      th(scope='col') Approved
       th(scope='col') Delete
   tbody
       if products.length 
@@ -53,18 +51,14 @@ table.table.table-bordered
               tr
                 td #{product.productname}
                 td #{product.category}
-                td #{product.productprice}
-                td #{product.productweight}
+                td #{product.unitprice}
                 td #{product.modeofpayment}
                 td #{product.status}
                 td #{product.availability}
                 td 
                     img(src="/"+product.uploadimage, alt="image" width ='150px' height='150px')  
                 td
-                    a.btn.btn-secondary.btn-block(href='/produce/update/'+product._id) Update
-                td
-                    a.btn.btn-primary.btn-block(href='/produce/approved/'+product._id) Approved
-                   
+                    a.btn.btn-secondary.btn-block(href='/produce/update/'+product._id) Update  
                 td
                     form(method="post" action='/produce/delete')
                         input(type="hidden", placeholder="", name="id", value=product._id)

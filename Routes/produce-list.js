@@ -77,7 +77,7 @@ router.get('/produce/approved/:id', async (req, res) => {
 router.post('/produce/approved', async (req, res) => {
 	try {
 		await Upload.findOneAndUpdate({_id:req.query.id}, req.body);
-		res.redirect('/producelist');
+		res.redirect('/FO-dashboard');
 	} catch (error) {
 		res.status(400).send('Unable to approve product');
 	}
@@ -99,12 +99,30 @@ router.get('/produce/availability/:id', async (req, res) => {
 router.post('/produce/availability', async (req, res) => {
 	try {
 		await Upload.findOneAndUpdate({_id:req.query.id}, req.body);
-		res.redirect('/producelist');
+		res.redirect('/approvedlist');
 	} catch (error) {
 		res.status(400).send('Unable to approve product');
 	}
 });
 
+// router.get('/availableproducts',async (req, res) => {
+// 	try {
+// 		let product = await Upload.find().sort({$natural:-1})
+//         res.render('show-avaible-products', {products:product});
+// 	} catch (error) {
+// 		res.status(400).send('unable to display products')
+// 	}
+// });
+
+
+router.get('/home', async (req, res) => {
+	try {
+		let availableproduct = await Upload.find()
+		res.render('index', {availableproducts:availableproduct})
+	} catch (error) {
+		res.status(400).send('unable to display')
+	}
+})
 
 // route for approved product lis
 router.get('/approvedlist',async (req, res) => {
@@ -134,4 +152,54 @@ router.get('/FO-dashboard',async (req, res) => {
 		res.status(400).send('unable to get image')
 	}
 });
+
+// aggregations
+router.get("/reports", connectEnsureLogin.ensureLoggedIn(), async(req, res) =>
+{
+    req.session.user = req.user;
+    if(req.user.role == 'Agriculture officer'){
+        try {
+            let totalPoultry = await Upload.aggregate([
+           { $match: { category: "poultry" } },
+           { $group: { _id: "$all",
+            totalQuantity: { $sum: "$qauntity" },
+            totalCost: { $sum: { $multiply: [ "$unitprice", "$qauntity" ] } },
+           
+           }}
+           ])
+            let totalHort = await Upload.aggregate([
+               { $match: { category: "horticulture" } },
+               { $group: { _id: "$all",
+                totalQuantity: { $sum: "$qauntity" },
+                totalCost: { $sum: { $multiply: [ "$unitprice", "$qauntity" ]
+} },            
+               }}
+           ])
+            let totalDairy = await Upload.aggregate([
+               { $match: { category: "dairy" } },
+               { $group: { _id: "$all",
+                totalQuantity: { $sum: "$qauntity" },
+                totalCost: { $sum: { $multiply: [ "$unitprice", "$qauntity" ]
+} },            
+               }}
+           ])
+            
+            console.log("Poultry collections", totalPoultry)
+            console.log("Hort collections", totalHort)
+            console.log("Dairy collections", totalDairy)
+            res.render("report", {
+            title: 'Reports',
+            totalP:totalPoultry[0],
+            totalH:totalHort[0],
+            totalD:totalDairy[0],
+           });
+       } catch (error) {
+            res.status(400).send("unable to find items in the database");
+       }
+        
+   }else {
+        res.send("This page is only accessed by Agric Officers")
+   }
+});
+        
 module.exports = router

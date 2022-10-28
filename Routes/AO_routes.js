@@ -1,6 +1,7 @@
 const express = require('express');
 // const router = require('./farmerOne_routes');
 const router = express.Router();
+const connectEnsureLogin = require('connect-ensure-login')
 
 // importing model
 const Enrollment = require('../Models/UserSchema')
@@ -31,6 +32,18 @@ router.post('/AO', async (req, res) => {
     } catch (error) {
         res.status(404).send('sorry we are fixing something');
         console.log(error);
+    }
+   
+});
+
+router.get('/AO-dashboard', connectEnsureLogin.ensureLoggedIn(), (req, res) => {
+    req.session.user = req.user;
+    if(req.user.role == "Agriculture officer"){
+        res.render("AO_dashboard")
+       
+    }else{
+        res.send('This page is only accessed by Agriculture officer') 
+        
     }
    
 });
