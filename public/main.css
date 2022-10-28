@@ -16,6 +16,7 @@
     /* --green:#3db83a; */
     --green:#2e0219;
     --pelette1:#4a001f
+    --coolor:#22dae8
 }
 
 
@@ -264,12 +265,16 @@ p a:hover {
 }
  
   .second-section .looking-for{
+    /* margin-top: 5px; */
     text-align: center;
     color: #fff;
     line-height: 5px;
     z-index: 999;
   }
-
+  .wehavecome{
+    color: #fff;
+    line-height: 5px;
+  }
   .looking-for{
     padding-top: 15px;
   }
@@ -342,7 +347,9 @@ p a:hover {
   transform: scale(1.05);
  /* z-index: 2; */
 }
-
+h5{
+  color: #22dae8;
+}
 .mycard:hover{
   border: 1px solid rgb(252, 249, 249);
  background-color: #fff;
@@ -352,11 +359,11 @@ p a:hover {
 ul li{
   display: inline-block;
 }
-.top-selling img{
-    width: 10px;
+/* .top-selling img{
+    width: 10px; */
     /* padding-top: -1rem; */
 
-}
+/* } */
 
 
  /* .discount{ */
@@ -370,9 +377,9 @@ ul li{
   border-radius: .1rem; */
  /* } */
 
-.price{
-  font-size: 1rem;
-  color:var(--pink);
+.card-text{
+  /* font-size: 1rem; */
+  color:var(--pelette1);
   font-weight: bolder;
   /* padding-top: 1rem; */
 }

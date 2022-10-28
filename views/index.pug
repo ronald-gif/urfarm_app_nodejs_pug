@@ -67,12 +67,8 @@ nav.navbar.navbar-expand-lg
       span.masajja Masajja
   .container-fluid.text-center
     .row
-      .col
-      .col
-        form.d-flex(role='search')
-          input.form-control(type='search' placeholder='am looking for' aria-label='Search')
-          button.btn.btn-outline-success(type='submit') Search
-      .col
+      .col.wehavecome
+        h3 We've come here to enhance urban farming operations.
 // third section
 .third-section
   .container-fluid
@@ -124,106 +120,20 @@ nav.navbar.navbar-expand-lg
     span products
   .container-fluid.sellingItems
     .row.row-cols-2.row-cols-lg-5.g-2.g-lg-3.row2
-            
-      //- table.table.table-bordered
-      //-   thead.table-dark
-      //-     tr
-      //-       th(scope='col') product name
-      //-       th(scope='col') category
-      //-       th(scope='col') product price
-      //-       th(scope='col') Qauntity
-      //-       th(scope='col') mode of payment
-      //-       th(scope='col') Availability status
-      //-       th(scope='col') product image    
-      //-   tbody
-      //-       if availableproducts.length 
-      //-           each availableproduct in availableproducts
-      //-             if availableproduct.availability == "available"
-      //-               tr
-      //-                 td #{availableproduct.productname}
-      //-                 td #{availableproduct.category}
-      //-                 td #{availableproduct.unitprice}
-      //-                 td #{availableproduct.qauntity}
-      //-                 td #{availableproduct.modeofpayment}
-      //-                 td #{availableproduct.availability}
-      //-                 td 
-      //-                     img(src="/"+availableproduct.uploadimage, alt="image" width ='150px' height='150px')  
-      //- .col
-      //-   .top-selling
-
-      //-     .card.mycard(style='width: 14rem;')
-      //-         if availableproducts.length 
-      //-             each availableproduct in availableproducts
-      //-               if availableproduct.status == "Approved"           
-      //-                 ul 
-      //-                   li= availableproduct.productname
-      //-                   li= availableproduct.availability
-      //-                     img(src="/"+availableproduct.uploadimage, alt="image" width ='150px' height='150px')  
-            
-                      
-      //-     .card-body.mybody
-      //-         p.card-text  
-                   
-      //-         .price
-                 
-      //-         span 
-      //-             if availableproducts.length 
-      //-               each availableproduct in availableproducts
-      //-                 if availableproduct.availability == "available"
-      //-                   #{availableproduct.category}          
-      //-         .my-last-btn
-      //-           button.btn.btn-outline-success.thisbutton(type='submit') Shop with us
-      //- .col
-      //-   .top-selling
-      //-     .card.mycard(style='width: 14rem;')
-      //-       a(href='')
-      //-         //- img.card-img-top(src='/images/h31.jpg' alt='...')
-      //-       .card-body.mybody
-      //-         p.card-text Brazilian Flowers
-      //-         .price
-      //-           | UG 1000 
-      //-           span UG 120000
-      //-         .my-last-btn
-      //-           button.btn.btn-outline-success.thisbutton(type='submit') Shop with us
-      //- .col
-      //-   .top-selling
-      //-     .card.mycard(style='width: 14rem;')
-            
-      //-       a(href='')
-      //-         //- img.card-img-top(src='/images/p29.jpg' alt='...')
-      //-       .card-body.mybody
-      //-         p.card-text Eggs
-      //-         .price
-      //-           | UG 500 
-      //-           span UG 600
-      //-         .my-last-btn
-      //-           button.btn.btn-outline-success.thisbutton(type='submit') Shop with us
-      //- .col
-      //-   .top-selling
-      //-     .card.mycard(style='width: 14rem;')
-            
-      //-       a(href='')
-      //-         //- img.card-img-top(src='/images/p29.jpg' alt='...')
-      //-       .card-body.mybody
-      //-         p.card-text Eggs
-      //-         .price
-      //-           | UG 500 
-      //-           span UG 600
-      //-         .my-last-btn
-          //-           button.btn.btn-outline-success.thisbutton(type='submit') Shop with us
       if availableproducts.length > 0
         each availableproduct in availableproducts
           if availableproduct.status == "Approved"
             .d-flex
-              .col-3
-                .card(style='width: 18rem;')
-                  img.card-img-top(src='/'+availableproduct.uploadimage, alt="image" width ='150px' height='150px')
-                  .card-body
-                    h5.card-title #{availableproduct.productname}
-                    h6.card-text
-                      | #{availableproduct.availability}
-                    h6.card-text #{new Intl.NumberFormat().format(availableproduct.unitprice)} UGX 
-                    a.btn.btn-primary(href='#') Shop with us  
+              .col
+                .top-selling
+                  .card.mycard
+                    img.card-img-top(src='/'+availableproduct.uploadimage, alt="image" width ='150px' height='150px')
+                    .card-body
+                      h5.card-title #{availableproduct.productname}
+                      h6.card-text
+                        | #{availableproduct.availability}
+                      h6.card-text #{new Intl.NumberFormat().format(availableproduct.unitprice)} UGX 
+                      a.btn.btn-primary(href='#') Shop with us  
 
 // fifth section
 // footer
