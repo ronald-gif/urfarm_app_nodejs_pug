@@ -22,12 +22,13 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 // Creating route that enables urban farmers to upload a product
-router.get('/upload', async (req, res) => {
+// route for uploading a product only when someone has logged in
+router.get('/upload', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
 	let urbanFarmerList = await Enrollment.find({role: 'Urban farmer'})
     res.render('urbanfarmer_upload',{urbanFarmers:urbanFarmerList});
 });
 
-// route for uploading a product only when someone has logged in
+
 // router.get('/upload', (req, res) => {
 // 	console.log('this is the current user', req.session.user)
 //     res.render('urbanfarmer_upload',{currentUser: req.session.user});

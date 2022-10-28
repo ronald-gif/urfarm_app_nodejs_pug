@@ -36,10 +36,10 @@ router.post('/urbanFarmer', async (req, res) => {
    
 });
 
-router.get('/urbanfarmerlist', async (req, res) => {
+router.get('/urbanfarmerlist', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
     try {
-        let items = await Enrollment.find({role: "Urban farmer"});
-        res.render('urbanfarmerlist', {urbanfarmers:items})
+        let urbanfarmerlist = await Enrollment.find({role: "Urban farmer"});
+        res.render('urbanfarmerlist', {urbanfarmers:urbanfarmerlist})
     } catch (error) {
         res.status(404).send("we can not process your request now")
         
@@ -47,20 +47,11 @@ router.get('/urbanfarmerlist', async (req, res) => {
    
 })
 
-// router.get('/urban-dashboard', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
-//     req.session.user = req.user
-//     try {
-//         const productOwner = await Upload.find({owner:req.user});
-//         res.render('urban_dashboard', {title: 'producelist', produces:ownerproducts});
-//     } catch (error) {
-//        res.status(400).send("No products found in the database") 
-//     }
-    
-// });
 
-router.get('/urban-dashboard',  (req, res) => {
-        res.render('urban_dashboard');   
-});
+
+// router.get('/urban-dashboard',  (req, res) => {
+//         res.render('urban_dashboard');   
+// });
 
 // router.get('/urbanfarmerlist', async (req, res) => {
 //     try {

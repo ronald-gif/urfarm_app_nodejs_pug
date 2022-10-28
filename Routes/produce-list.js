@@ -144,13 +144,30 @@ router.get('/pending',async (req, res) => {
 	}
 });
 
-router.get('/FO-dashboard',async (req, res) => {
-	try {
-		let product = await Upload.find()
-        res.render('FO_dashboard', {products:product});
-	} catch (error) {
-		res.status(400).send('unable to get image')
+router.get('/FO-dashboard', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
+	req.session.user = req.user;
+	if(req.user.role == "farmerone"){
+		try {
+			let product = await Upload.find()
+			res.render('FO_dashboard', {products:product});
+		} catch (error) {
+			res.status(400).send('unable to get image')
+		}
+	}else{
+		res.send('This page is only accessed by Farmer ones')
 	}
+	
+});
+
+router.get('/urban-dashboard', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
+    req.session.user = req.user
+    try {
+        const productOwner = await Upload.find({firstname:req.user});
+        res.render('urban_dashboard', {title: 'produce list', produces:productOwner});
+    } catch (error) {
+       res.status(400).send("No products found in the database") 
+    }
+    
 });
 
 // aggregations

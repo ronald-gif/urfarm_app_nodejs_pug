@@ -68,14 +68,32 @@ head
             div
               a(href='/approvedlist') Approved products
       .row.my-5
-        h3.fs-4.mb-3 Orders
+        h3.fs-4.mb-3 My products
         .col
-          table.table.bg-white.rounded.shadow-sm.table-hover
+           table.table.bg-white.rounded.shadow-sm.table-hover
             thead
               tr
-                th(scope='col') Products
-                th(scope='col') Price
+                th(scope='col') product name
+                th(scope='col') category
+                th(scope='col') Unit price
+                th(scope='col') Qauntity
+                th(scope='col') product Status
+                th(scope='col') product image
+                th(scope='col') Approve the product
             tbody
+                if produces.length 
+                  each productOwner in produces
+                    if productOwner.status == "Approved"
+                      tr
+                        td #{productOwner.productname}
+                        td #{productOwner.category}
+                        td #{productOwner.unitprice}
+                        td #{productOwner.qauntity}
+                        td #{productOwner.status}
+                        td 
+                            img(src="/"+productOwner.uploadimage, alt="image" width ='150px' height='150px')  
+                        td
+                            //- a.btn.btn-primary.btn-block(href='/produce/approved/'+product._id) Approve
 script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js')
 script.
   var el = document.getElementById("wrapper");
