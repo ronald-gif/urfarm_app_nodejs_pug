@@ -8,6 +8,7 @@
     text-decoration: none;
     /* text-transform: capitalize; */
     transition: .2s linear;
+    
   }
 
   :root{
@@ -19,7 +20,9 @@
     --coolor:#22dae8
 }
 
-
+body{
+  background-color: var(--green);
+}
   .navbar-nav li a{
     color: #fff;
   }
@@ -151,9 +154,9 @@ p a:hover {
 }
 
 .myform1{
-  background: linear-gradient(136deg, hsla(340, 97%, 67%, 0.65), hsla(230,96%, 62%,0.65)),
-           url('/images/img-1.jpg');
-           
+  /* background: linear-gradient(136deg, hsla(340, 97%, 67%, 0.65), hsla(230,96%, 62%,0.65)),
+           url('/images/img-1.jpg'); */
+    background-color: var(--green);       
 }
 .myform1 h3{
   font-size: 20px;
@@ -301,7 +304,7 @@ p a:hover {
   .marquee{
     color: #fff;
     font-size: 26px;
-    background-image: url(/images/p30.jpg);
+    background-image: url(/images/poultry5.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -322,7 +325,7 @@ p a:hover {
     margin: 1rem 4rem;
     padding: 18px 10px;
     /* border: 1px solid rgb(252, 249, 249); */
-    background-color: #fff;
+    background-color:var(--green);
     border-radius: 5px;
     box-shadow: 5px 5px 5px 5px rgba(0,0,0, 0.3);
     
@@ -331,7 +334,7 @@ p a:hover {
 .fouth-section h1{
   text-align: center;
   padding-bottom: 2rem;
-    color: #000;
+    color: #fff;
     font-size: 40px;;
     font-weight: bolder;
 }
@@ -424,7 +427,7 @@ ul li{
 }
 
 .footer{
-  background-color: #282828;
+  background-color: var(--green);
   color: grey;
   padding: 2rem;
   /* height: 50vh; */
@@ -447,7 +450,7 @@ ul li{
 .payment-method ul li{
   list-style: none;
   padding: 15px;
-
+  display: block;
 }
 
 .payment-method ul li a{
@@ -476,7 +479,7 @@ ul li{
 .follow-us ul li{
   list-style: none;
   padding: 10px;
- 
+  display: block;
 }
 
 .follow-us ul li a{
@@ -507,6 +510,7 @@ ul li{
 .support ul li{
   list-style: none;
   padding: 15px;
+  display: block;
 }
 
 .support ul li a{

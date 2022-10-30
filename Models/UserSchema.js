@@ -41,15 +41,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         trim: true
     },
-    password: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    confirmpassword: {
-        type: String,
-        trim: true
-    },
     direction: {
         type: String,
         trim: true
@@ -70,8 +61,11 @@ const userSchema = new mongoose.Schema({
     },
     role: {
         type: String,
-        required: true,
-        
+        required: true,  
+    },
+    email: {
+        type: String,
+        trim: true 
     },
 });
 

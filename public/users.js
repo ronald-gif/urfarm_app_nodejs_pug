@@ -1,32 +1,20 @@
-const form = document.getElementById('FormToRegister');
-const firstname = document.getElementById('firstname');
+const form = document.getElementById('registerPublic');
+const fullname = document.getElementById('fullname');
 const error1 = document.getElementById('error1')
-const secondname = document.getElementById('secondname');
+const email = document.getElementById('email');
 const error2 = document.getElementById('error2')
 const telephone = document.getElementById('telephone');
 const error3 = document.getElementById('error3')
 const uniquenumber = document.getElementById('uniquenumber');
-const error4 = document.getElementById('error4')
+const error6 = document.getElementById('error6')
 const password = document.getElementById('password')
-const error5 = document.getElementById('error5');
+const error4 = document.getElementById('error4');
 const confirmpassword = document.getElementById('confirmpassword');
-const error6 = document.getElementById('error6');
+const error5 = document.getElementById('error5');
 const role = document.getElementById('role')
-const error7 = document.getElementById('error7')
-const currentdate = document.getElementById('currentdate');
-const error8 = document.getElementById('error8');
-const email = document.getElementById('email');
-const error9 = document.getElementById('error9')
+const error7 = document.getElementById('error7');
 
 
-// form.addEventListener('submit', e => {
-//     var formValid = validateInputs()
-//     if(!formValid){
-//         e.preventDefault();
-//     }else{
-//        console.log('form valid');
-//     }
-// });
 
 form.addEventListener('submit', e => {
     e.preventDefault();
@@ -44,7 +32,7 @@ const validatePhonenumber = (telephone) =>{
 const isValidId = (id) =>{
     // should start with AO and folled by any number from 0 to 9 but less than 3 /^AO-([0-9]{3})+$/;
     // /^CM([0-9]{8})([A-Z]{4})+$/;
-    const unregex = /^UF-AO([/])([0-9]{4})+$/;
+    const unregex = /^UF-C([/])([0-9]{4})+$/;
     return unregex.test(id)
 }
 
@@ -61,35 +49,36 @@ const isValideEmail = (email) =>{
     return emailExpression.test(email);
 }
 
+
 const validateInputs = () => {
-    const firstnameValue = firstname.value.trim();
-    const secondnameValue = secondname.value.trim();
+    const fullnameValue = fullname.value.trim();
     const phonenumberValue = telephone.value.trim();
     const uniquenumbreValue = uniquenumber.value.trim();
     const passwordValue = password.value.trim();
     const confirmpasswordValue = confirmpassword.value.trim();
     const roleValue = role.value;
-    const currentdateValue = currentdate.value;
     const emailValue = email.value.trim()
     
     
-    if(firstnameValue === '') {
-        firstname.style.border = '2px solid #ff3860';
-        error1.lastElementChild.innerText = 'first name is required'
+    if(fullnameValue === '') {
+        fullname.style.border = '2px solid #ff3860';
+        error1.lastElementChild.innerText = 'Name is required'
        
      } else {
-       firstname.style.border = '2px solid #09c372';
-       error1.lastElementChild.innerText = ''
-       
+       fullname.style.border = '2px solid #09c372';
+       error1.lastElementChild.innerText = '' 
      }
- 
-     if(secondnameValue === ''){
-         secondname.style.border = '2px solid #ff3860';
-         error2.lastElementChild.innerText = 'second name is required'
-     }else{
-         secondname.style.border = '2px solid #09c372';
+
+     if(emailValue === ''){
+        email.style.border = '2px solid #ff3860';
+        error2.lastElementChild.innerText = 'Email required'
+    }else if(!isValideEmail(emailValue)){
+        email.style.border = '2px solid #ff3860';
+        error2.lastElementChild.innerText = 'Provide a valide email'
+    }else{
+        email.style.border = '2px solid #09c372';
         error2.lastElementChild.innerText = ''
-     }
+    }
 
      if(phonenumberValue === ''){
         telephone.style.border = '2px solid #ff3860';
@@ -102,45 +91,37 @@ const validateInputs = () => {
         error3.lastElementChild.innerText = ''
     }
 
-    if(uniquenumbreValue === ''){
-        uniquenumber.style.border = '2px solid #ff3860';
-        error4.lastElementChild.innerText = 'ID is required';
-    }else if(!isValidId(uniquenumbreValue)){
-        uniquenumber.style.border = '2px solid #ff3860';
-        error4.lastElementChild.innerText = 'ID must be in this formate UF-AO/0000';
-    }else{
-        uniquenumber.style.border = '2px solid #09c372';
-        error4.lastElementChild.innerText = '';
-    }
-
     if(passwordValue === ''){
         password.style.border = '2px solid #ff3860';
-        error5.lastElementChild.innerText = 'password is required';
+        error4.lastElementChild.innerText = 'password is required';
     }else if(!isValidePassword(password.value.trim())){
-        error5.lastElementChild.innerText = 'password has to be 8 characters with a number,special character, uppercase and lowercase';
+        error4.lastElementChild.innerText = 'password has to be 8 characters with a number,special character, uppercase and lowercase';
         password.style.border = '2px solid #ff3860';
     }else{
-        error5.lastElementChild.innerText = '';
+        error4.lastElementChild.innerText = '';
         password.style.border = '2px solid #09c372';
     }
 
     if(confirmpasswordValue === ''){
         confirmpassword.style.border = '2px solid #ff3860';
-        error6.lastElementChild.innerText = 'confirm your password';
+        error5.lastElementChild.innerText = 'confirm your password';
     }else if(confirmpassword.value.trim() != password.value.trim()){
-        error6.lastElementChild.innerText = 'password doesnot match';
+        error5.lastElementChild.innerText = 'password doesnot match';
         confirmpassword.style.border = '2px solid #ff3860';
     }else{
         confirmpassword.style.border = '2px solid #09c372'; 
-        error6.lastElementChild.innerText = '';
+        error5.lastElementChild.innerText = '';
     }
 
-    if(currentdateValue === ''){
-        currentdate.style.border = '2px solid #ff3860';
-        error8.lastElementChild.innerText = ''
+    if(uniquenumbreValue === ''){
+        uniquenumber.style.border = '2px solid #ff3860';
+        error6.lastElementChild.innerText = 'ID is required';
+    }else if(!isValidId(uniquenumbreValue)){
+        uniquenumber.style.border = '2px solid #ff3860';
+        error6.lastElementChild.innerText = 'ID must be in this formate UF-AO/0000';
     }else{
-        currentdate.style.border = '2px solid #09c372';
-        error8.lastElementChild.innerText = '' 
+        uniquenumber.style.border = '2px solid #09c372';
+        error6.lastElementChild.innerText = '';
     }
 
     if(roleValue === ''){
@@ -150,16 +131,5 @@ const validateInputs = () => {
         role.style.border = '2px solid #09c372';
         error7.lastElementChild.textContent = ''
         return true
-    }
-
-    if(emailValue === ''){
-        email.style.border = '2px solid #ff3860';
-        error9.lastElementChild.innerText = 'Email required'
-    }else if(!isValideEmail(emailValue)){
-        email.style.border = '2px solid #ff3860';
-        error9.lastElementChild.innerText = 'Provide a valide email'
-    }else{
-        email.style.border = '2px solid #09c372';
-        error9.lastElementChild.innerText = ''
     }
 }
