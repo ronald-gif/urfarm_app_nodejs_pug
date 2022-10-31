@@ -27,7 +27,7 @@ router.get('/upload', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
 	req.session.user = req.user
 		try {
 			let urbanfarmer = await Enrollment.find({role: 'Urban farmer'})
-   			 res.render('urbanfarmer_upload',{ title: 'profile', urbanFarmers:urbanfarmer});
+   			 res.render('urbanfarmer_upload', {urbanFarmers:urbanfarmer});
 		} catch (error) {
 			res.status(400).send('unable to upload products')
 		}

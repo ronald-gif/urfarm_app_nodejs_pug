@@ -66,7 +66,7 @@ nav.navbar.navbar-expand-lg
           #error6.form-outline
             label.form-label(for='farmerid') Farmer ID:
             select#farmerid(type='text' name='farmerid')
-              if urbanFarmers.length 
+
                   each urbanFarmer in urbanFarmers
                     option(value = urbanFarmer._id) #{urbanFarmer.uniquenumber}
             small.error
@@ -93,7 +93,6 @@ nav.navbar.navbar-expand-lg
           #error16.form-outline.form-o
             label(for='ward') Ward:
             select#my_ward.values-for-wards(name='ward')
-               if urbanFarmers.length 
                   each urbanFarmer in urbanFarmers
                     option(value = urbanFarmer._id) #{urbanFarmer.ward}
             small.error 
@@ -122,8 +121,5 @@ nav.navbar.navbar-expand-lg
           .fo-signup
             button.btn-1(type='submit') Upload
         .col
-        .col-2
-          .fo-signup
-            button.btn-1(type='submit') Delete
 script(src='/bootstrap-5.2.0-dist/js/bootstrap.bundle.js')
 //- script(src='/script.js')
