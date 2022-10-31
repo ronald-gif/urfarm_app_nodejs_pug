@@ -62,42 +62,56 @@ nav.navbar.navbar-expand-lg
 // farmerOne registration
 .myform1
   h3 Register here to continue
-  form#myFormToRegister( name='registration' method="POST" action="/public")
+  form#registerPublic( name='registration' method="POST" action="/public")
     .container.thisForm
       .row.mb-4
-        .col
+        .col-md-6.col-lg-3.col-xl-3
           #error1.form-outline
-            label.form-label(for='form3Example1') First name:
-            input#firstName.firstName(type='text' name='firstname')
+            label.form-label(for='form3Example1') Full name:
+            input#fullname.fullname(type='text' name='fullname')
             small.error
-        .col
+        .col-md-6.col-lg-3.col-xl-3
           #error2.form-outline
-            label.form-label(for='form3Example1') Second name:
-            input#secondname.secondName(type='text' name='secondname')
+            label.form-label Email:
+            input#email.email(type='text' name='email')
             small.error
-        .col
+        .col-md-6.col-lg-3.col-xl-3
           #error3.form-outline
             label.form-label(for='form3Example1') Phone number:
             input#telephone.telephone(type='text' name='telephone')
             small.error
       .row.mb-4
-        .col
-          #error11.form-outline
+        .col-md-6.col-lg-3.col-xl-3
+          #error4.form-outline
             label.form-label Password:
             input#password.password(type='password' name='password')
             small.error
-        .col
-        .col
-          #error12.form-outline
-            label.form-label(for='form3Example1') Confirm Password:
-            input#confirmpassword.confirmpassword(type='password' name='confirmpassword')
+        .col-md-6.col-lg-3.col-xl-3
+          #error5.form-outline
+            label.form-label Confirm password:
+            input#confirmpassword(type='password' name='confirmpassword')
+            small.error
+        .col-md-6.col-lg-3.col-xl-3
+          #error6.form-outline
+            label.form-label Unique Number:
+            input#uniquenumber.uniquenumber(type='text' name='uniquenumber')
             small.error
       .row.mb-4
         .col
-          .mb-3.form-check
-            input#exampleCheck1.form-check-input(type='checkbox')
-            label.form-check-label(for='exampleCheck1') Comfirm
+           #error7.form-outline.form-o
+              label(for='role') Role:
+              select#role(name='role')
+                option(value='') Select role
+                option(value='customer') Customer
+              small.error
+        .col
+        .col-5
+      .row.mb-4 
+        .col
           .fo-signup
-            button.btn-1(type='submit') Submit
+              button.btn-1(type='submit') Submit
+        .col-4
+            span Already have an account 
+            a(href="/login") Login
 script(src='/bootstrap-5.2.0-dist/js/bootstrap.bundle.js')
-//- script(src='/script.js')
+script(src='/users.js')

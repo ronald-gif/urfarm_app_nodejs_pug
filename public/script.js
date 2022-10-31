@@ -35,6 +35,8 @@ const poultry = document.getElementById('poultry');
 const error17 = document.getElementById('error17')
 const role = document.getElementById('role')
 const error18 = document.getElementById('error18')
+const emailExpression = document.getElementById('emailExpression')
+const error19 = document.getElementById('error19')
 
 
 
@@ -47,9 +49,12 @@ const error18 = document.getElementById('error18')
 
 
 form.addEventListener('submit', e => {
-    e.preventDefault();
-
-    validateInputs();
+    var formValid = validateInputs()
+    if(!formValid){
+        e.preventDefault();
+    }else{
+       
+    }
 });
 
 // function to validate phonenumber
@@ -81,6 +86,11 @@ const isValidePassword = (password) =>{
     return passwordExpression.test(password);
 }
 
+const isValideEmail = (email) =>{
+    const emailExpression =  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    return emailExpression.test(email);
+}
 const validateInputs = () => {
     const firstnameValue = firstname.value.trim();
     const secondnameValue = secondname.value.trim();
@@ -89,6 +99,7 @@ const validateInputs = () => {
     const dateofbirthValue = dateofbirth.value;
     const currentdateValue = currentdate.value;
     const farmerlocationValue = farmerlocation.value.trim()
+    const emailValue = email.value.trim()
     const ninValue = nin.value.trim();
     let valid = false;
   
@@ -260,7 +271,17 @@ const validateInputs = () => {
     }else{
         role.style.border = '2px solid #09c372';
         error18.lastElementChild.textContent = ''
-        return true
+    }
+
+    if(emailValue === ''){
+        email.style.border = '2px solid #ff3860';
+        error19.lastElementChild.innerText = 'Email required'
+    }else if(!isValideEmail(emailValue)){
+        email.style.border = '2px solid #ff3860';
+        error19.lastElementChild.innerText = 'Provide a valide email'
+    }else{
+        email.style.border = '2px solid #09c372';
+        error19.lastElementChild.innerText = ''
     }
 }
 

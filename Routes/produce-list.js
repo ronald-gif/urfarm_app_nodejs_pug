@@ -32,7 +32,7 @@ router.get('/producelist', connectEnsureLogin.ensureLoggedIn(), async (req, res)
 });
 
 //get route for update product
-router.get('/produce/update/:id', async (req, res) => {
+router.get('/productOwner/update/:id', async (req, res) => {
 	try {
 		const updateProduct = await Upload.findOne({_id:req.params.id});
 		res.render('productUpdate',{product:updateProduct});
@@ -42,17 +42,17 @@ router.get('/produce/update/:id', async (req, res) => {
 	}
 });
 
-router.post('/produce/update', async (req, res) => {
+router.post('/productOwner/update', async (req, res) => {
 	try {
 		await Upload.findOneAndUpdate({_id:req.query.id}, req.body);
-		res.redirect('/producelist');
+		res.redirect('/urban-dashboard');
 	} catch (error) {
 		res.status(400).send('Unable to upadate product');
 	}
 });
 
 // Delete product
-router.post('/produce/delete', async (req, res) => {
+router.post('/productOwner/delete', async (req, res) => {
 	try {
 		await Upload.deleteOne({_id:req.body.id});
 		res.redirect('back');
@@ -124,21 +124,21 @@ router.get('/home', async (req, res) => {
 	}
 })
 
-// route for approved product lis
-router.get('/approvedlist',async (req, res) => {
+// route for approved product list
+router.get('/approvedlist', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
 	try {
-		let product = await Upload.find().sort({$natural:-1})
+		let product = await Upload.find()
         res.render('listofapprovedproducts', {products:product});
 	} catch (error) {
-		res.status(400).send('unable to get image')
+		res.status(400).send('cant process your request at the moment')
 	}
 });
 
 // route for listing the produce
-router.get('/pending',async (req, res) => {
+router.get('/pending', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
 	try {
-		let product = await Upload.find()
-        res.render('farmerone-pending-products', {products:product});
+		let productOwner = await Upload.find()
+        res.render('farmerone-pending-products', {produces:productOwner});
 	} catch (error) {
 		res.status(400).send('unable to get image')
 	}

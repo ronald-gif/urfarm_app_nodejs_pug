@@ -30,12 +30,12 @@ nav.navbar.navbar-expand-lg
               a.dropdown-item(href='/poultry.html') Poultry
             li
               a.dropdown-item(href='/dairy.html') Dairy
-      form(action="/produce/update/?id="+product._id method="POST") 
+      form(action="/logout" method="POST") 
             button.btn-1(type='submit') logout        
 // farmerOne registration
 .myform1
   h3 Update Product
-  form#myFormToRegister(action='/produce/update/?id='+product._id Method="POST")
+  form#myFormToRegister(action='/productOwner/update/?id='+product._id Method="POST")
     .container.thisForm
       .row.mb-4
         .col
@@ -45,8 +45,8 @@ nav.navbar.navbar-expand-lg
             small.error
         .col
           #error3.form-outline
-            label.form-label(for='form3Example1') Product Price:
-            input#productprice.productprice(type='text' placeholder='Ugx' name='productprice' value=product.productprice)
+            label.form-label(for='form3Example1') Unit Price:
+            input#unitriceunitprice(type='text' placeholder='Ugx' name='unitprice' value=product.unitprice)
             small.error
       .row.mb-4
         .col
@@ -63,10 +63,8 @@ nav.navbar.navbar-expand-lg
               option(value='delivery' selected = product.deliveryMethod === "delivery") Home Delivery
         .col
           #error15.form-outline.form-o
-            label Produce Type:
-            select#producetype.producetype(name='producetype')
-              option(value='organic' selected = product.producetype === "organic") Organic
-              option(value='nonorganic' selected = product.producetype === "nonorganic") Non Organic
+            label Quantity:
+            input#qauntity.qauntity(type='text' name='qauntity' value=product.qauntity)
       .row.mb-4
         .col
           .fo-signup

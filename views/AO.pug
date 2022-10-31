@@ -67,7 +67,7 @@ nav.navbar.navbar-expand-lg
       .row.mb-4
         .col-md-6.col-lg-4
           #error1.form-outline
-            label.form-label(for='form3Example1') First name:
+            label.form-label First name:
             input#firstname.firstname(type='text' name='firstname')
             small.error
         .col-md-6.col-lg-4
@@ -100,19 +100,20 @@ nav.navbar.navbar-expand-lg
             small.error
       .row.mb-4
         .col-md-6.col-lg-4
-          #error7.form-outline.form-o
-            label(for='role') Role:
-            select#role.values-for-wards(name='role')
-              option(value='') Select role
-              option(value='Agriculture officer') Agric officer
+           #error7.form-outline.form-o
+              label(for='role') Role:
+              select#role.values-for-wards(name='role')
+                option(value='') Select role
+                option(value='Agriculture officer') Agriculture Officer
+              small.error
         .col-md-6.col-lg-4
           #error8.form-outline
             label.form-label(for='currentDate')  Current date:
             input#currentdate.currentdate(type='date' name='currentdate')
         .col-md-6.col-lg-4
           #error9.form-outline
-            label.form-label(for='exampleInputEmail1') Date of birth:
-            input#DOB.DOB(type='date' name='dateofbirth' style='padding-right: 5px;')
+            label.form-label Email:
+            input#email.email(type='text' name='email')
             small.error
       .row.mb-4
         .col
@@ -122,4 +123,4 @@ nav.navbar.navbar-expand-lg
           .fo-signup
             button.btn-1(type='submit') Submit
 script(src='/bootstrap-5.2.0-dist/js/bootstrap.bundle.js')
-//- script(src='/AO.js')
+script(src='/AO.js')
