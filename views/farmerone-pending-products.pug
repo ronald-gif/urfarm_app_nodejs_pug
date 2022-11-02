@@ -39,21 +39,23 @@ table.table.table-bordered
       th(scope='col') category
       th(scope='col') Unit price
       th(scope='col') Qauntity
+      th(scope='col') Total Amount
       th(scope='col') product Status
       th(scope='col') product image
-      th(scope='col') Approve the product
+      th(scope='col') Approve 
   tbody
-      if produces.length 
-          each productOwner in produces
-            if productOwner.status == "Pending"
+      if products.length 
+          each product in products
+            if product.status == "Pending" && product.farmerward === currentuser.ward
               tr
-                td #{productOwner.productname}
-                td #{productOwner.category}
-                td #{productOwner.unitprice}
-                td #{productOwner.qauntity}
-                td #{productOwner.status}
+                td #{product.productname}
+                td #{product.category}
+                td #{product.unitprice}
+                td #{product.qauntity}
+                td #{product.totalamount}
+                td #{product.status}
                 td 
-                    img(src="/"+productOwner.uploadimage, alt="image" width ='150px' height='150px')  
+                    img(src="/"+product.uploadimage, alt="image" width ='150px' height='150px')  
                 td
                     a.btn.btn-primary.btn-block(href='/produce/approved/'+product._id) Approve
 script(src='/public/bootstrap-5.2.0-dist/js/bootstrap.bundle.js')

@@ -1,0 +1,60 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Product List
+  link(rel='icon' type='image/x-icon' href='/images/favicon.ico')
+  link(rel='stylesheet' href='/bootstrap-5.2.0-dist/css/bootstrap.css')
+  link(rel='stylesheet' href='main.css')
+// nav bar
+nav.navbar.navbar-expand-lg
+  .container-fluid
+    a.navbar-brand(href='index.html#')
+      img(src='/images/onlinelogomaker-091022-1346-6665.png' alt='')
+    button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+      span.navbar-toggler-icon
+    #navbarSupportedContent.collapse.navbar-collapse
+      ul.navbar-nav.me-auto.mb-2.mb-lg-0
+        li.nav-item
+          a.nav-link.active(aria-current='page' href='/home' style='color: #fff;') Home
+        li.nav-item
+          a.nav-link.active(aria-current='page' href='/about-us' style='color: #fff;') About us
+        li.nav-item.dropdown
+          a.nav-link.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
+            | Categories
+          ul.dropdown-menu
+            li
+              a.dropdown-item(href='/horticulture') Horticuture
+            li
+              a.dropdown-item(href='/poultry') Poultry
+            li
+              a.dropdown-item(href='/dairy') Dairy
+      form(action="/logout" method="POST") 
+                         button.btn-1(type='submit') logout 
+
+table.table.table-bordered
+  thead.table-dark
+    tr
+      th(scope='col') First name
+      th(scope='col') Second name
+      th(scope='col') Telephone
+      th(scope='col') Residence
+      th(scope='col') Unique number
+      th(scope='col') Appointment status
+      th(scope='col') change appointment
+      
+  tbody
+      if farmers.length 
+          each farmerone in farmers
+            if farmerone.appointment == "rejected"
+              tr
+                td #{farmerone.firstname}
+                td #{farmerone.secondname}
+                td #{farmerone.telephone}
+                td #{farmerone.residence}
+                td #{farmerone.uniquenumber}
+                td #{farmerone.appointment}
+                td
+                    a.btn.btn-primary.btn-block(href='/farmers/appointed/'+farmerone._id) Appointment
+script(src='/public/bootstrap-5.2.0-dist/js/bootstrap.bundle.js')

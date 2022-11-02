@@ -40,6 +40,7 @@ table.table.table-bordered
       th(scope='col') category
       th(scope='col') product price
       th(scope='col') Qauntity
+      th(scope='col') Total Amount
       th(scope='col') mode of payment
       th(scope='col') Availability status
       th(scope='col') product image
@@ -48,12 +49,13 @@ table.table.table-bordered
   tbody
       if products.length 
           each product in products
-            if product.status == "Approved"
+            if product.status == "Approved" && product.farmerward === currentuser.ward
               tr
                 td #{product.productname}
                 td #{product.category}
                 td #{product.unitprice}
                 td #{product.qauntity}
+                td #{product.totalamount}
                 td #{product.modeofpayment}
                 td #{product.availability}
                 td 

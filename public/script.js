@@ -53,7 +53,7 @@ form.addEventListener('submit', e => {
     if(!formValid){
         e.preventDefault();
     }else{
-       
+       console.log('form valid')
     }
 });
 

@@ -26,18 +26,17 @@ var upload = multer({ storage: storage });
 router.get('/upload', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
 	req.session.user = req.user
 		try {
-			let urbanfarmer = await Enrollment.find({role: 'Urban farmer'})
-   			 res.render('urbanfarmer_upload', {urbanFarmers:urbanfarmer});
+   			 res.render('urbanfarmer_upload', {currentuser:req.session.user});
 		} catch (error) {
 			res.status(400).send('unable to upload products')
 		}
 	
 });
-
+ 
 
 // router.get('/upload', (req, res) => {
 // 	console.log('this is the current user', req.session.user)
-//     res.render('urbanfarmer_upload',{currentUser: req.session.user});
+//     res.render('urbanfarmer_upload',{currentuser: req.session.user});
 // });
 
 router.post('/upload', connectEnsureLogin.ensureLoggedIn(), upload.single('uploadimage'), async (req, res) => {

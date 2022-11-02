@@ -54,6 +54,7 @@ const userSchema = new mongoose.Schema({
     },
     ward: {
         type: String,
+        trim: true
     },
     activities: {
         type: String,
@@ -66,6 +67,11 @@ const userSchema = new mongoose.Schema({
     email: {
         type: String,
         trim: true 
+    },
+    appointment: {
+        type: String,
+        default: "rejected",
+        enum: ["appointed", "rejected"]
     },
 });
 

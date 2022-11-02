@@ -64,12 +64,28 @@ nav.navbar.navbar-expand-lg
             small.error
         .col-4
           #error6.form-outline
+            label.form-label(for='totalamount') Total Amount:
+            input#totalamount(type='text' name='totalamount')
+            small.error
+        .col-4
+          #error7.form-outline
+            label.form-label(for='date') Direction:
+            input#direction.direction(type='text' name='direction')
+            small.error
+      .row.mb-4
+        .col-4
+          #error7.form-outline
+            label.form-label(for='produceowner') Produce Owner:
+            select#produceowner.produceowner(type='text' name='produceowner')
+              if currentuser
+                option(value= currentuser.firstname) #{currentuser.firstname +" " + currentuser.secondname}
+            
+        .col-4
+          #error6.form-outline
             label.form-label(for='farmerid') Farmer ID:
             select#farmerid(type='text' name='farmerid')
-
-                  each urbanFarmer in urbanFarmers
-                    option(value = urbanFarmer._id) #{urbanFarmer.uniquenumber}
-            small.error
+              if currentuser 
+                option(value= currentuser.uniquenumber type="text") #{currentuser.uniquenumber} 
         .col-4
           #error7.form-outline
             label.form-label(for='date') Date:
@@ -82,20 +98,12 @@ nav.navbar.navbar-expand-lg
             input#uploadimage.uploadimage(type='file' name='uploadimage')
             small.error
         .col
-          #error14.form-outline
-            label.form-label(for='fullname') Name:
-            select#fullname(type='text' name='fullname')
-              if urbanFarmers.length 
-                  each urbanFarmer in urbanFarmers
-                    option(value = urbanFarmer._id) #{urbanFarmer.firstname +" " + urbanFarmer.secondname}
-            small.error
         .col-4
           #error16.form-outline.form-o
-            label(for='ward') Ward:
-            select#my_ward.values-for-wards(name='ward')
-                  each urbanFarmer in urbanFarmers
-                    option(value = urbanFarmer._id) #{urbanFarmer.ward}
-            small.error 
+            label(for='farmerward') Ward:
+            select#my_ward.values-for-wards(name='farmerward')
+              if currentuser 
+                option(value = currentuser.ward) #{currentuser.ward}  
       .row.mb-4
         .col
           #error15.form-outline.form-o

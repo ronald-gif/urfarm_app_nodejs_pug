@@ -18,7 +18,7 @@ head
         i.fas.fa-tachometer-alt.me-2
         | Dashboard
       
-      a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='#')
+      a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='/producelist')
         i.fas.fa-chart-line.me-2
         | Products
       
@@ -67,70 +67,72 @@ head
           .p-3.bg-white.shadow-sm.d-flex.justify-content-around.align-items-center.rounded
             div
               a(href='/approvedlist') Approved products
-      .row.my-5
-        h3.fs-4.mb-3 My approved products
-        .col
-           table.table.bg-white.rounded.shadow-sm.table-hover
-            thead
-              tr
-                th(scope='col') product name
-                th(scope='col') category
-                th(scope='col') Unit price
-                th(scope='col') Qauntity
-                th(scope='col') product Status
-                th(scope='col') Availability Status
-                th(scope='col') product image
-                th(scope='col') Change availability
-            tbody
-                if produces.length 
-                  each productOwner in produces
-                    if productOwner.status == "Approved"
-                      tr
-                        td #{productOwner.productname}
-                        td #{productOwner.category}
-                        td #{productOwner.unitprice}
-                        td #{productOwner.qauntity}
-                        td #{productOwner.status}
-                        td #{productOwner.availability}
-                        td 
-                            img(src="/"+productOwner.uploadimage, alt="image" width ='150px' height='150px')  
-                        td
-                          a.btn.btn-primary.btn-block(href='/produce/availability/'+productOwner._id) Availability
+      //- .row.my-5
+      //-   h3.fs-4.mb-3 My approved products
+      //-   .col
+      //-      table.table.bg-white.rounded.shadow-sm.table-hover
+      //-       thead
+      //-         tr
+      //-           th(scope='col') product name
+      //-           th(scope='col') category
+      //-           th(scope='col') Unit price
+      //-           th(scope='col') Qauntity
+      //-           th(scope='col') product Status
+      //-           th(scope='col') Availability Status
+      //-           th(scope='col') product image
+      //-           th(scope='col') Change availability
+      //-       tbody
+      //-           if currentuser
+      //-             each productOwner in produces
+      //-               if productOwner.status == "Approved"
+      //-                 tr
+      //-                   td #{productOwner.productname}
+      //-                   td #{productOwner.category}
+      //-                   td #{productOwner.unitprice}
+      //-                   td #{productOwner.qauntity}
+      //-                   td #{productOwner.status}
+      //-                   td #{productOwner.availability}
+      //-                   td 
+      //-                       img(src="/"+productOwner.uploadimage, alt="image" width ='150px' height='150px')  
+      //-                   td
+      //-                     a.btn.btn-primary.btn-block(href='/produce/availability/'+productOwner._id) Availability
 
-      .row.my-5
-        h3.fs-4.mb-3 Pending Products
-        .col
-          table.table.bg-white.rounded.shadow-sm.table-hover
-            thead
-              tr
-                th(scope='col') product name
-                th(scope='col') category
-                th(scope='col') Unit price
-                th(scope='col') mode of payment
-                th(scope='col') Qauntity
-                th(scope='col') product Status
-                th(scope='col') product image
-                th(scope='col') Update
-                th(scope='col') Delete
-            tbody
-                if produces.length 
-                  each productOwner in produces
-                    if productOwner.status == "Pending"
-                      tr
-                        td #{productOwner.productname}
-                        td #{productOwner.category}
-                        td #{productOwner.unitprice}
-                         td #{productOwner.modeofpayment}
-                        td #{productOwner.qauntity}
-                        td #{productOwner.status}
-                        td 
-                            img(src="/"+productOwner.uploadimage, alt="image" width ='150px' height='150px')  
-                        td
-                            a.btn.btn-secondary.btn-block(href='/productOwner/update/'+productOwner._id) Update  
-                        td 
-                            form(method="post" action='/productOwner/delete')
-                              input(type="hidden", placeholder="", name="id", value=productOwner._id)
-                              button.btn.btn-danger.btn-block(type="submit") Delete
+      //- .row.my-5
+      //-   h3.fs-4.mb-3 Pending Products
+      //-   .col
+      //-     table.table.bg-white.rounded.shadow-sm.table-hover
+      //-       thead
+      //-         tr
+      //-           th(scope='col') product name
+      //-           th(scope='col') category
+      //-           th(scope='col') Unit price
+      //-           th(scope='col') mode of payment
+      //-           th(scope='col') Qauntity
+      //-           th(scope='col') Total Amount
+      //-           th(scope='col') product Status
+      //-           th(scope='col') product image
+      //-           th(scope='col') Update
+      //-           th(scope='col') Delete
+      //-       tbody
+      //-           if produces.length 
+      //-             each productOwner in produces
+      //-               if productOwner.status == "Pending" 
+      //-                 tr
+      //-                   td #{productOwner.productname}
+      //-                   td #{productOwner.category}
+      //-                   td #{productOwner.unitprice}
+      //-                   td #{productOwner.modeofpayment}
+      //-                   td #{productOwner.qauntity}
+      //-                   td #{productOwner.totalamount}
+      //-                   td #{productOwner.status}
+      //-                   td 
+      //-                       img(src="/"+productOwner.uploadimage, alt="image" width ='150px' height='150px')  
+      //-                   td
+      //-                       a.btn.btn-secondary.btn-block(href='/productOwner/update/'+productOwner._id) Update  
+      //-                   td 
+      //-                       form(method="post" action='/productOwner/delete')
+      //-                         input(type="hidden", placeholder="", name="id", value=productOwner._id)
+      //-                         button.btn.btn-danger.btn-block(type="submit") Delete
 script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js')
 script.
   var el = document.getElementById("wrapper");

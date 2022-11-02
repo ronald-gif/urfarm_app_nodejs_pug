@@ -42,8 +42,6 @@ table.table.table-bordered
       th(scope='col') Unique Number
       th(scope='col') Ward
       th(scope='col') NIN
-      th(scope='col') Update
-      th(scope='col') Delete
   tbody
       if urbanfarmers.length 
           each urbanfarmerlist in urbanfarmers
@@ -54,11 +52,4 @@ table.table.table-bordered
                 td #{urbanfarmerlist.uniquenumber}
                 td #{urbanfarmerlist.ward}
                 td #{urbanfarmerlist.nin}
-                td
-                    a
-                        button.btn.btn-primary.btn-block(href='/urbanfarmer/update/'+urbanfarmerlist._id) Update
-                td
-                    form(method="post" action='/urbanfarmer/delete')
-                        input(type="hidden", placeholder="", name="id", value=urbanfarmerlist._id)
-                        button.btn.btn-danger.btn-block(type="submit") Delete
 script(src='/public/bootstrap-5.2.0-dist/js/bootstrap.bundle.js')

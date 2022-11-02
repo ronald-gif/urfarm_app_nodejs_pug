@@ -47,7 +47,7 @@ table.table.table-bordered
   tbody
       if products.length 
           each product in products
-            if product.status == "Pending"
+            if product.farmerward === currentuser.ward
               tr
                 td #{product.productname}
                 td #{product.category}
