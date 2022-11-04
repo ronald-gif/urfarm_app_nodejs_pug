@@ -8,26 +8,27 @@ head
   link(rel='stylesheet' href='/dashboard.css')
   title urban farmer
   link(rel='x-icon' type='image/x-icon' href='/img/images/favicon.ico')
+  link(rel="stylesheet", href="/urbafarmer.css")
 #wrapper.d-flex
   // Sidebar
-  #sidebar-wrapper.bg-white
+  #sidebar-wrapper
     .sidebar-heading.text-center.py-4.primary-text.fs-4.fw-bold.text-uppercase.border-bottom
       img(src='/images/onlinelogomaker-091022-1346-6665.png' alt='')
     .list-group.list-group-flush.my-3
-      a.list-group-item.list-group-item-action.bg-transparent.second-text.active(href='#')
+      a.list-group-item.list-group-item-action.bg-transparent.second-text.active(href='/urban-dashboard')
         i.fas.fa-tachometer-alt.me-2
         | Dashboard
       
-      a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='/producelist')
+      a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='/upload')
         i.fas.fa-chart-line.me-2
-        | Products
+        | Upload Products
       
-      a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='#')
+      a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='/producelist')
         i.fas.fa-shopping-cart.me-2
-        | Sales
-      a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='#')
+        | Pending Products
+      a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='/approvedproducts')
         i.fas.fa-gift.me-2
-        | Delivery
+        | Approved Products
       //
         <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
         class="fas fa-comment-dots me-2"></i></a>
@@ -48,8 +49,7 @@ head
         ul.navbar-nav.ms-auto.mb-2.mb-lg-0
           li.nav-item.dropdown
             a#navbarDropdown.nav-link.dropdown-toggle.second-text.fw-bold(href='/urbanfarmerlist' role='button' data-bs-toggle='dropdown' aria-expanded='false')
-              i.fas.fa-user.me-2
-              | Urban farmer
+              i.fas.fa-user.me-2    #{currentuser.firstname + " " + currentuser.secondname} 
             ul.dropdown-menu(aria-labelledby='navbarDropdown')
               form(action="/logout" method="POST") 
                  button.btn(type='submit') logout

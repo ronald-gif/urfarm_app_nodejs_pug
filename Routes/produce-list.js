@@ -78,7 +78,7 @@ router.get('/produce/approved/:id', async (req, res) => {
 router.post('/produce/approved', async (req, res) => {
 	try {
 		await Upload.findOneAndUpdate({_id:req.query.id}, req.body);
-		res.redirect('/FO-dashboard');
+		res.redirect('/pending');
 	} catch (error) {
 		res.status(400).send('Unable to approve product');
 	}
@@ -171,7 +171,7 @@ router.get('/produce/availability/:id', async (req, res) => {
 router.post('/produce/availability', async (req, res) => {
 	try {
 		await Upload.findOneAndUpdate({_id:req.query.id}, req.body);
-		res.redirect('/urban-dashboard');
+		res.redirect('/approvedproducts');
 	} catch (error) {
 		res.status(400).send('Unable to approve product');
 	}
@@ -226,12 +226,32 @@ router.get('/poultry', async (req, res) => {
 // route for approved product list
 router.get('/approvedlist', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
 	req.session.user = req.user
-	try {
-		let product = await Upload.find()
-        res.render('listofapprovedproducts', {products:product, currentuser:req.user});
-	} catch (error) {
-		res.status(400).send('cant process your request at the moment')
+	if(req.user.role == "farmerone"){
+		try {
+			let product = await Upload.find()
+			res.render('listofapprovedproducts', {products:product, currentuser:req.user});
+		} catch (error) {
+			res.status(400).send('cant process your request at the moment')
+		}
+	}else{
+		res.send('This page is only accessed by Farmer ones')
 	}
+	
+});
+
+router.get('/approvedproducts', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
+	req.session.user = req.user
+	if(req.user.role == "Urban farmer"){
+		try {
+			let product = await Upload.find()
+			res.render('urban-approved-products', {products:product, currentuser:req.user});
+		} catch (error) {
+			res.status(400).send('cant process your request at the moment')
+		}
+	}else{
+		res.send('This page is only accessed by urban farmers')
+	}
+	
 });
 
 // route for listing the produce
@@ -251,7 +271,10 @@ router.get('/FO-dashboard', connectEnsureLogin.ensureLoggedIn(), async (req, res
 	if(req.user.role == "farmerone"){
 		try {
 			let product = await Upload.find()
-			res.render('FO_dashboard', {products:product, produceowner:req.user});
+			let totalfarmerones = await Enrollment.countDocuments({role: "farmerone"})
+			res.render('FO_dashboard', {products:product, currentuser:req.user});
+			totalfarmerones
+			console.log(totalfarmerones);
 		} catch (error) {
 			res.status(400).send('unable to get image')
 		}
@@ -272,7 +295,7 @@ router.get('/urban-dashboard', connectEnsureLogin.ensureLoggedIn(), async (req, 
 });
 
 // aggregations
-router.get("/reports", connectEnsureLogin.ensureLoggedIn(), async(req, res) =>
+router.get("/AO-dashboard", connectEnsureLogin.ensureLoggedIn(), async(req, res) =>
 {
     req.session.user = req.user;
     if(req.user.role == 'Agriculture officer'){
@@ -302,7 +325,7 @@ router.get("/reports", connectEnsureLogin.ensureLoggedIn(), async(req, res) =>
                }}
            ])
             
-            res.render("report", {
+            res.render("AO_dashboard", {
             title: 'Reports',
             totalP:totalPoultry[0],
             totalH:totalHort[0],

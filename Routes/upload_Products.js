@@ -45,7 +45,7 @@ router.post('/upload', connectEnsureLogin.ensureLoggedIn(), upload.single('uploa
 		const product = new Upload(req.body);
 		product.uploadimage = req.file.path
 		await product.save();
-		res.redirect('/urban-dashboard')
+		res.redirect('/producelist')
 	} catch (error) {
 		res.status(400).send('Unable to upload image');
 		console.log(error)

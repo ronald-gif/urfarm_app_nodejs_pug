@@ -1,0 +1,254 @@
+:root{
+    /* --pink:#e84393; */
+    --pink:#12bbeb;
+    /* --green:#3db83a; */
+    --green:#2e0219;
+    --pelette1:#4a001f
+    --coolor:#22dae8
+}
+.myform1{
+    /* background: linear-gradient(136deg, hsla(340, 97%, 67%, 0.65), hsla(230,96%, 62%,0.65)),
+             url('/images/img-1.jpg'); */
+      /* background-color: var(--green);        */
+  }
+  .myform1 h3{
+    font-size: 20px;
+    margin: 10px auto;
+    padding: 10px auto;
+    text-align: center;
+    color: #000;
+    font-weight: bold;
+    border-top: 2px solid #000;
+  
+  }
+  .thisForm{
+    margin-top: 8px;
+    padding: 10px 20px;
+    margin-bottom: 1rem;
+    /* background-color: #fff; */
+    border-radius: 5px;
+    box-shadow: 7px 7px 7px 7px rgba(0, 0, 0, 0.3);
+    width: 1000px;
+  }
+  .ao-form{
+    width: 800px;
+  }
+  .mb-5{
+    margin-bottom: 10px;
+  }
+  .thisForm h3 {
+    font-size: 1.5em;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .firstLinks a{
+    text-decoration: none;
+    font-size: 1rem;
+    color: #000;
+    font-weight: 800;
+  }
+  .allLinks{
+    margin: 0px 20px 1px 30px;
+    padding: 0px 50px 2px 50px;
+  }
+  .form-outline{
+    margin-bottom: 1px;
+  }
+  .form-label{
+    color: #000;
+    font-weight: bolder;
+  }
+  
+  .form-outline label {
+    display: block;
+    color: #777;
+    margin-bottom: 5px;
+  }
+  
+  
+  
+  .form-outline select{
+    border: solid 2px #f0f0f0;
+    border-radius: 3px;
+    padding: 10px;
+    margin-bottom: 5px;
+    font-size: 14px;
+    display: block;
+    width: 100%;
+  }
+  .radio{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 10px;
+    
+  }
+  .form-outline select option{
+    padding: 10px;
+  }
+  .form-outline input{
+    border: 2px solid #f0f0f0;
+    border-radius: 5px;
+    color: #000;
+    padding: 8px;
+  }
+  
+  .form-outline:focus{
+   outline: none;
+  }
+  
+  .btn{
+    background-color: var(--green);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: 700;
+  }
+  
+  .error{
+    color: red;
+    font-size: 9px;
+    margin-top: -4px;
+  }
+
+
+  @media (max-width:768px){
+   
+    
+    .container-last{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 16px;
+      padding: 10px 0px;
+  
+    }
+  
+    .thisForm{
+      width: 600px;
+    }
+    .container-last .logo{
+      padding: 1rem 10px;
+    }
+  
+    .payment-method h5{
+      font-size: 16px;
+      margin: 1rem 0px;
+      padding: 10px opx 1px 0px;
+    }
+    
+    .payment-method ul li{
+      display: inline-block;
+      padding: 9px;
+    
+    }
+    .payment-method ul li a img{
+      max-width: 25px;
+      max-height: 25px;
+    }
+  
+    .follow-us h5{
+      font-size: 16px;
+      margin: 1rem 0px;
+      padding: 10px opx 1px 0px;
+    }
+    
+    .follow-us ul li{
+      display: inline-block;
+      padding: 10px;
+    }
+    
+    .follow-us ul li a img{
+      width: 25px;
+      height: 25px;
+    }
+  
+    .support h5{
+      font-size: 16px;
+      margin: 1.6rem 0px 0px opx;
+      padding: 3rem opx 1px 0px;
+      text-align: center;
+    }
+    
+    .support ul li{
+      display: inline-block;
+    padding: 9px;
+      font-size: 12px;
+  }
+  .support ul li a{
+    font-size: 12xp;
+  }
+  .copyright{
+    font-size: 17px;
+     
+     }
+    
+  @media (max-width:450px){
+  
+    .container-last{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 16px;
+      padding: 10px 0px;
+  
+    }
+  
+    .thisForm{
+      width: 400px;
+    }
+    .container-last .logo{
+      padding: 1rem 10px;
+    }
+  
+    .payment-method h5{
+      font-size: 16px;
+      margin: 1rem 0px;
+      padding: 10px opx 1px 0px;
+    }
+    
+    .payment-method ul li{
+      display: inline-block;
+      padding: 9px;
+    
+    }
+    .payment-method ul li a img{
+      max-width: 25px;
+      max-height: 25px;
+    }
+  
+    .follow-us h5{
+      font-size: 16px;
+      margin: 1rem 0px;
+      padding: 10px opx 1px 0px;
+    }
+    
+    .follow-us ul li{
+      display: inline-block;
+      padding: 10px;
+    }
+    
+    .follow-us ul li a img{
+      width: 25px;
+      height: 25px;
+    }
+  
+    .support h5{
+      font-size: 16px;
+      margin: 1.6rem 0px 0px -3rem;
+      padding: 3rem opx 1px 0px;
+      text-align: center;
+    }
+    
+    .support ul li{
+      
+    padding: 9px;
+      font-size: 12px;
+  }
+  .support ul li a{
+    font-size: 12xp;
+  }
+  .copyright{
+    font-size: 17px;
+  }
+  }}

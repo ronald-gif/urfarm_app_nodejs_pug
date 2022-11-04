@@ -20,30 +20,27 @@ head
       a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='/farmeronelist')
         i.fas.fa-project-diagram.me-2
         | Farmer Ones 
-      a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='/farmerone')
-        i.fas.fa-project-diagram.me-2
-        | Register Farmer One
-      a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='/urbanfarmerlist')
-        i.fas.fa-chart-line.me-2
-        | Urban farmers
-      a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='/approvedlist')
-        i.fas.fa-paperclip.me-2
-        | Approved Products
-      a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='/producelist')
+      //- a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='/urbanfarmerlist')
+      //-   i.fas.fa-chart-line.me-2
+      //-   | Urban farmers
+      //- a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='/approvedlist')
+      //-   i.fas.fa-paperclip.me-2
+      //-   | Approved Products
+      a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='')
         i.fas.fa-shopping-cart.me-2
         | Bookings and order
-      a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='/reports')
-        i.fas.fa-gift.me-2
-        | Reports
+      //- a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='/reports')
+      //-   i.fas.fa-gift.me-2
+      //-   | Reports
       a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='#')
         i.fas.fa-comment-dots.me-2
         | Delivery
-      a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='/appointed')
-        i.fas.fa-comment-dots.me-2
-        | Appoint farmerone
-      a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='listofrejected')
-        i.fas.fa-comment-dots.me-2
-        | Rejected farmerones
+      //- a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='/appointed')
+      //-   i.fas.fa-comment-dots.me-2
+      //-   | Appoint farmerone
+      //- a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='listofrejected')
+      //-   i.fas.fa-comment-dots.me-2
+      //-   | Rejected farmerones
   // /#sidebar-wrapper
   // Page Content
   #page-content-wrapper
@@ -67,55 +64,54 @@ head
         .col-md-3
           .p-3.bg-white.shadow-sm.d-flex.justify-content-around.align-items-center.rounded
             div
-              a(href='/producelist') Products
+              a(href='') farmer ones
             i.fas.fa-gift.fs-1.primary-text.border.rounded-full.secondary-bg.p-3
         .col-md-3
           .p-3.bg-white.shadow-sm.d-flex.justify-content-around.align-items-center.rounded
             div
-              a(href='') Sales
+              a(href='') Urban farmers
             i.fas.fa-hand-holding-usd.fs-1.primary-text.border.rounded-full.secondary-bg.p-3
         .col-md-3
           .p-3.bg-white.shadow-sm.d-flex.justify-content-around.align-items-center.rounded
             div
-              a(href='') Deliveries
+              a(href='') Customers
             i.fas.fa-truck.fs-1.primary-text.border.rounded-full.secondary-bg.p-3
-        //
-          <div class="col-md-3">
-          <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
-          <div>
-          <h3 class="fs-2">%25</h3>
-          <p class="fs-5">Increase</p>
-          </div>
-          <i class="fas fa-chart-line fs-1 primary-text border rounded-full secondary-bg p-3"></i>
-          </div>
-          </div>
-      .row.my-5
-        h3.fs-4.mb-3 Recent Orders
-        .col
-          table.table.bg-white.rounded.shadow-sm.table-hover
-            thead
-              tr
-                th(scope='col') First Name
-                th(scope='col') Second Name
-                th(scope='col') Gender
-                th(scope='col') Unique Number
-                th(scope='col') Ward
-                th(scope='col') Activity
-                th(scope='col') Phone number
-                th(scope='col') Update
-            tbody
-                //- if farmerones.length 
-                //-   each farmerone in farmerones
-                //-     tr
-                //-       td #{farmerone.firstname}
-                //-       td #{farmerone.secondname}
-                //-       td #{farmerone.gender}
-                //-       td #{farmerone.uniquenumber}
-                //-       td #{farmerone.ward}
-                //-       td #{farmerone.activities}
-                //-       td #{farmerone.telephone}
-                //-       td
-                //-           a.btn.btn-primary.btn-block(href='/farmerone/update/'+farmerone._id) Update
+
+        .accordion-item
+          h2#headingThree.accordion-header
+            button.accordion-button.collapsed(type='button' data-bs-toggle='collapse' data-bs-target='#collapseThree' aria-expanded='false' aria-controls='collapseThree')
+              | View Report
+          #collapseThree.accordion-collapse.collapse(aria-labelledby='headingThree' data-bs-parent='#accordionExample')
+            .accordion-body
+              h1 Report
+              .container
+                  .row
+                      .col-md-3.mx-4
+                          h4.mb-5 Poultry Report
+                              .card.card-custom.mx-2.mb-3(style='width: 18rem;')
+                                  .card-body
+                                      h6 Products Quantity: #{totalP.totalQuantity}
+                                      h6 Revenue Projection: #{new Intl.NumberFormat().format(totalP.totalCost)} UGX
+
+                                    
+                                      p.card-text            
+                      .col-md-3.mx-4
+                          h4.mb-5 Dairy Report
+                              .card.card-custom.mx-2.mb-3(style='width: 18rem;')
+                                  .card-body
+                                      h6 Products Quantity: #{totalD.totalQuantity}
+                                      h6 Revenue Projection: #{new   Intl.NumberFormat().format(totalD.totalCost)} UGX
+
+                                      p.card-text
+                          
+                      .col-md-3.mx-4
+                          h4.mb-5 Horticulture Report
+                              .card.card-custom.mx-2.mb-3(style='width: 18rem;')
+                                  .card-body
+                                      h6 Products Quantity: #{totalH.totalQuantity}
+                                      h6 Revenue Projection: #{new   Intl.NumberFormat().format(totalH.totalCost)} UGX 
+                                          
+                                      p.card-text 
         script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js')
         script.
           var el = document.getElementById("wrapper");

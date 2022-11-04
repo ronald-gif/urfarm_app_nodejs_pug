@@ -3,8 +3,17 @@
     --main-text-color: #009d63;
     --second-text-color: #bbbec5;
     --second-bg-color: #c1efde;
+    /* --pink:#e84393; */
+    --pink:#12bbeb;
+    /* --green:#3db83a; */
+    --green:#2e0219;
+    --pelette1:#4a001f
+    --coolor:#22dae8
   }
-  
+  #sidebar-wrapper{
+    background-color: var(--green);
+
+  }
   .primary-text {
     color: var(--main-text-color);
   }
@@ -17,9 +26,9 @@
     background-color: var(--main-bg-color);
   }
   
-  .secondary-bg {
-    background-color: var(--second-bg-color);
-  }
+   .secondary-bg {
+    background-color: var(--green);
+  } 
   
   .rounded-full {
     border-radius: 100%;
@@ -29,11 +38,11 @@
     overflow-x: hidden;
     background-image: linear-gradient(
       to right,
-      #093d26,
-      #daeee3,
+      var(--second-bg-color),
+      var(--second-bg-color),
       #cbf7e4,
-      #2e2e2e,
-      #a4b6ae
+      var(--second-bg-color),
+      var(--second-bg-color)
     );
   }
   
@@ -45,6 +54,7 @@
     -o-transition: margin 0.25s ease-out;
     transition: margin 0.25s ease-out;
   }
+ 
   
   #sidebar-wrapper .sidebar-heading {
     padding: 0.875rem 1.25rem;
