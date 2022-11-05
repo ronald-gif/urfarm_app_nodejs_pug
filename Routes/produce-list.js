@@ -23,16 +23,17 @@ var upload = multer({ storage: storage });
 
 // route for listing the produce
 router.get('/producelist', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
+	req.session.user = req.user
 	try {
 		let product = await Upload.find()
-        res.render('produce-list', {products:product});
+        res.render('produce-list', {products:product, currentuser:req.user});
 	} catch (error) {
 		res.status(400).send('unable to get image')
 	}
 });
 
 //get route for update product
-router.get('/productOwner/update/:id', async (req, res) => {
+router.get('/produce/update/:id', async (req, res) => {
 	try {
 		const updateProduct = await Upload.findOne({_id:req.params.id});
 		res.render('productUpdate',{product:updateProduct});
@@ -42,17 +43,17 @@ router.get('/productOwner/update/:id', async (req, res) => {
 	}
 });
 
-router.post('/productOwner/update', async (req, res) => {
+router.post('/produce/update', async (req, res) => {
 	try {
 		await Upload.findOneAndUpdate({_id:req.query.id}, req.body);
-		res.redirect('/urban-dashboard');
+		res.redirect('/producelist');
 	} catch (error) {
 		res.status(400).send('Unable to upadate product');
 	}
 });
 
 // Delete product
-router.post('/productOwner/delete', async (req, res) => {
+router.post('/produce/delete', async (req, res) => {
 	try {
 		await Upload.deleteOne({_id:req.body.id});
 		res.redirect('back');
@@ -77,9 +78,80 @@ router.get('/produce/approved/:id', async (req, res) => {
 router.post('/produce/approved', async (req, res) => {
 	try {
 		await Upload.findOneAndUpdate({_id:req.query.id}, req.body);
-		res.redirect('/FO-dashboard');
+		res.redirect('/pending');
 	} catch (error) {
 		res.status(400).send('Unable to approve product');
+	}
+});
+
+
+// products under inspection
+// router.get('/produce/inspect/:id', async (req, res) => {
+// 	try {
+// 		const inspectProduct = await Upload.findOne({_id:req.params.id});
+// 		res.render('inspect', {product:inspectProduct});
+		
+// 	} catch (error) {
+// 		res.status(400).send('Unable to insepct product');
+// 	}
+// });
+
+// router.post('/produce/inspect', async (req, res) => {
+// 	try {
+// 		await Upload.findOneAndUpdate({_id:req.query.id}, req.body);
+// 		res.redirect('/FO-dashboard');
+// 	} catch (error) {
+// 		res.status(400).send('Unable to inspect product');
+// 	}
+// });
+
+// router.get('/inspected', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
+// 	req.session.user = req.user;
+// 	try {
+// 		let product = await Upload.find()
+// 		console.log('new user',req.session.user);
+//         res.render('listofinspected', {products:product,currentuser:req.user});
+// 	} catch (error) {
+// 		res.status(400).send('unable to inspect product')
+// 	}
+// });
+
+// appointment routes
+
+router.get('/farmers/appointed/:id', async (req, res) => {
+	try {
+		const appointment = await Enrollment.findOne({_id:req.params.id});
+		res.render('appointed', {farmerone:appointment});
+		
+	} catch (error) {
+		res.status(400).send('Unable to appoint farmerone');
+	}
+});
+
+router.post('/farmers/appointed', async (req, res) => {
+	try {
+		await Enrollment.findOneAndUpdate({_id:req.query.id}, req.body);
+		res.redirect('/appointed');
+	} catch (error) {
+		res.status(400).send('Unable to appoint farmerone');
+	}
+});
+
+router.get('/appointed', async (req, res) => {
+	try {
+		let farmerone = await Enrollment.find()
+        res.render('listofappointed', {farmers:farmerone});
+	} catch (error) {
+		res.status(400).send('cant process your request at the moment')
+	}
+});
+
+router.get('/rejected', async (req, res) => {
+	try {
+		let farmerone = await Enrollment.find()
+        res.render('listofrejected', {farmers:farmerone});
+	} catch (error) {
+		res.status(400).send('cant process your request at the moment')
 	}
 });
 
@@ -99,7 +171,7 @@ router.get('/produce/availability/:id', async (req, res) => {
 router.post('/produce/availability', async (req, res) => {
 	try {
 		await Upload.findOneAndUpdate({_id:req.query.id}, req.body);
-		res.redirect('/urban-dashboard');
+		res.redirect('/approvedproducts');
 	} catch (error) {
 		res.status(400).send('Unable to approve product');
 	}
@@ -124,21 +196,71 @@ router.get('/home', async (req, res) => {
 	}
 })
 
+router.get('/dairy', async (req, res) => {
+	try {
+		let availableproduct = await Upload.find()
+		res.render('dairy', {availableproducts:availableproduct})
+	} catch (error) {
+		res.status(400).send('unable to display')
+	}
+})
+
+router.get('/horticulture', async (req, res) => {
+	try {
+		let availableproduct = await Upload.find()
+		res.render('horticulture', {availableproducts:availableproduct})
+	} catch (error) {
+		res.status(400).send('unable to display')
+	}
+})
+
+router.get('/poultry', async (req, res) => {
+	try {
+		let availableproduct = await Upload.find()
+		res.render('poultry', {availableproducts:availableproduct})
+	} catch (error) {
+		res.status(400).send('unable to display')
+	}
+})
+
 // route for approved product list
 router.get('/approvedlist', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
-	try {
-		let product = await Upload.find()
-        res.render('listofapprovedproducts', {products:product});
-	} catch (error) {
-		res.status(400).send('cant process your request at the moment')
+	req.session.user = req.user
+	if(req.user.role == "farmerone"){
+		try {
+			let product = await Upload.find()
+			res.render('listofapprovedproducts', {products:product, currentuser:req.user});
+		} catch (error) {
+			res.status(400).send('cant process your request at the moment')
+		}
+	}else{
+		res.send('This page is only accessed by Farmer ones')
 	}
+	
+});
+
+router.get('/approvedproducts', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
+	req.session.user = req.user
+	if(req.user.role == "Urban farmer"){
+		try {
+			let product = await Upload.find()
+			res.render('urban-approved-products', {products:product, currentuser:req.user});
+		} catch (error) {
+			res.status(400).send('cant process your request at the moment')
+		}
+	}else{
+		res.send('This page is only accessed by urban farmers')
+	}
+	
 });
 
 // route for listing the produce
 router.get('/pending', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
+	req.session.user = req.user;
 	try {
-		let productOwner = await Upload.find()
-        res.render('farmerone-pending-products', {produces:productOwner});
+		let product = await Upload.find()
+		console.log('new user',req.session.user);
+        res.render('farmerone-pending-products', {products:product,currentuser:req.user});
 	} catch (error) {
 		res.status(400).send('unable to get image')
 	}
@@ -149,7 +271,10 @@ router.get('/FO-dashboard', connectEnsureLogin.ensureLoggedIn(), async (req, res
 	if(req.user.role == "farmerone"){
 		try {
 			let product = await Upload.find()
-			res.render('FO_dashboard', {products:product});
+			let totalfarmerones = await Enrollment.countDocuments({role: "farmerone"})
+			res.render('FO_dashboard', {products:product, currentuser:req.user});
+			totalfarmerones
+			console.log(totalfarmerones);
 		} catch (error) {
 			res.status(400).send('unable to get image')
 		}
@@ -162,52 +287,48 @@ router.get('/FO-dashboard', connectEnsureLogin.ensureLoggedIn(), async (req, res
 router.get('/urban-dashboard', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
     req.session.user = req.user
     try {
-        const productOwner = await Upload.find({fullname:req.user});
-        res.render('urban_dashboard', {title: 'produce list', produces:productOwner});
+        const productOwner = await Upload.find();
+        res.render('urban_dashboard', {produces:productOwner,currentuser:req.user});
     } catch (error) {
        res.status(400).send("No products found in the database") 
     }
 });
 
 // aggregations
-router.get("/reports", connectEnsureLogin.ensureLoggedIn(), async(req, res) =>
+router.get("/AO-dashboard", connectEnsureLogin.ensureLoggedIn(), async(req, res) =>
 {
     req.session.user = req.user;
     if(req.user.role == 'Agriculture officer'){
         try {
             let totalPoultry = await Upload.aggregate([
            { $match: { category: "poultry" } },
-           { $group: { _id: "$all",
-            totalQuantity: { $sum: "$qauntity" },
-            totalCost: { $sum: { $multiply: [ "$unitprice", "$qauntity" ] } },
+           { $group: { _id: "$all", totalQuantity: { $sum: "$qauntity" }, totalCost: { $sum: { $multiply: [ "$unitprice", "$qauntity" ] } },
            
            }}
            ])
-            let totalHort = await Upload.aggregate([
+            let totalHorticulture = await Upload.aggregate([
                { $match: { category: "horticulture" } },
-               { $group: { _id: "$all",
-                totalQuantity: { $sum: "$qauntity" },
-                totalCost: { $sum: { $multiply: [ "$unitprice", "$qauntity" ]
+               { $group: { _id: "$all", totalQuantity: { $sum: "$qauntity" }, totalCost: { $sum: { $multiply: [ "$unitprice", "$qauntity" ]
 } },            
                }}
            ])
             let totalDairy = await Upload.aggregate([
                { $match: { category: "dairy" } },
-               { $group: { _id: "$all",
-                totalQuantity: { $sum: "$qauntity" },
-                totalCost: { $sum: { $multiply: [ "$unitprice", "$qauntity" ]
+               { $group: { _id: "$all", totalQuantity: { $sum: "$qauntity" }, totalCost: { $sum: { $multiply: [ "$unitprice", "$qauntity" ]
 } },            
                }}
            ])
             
-            // console.log("Poultry collections", totalPoultry)
-            // console.log("Hort collections", totalHort)
-            // console.log("Dairy collections", totalDairy)
-            res.render("report", {
-            title: 'Reports',
+		   let farmerOnes = await Enrollment.countDocuments({role: "farmerone"})
+		   let urbanFarmers = await Enrollment.countDocuments({role: "Urban farmer"})
+		   let customers = await Enrollment.countDocuments({role: "customer"})
+            res.render("AO_dashboard", { currentuser:req.user,
             totalP:totalPoultry[0],
-            totalH:totalHort[0],
+            totalH:totalHorticulture[0],
             totalD:totalDairy[0],
+			farmerOnes,
+			urbanFarmers,
+			customers
            });
        } catch (error) {
             res.status(400).send("unable to find items in the database");
@@ -217,6 +338,23 @@ router.get("/reports", connectEnsureLogin.ensureLoggedIn(), async(req, res) =>
         res.send("This page is only accessed by Agric Officers")
    }
 });
+
+
+
+router.get('/FO', async (req, res) =>{
+	try {
+		let totalfarmerone = await Enrollment.aggregate(
+			[
+				{$match: {role: "farmerone"}},
+				{$group: {_id: "$farmerone",
+			}}
+			]
+		)
+	} catch (error) {
+		res.status(400).send("can not process your request now")
+	}
+	res.send('this page cannot be reached')
+})
         
 router.get('/numberOfFo', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
 req.session.user = req.user;

@@ -36,16 +36,16 @@ router.post('/AO', async (req, res) => {
    
 });
 
-router.get('/AO-dashboard', connectEnsureLogin.ensureLoggedIn(), (req, res) => {
-    req.session.user = req.user;
-    if(req.user.role == "Agriculture officer"){
-        res.render("AO_dashboard")
+// router.get('/AO-dashboard', connectEnsureLogin.ensureLoggedIn(), (req, res) => {
+//     req.session.user = req.user;
+//     if(req.user.role == "Agriculture officer"){
+//         res.render("AO_dashboard")
        
-    }else{
-        res.send('This page is only accessed by Agriculture officer') 
+//     }else{
+//         res.send('This page is only accessed by Agriculture officer') 
         
-    }
+//     }
    
-});
+// });
 
 module.exports = router

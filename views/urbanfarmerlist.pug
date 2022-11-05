@@ -3,62 +3,200 @@ head
   meta(charset='UTF-8')
   meta(http-equiv='X-UA-Compatible' content='IE=edge')
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  title urban farmer List
-  link(rel='icon' type='image/x-icon' href='/images/favicon.ico')
-  link(rel='stylesheet' href='/bootstrap-5.2.0-dist/css/bootstrap.css')
-  link(rel='stylesheet' href='main.css')
-// nav bar
-nav.navbar.navbar-expand-lg
-  .container-fluid
-    a.navbar-brand(href='index.html#')
+  link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css' rel='stylesheet')
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css')
+  link(rel='stylesheet' href='/dashboard.css')
+  title Urban farmer List
+  link(rel='x-icon' type='image/x-icon' href='/img/images/favicon.ico')
+  link(rel='stylesheet' href='/urban.css')
+#wrapper.d-flex
+  // Sidebar
+  #sidebar-wrapper
+    .sidebar-heading.text-center.py-4.primary-text.fs-4.fw-bold.text-uppercase.border-bottom
       img(src='/images/onlinelogomaker-091022-1346-6665.png' alt='')
-    button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
-      span.navbar-toggler-icon
-    #navbarSupportedContent.collapse.navbar-collapse
-      ul.navbar-nav.me-auto.mb-2.mb-lg-0
-        li.nav-item
-          a.nav-link.active(aria-current='page' href='/home' style='color: #fff;') Home
-        li.nav-item
-          a.nav-link.active(aria-current='page' href='/about-us' style='color: #fff;') About us
-        li.nav-item.dropdown
-          a.nav-link.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
-            | Categories
-          ul.dropdown-menu
-            li
-              a.dropdown-item(href='/horticulture.html') Horticuture
-            li
-              a.dropdown-item(href='/poultry.html') Poultry
-            li
-              a.dropdown-item(href='/dairy.html') Dairy
-      form(action="/logout" method="POST") 
-             button.btn-1(type='submit') logout 
+    .list-group.list-group-flush.my-3
+      a.list-group-item.list-group-item-action.bg-transparent.second-text.active(href='/FO-dashboard')
+        i.fas.fa-tachometer-alt.me-2
+        | Dashboard
+      a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='/urbanfarmerlist')
+        i.fas.fa-project-diagram.me-2
+        | Urban farmers
+      a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='/urbanfarmerlist')
+        i.fas.fa-chart-line.me-2
+        | Register Urban farmer
+      a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='#')
+        i.fas.fa-paperclip.me-2
+        | Bookings and order
+      a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='#')
+        i.fas.fa-shopping-cart.me-2
+        | Sales
+      a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='/pending')
+        i.fas.fa-gift.me-2
+        | Pending products
+      a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='/approvedlist')
+        i.fas.fa-gift.me-2
+        | Approved products
+  #page-content-wrapper
+    nav.navbar.navbar-expand-lg.navbar-light.bg-transparent.py-4.px-4
+      .d-flex.align-items-center
+        i#menu-toggle.fas.fa-align-left.primary-text.fs-4.me-3
+        h2.fs-2.m-0 Dashboard
+      button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      #navbarSupportedContent.collapse.navbar-collapse
+        ul.navbar-nav.ms-auto.mb-2.mb-lg-0
+          li.nav-item.dropdown
+            a#navbarDropdown.nav-link.dropdown-toggle.second-text.fw-bold(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
+              i.fas.fa-user.me-2   #{currentuser.firstname + " " + currentuser.secondname} 
+            ul.dropdown-menu(aria-labelledby='navbarDropdown')
+              form(action="/logout" method="POST") 
+                 button.btn(type='submit') logout
+    .container-fluid.px-4
+      .row.g-3.my-2
+        .col-md-3
+          .p-3.bg-white.shadow-sm.d-flex.justify-content-around.align-items-center.rounded
+            div
+              a(href='/pending') Pending Products
+            
+        .col-md-3
+          .p-3.bg-white.shadow-sm.d-flex.justify-content-around.align-items-center.rounded
+            div
+              a(href='/approvedlist') Approved products
+           
+      .row.my-5
+        h3.fs-4.mb-3 Urban Farmer List
+        .col 
+          table.table.table-bordered
+              thead.table-dark
+                  tr
+                  th(scope='col') First Name
+                  th(scope='col') Second Name
+                  th(scope='col') Gender
+                  th(scope='col') Unique Number
+                  th(scope='col') Ward
+                  th(scope='col') NIN
+              tbody
+                  if urbanfarmers.length 
+                      each urbanfarmerlist in urbanfarmers
+                          tr
+                              td #{urbanfarmerlist.firstname}
+                              td #{urbanfarmerlist.secondname}
+                              td #{urbanfarmerlist.gender}
+                              td #{urbanfarmerlist.uniquenumber}
+                              td #{urbanfarmerlist.ward}
+                              td #{urbanfarmerlist.nin}
+  
+        // farmerOne registration
+        .myform1
+          h3 Urban farmer registration
+          form#registerUrban(action='/urbanFarmer' name='registration' method="POST")
+            .container.thisForm.mb-5
+              .row.mb-4
+                .col-md-6.col-lg-3.col-xl-3
+                  #error1.form-outline
+                    label.form-label(for='form3Example1') First name:
+                    input#firstname.firstname(type='text' name='firstname')
+                    small.error
+                .col-md-6.col-lg-3.col-xl-3
+                  #error2.form-outline
+                    label.form-label(for='form3Example1') Second name:
+                    input#secondname.secondName(type='text' name='secondname')
+                    small.error
+                .col-md-6.col-lg-3.col-xl-3
+                  #error3.form-outline
+                    label.form-label(for='form3Example1') Phone number:
+                    input#telephone.telephone(type='text' name='telephone')
+                    small.error
+                .col-md-6.col-lg-3.col-xl-3
+                  #error4.form-outline
+                    label.form-label(for='currentDate')  Current date:
+                    input#currentdate.currentDate(type='date' name='currentdate')
+              .row.mb-4
+                .col-md-6.col-lg-3.col-xl-3
+                  #error5.form-outline
+                    label.form-label Password:
+                    input#password.password(type='password' name='password')
+                    small.error
+                .col-md-6.col-lg-3.col-xl-3
+                  #error6.form-outline
+                    label.form-label Confirm password
+                    input#confirmpassword.confirmpassword(type='password' name='confirmpassword')
+                    small.error
+                .col-md-6.col-lg-3.col-xl-3
+                  #error7.form-outline
+                    label.form-label NIN Number:
+                    input#nin.nin(type='text' name='nin')
+                    small.error
+                .col-md-6.col-lg-3.col-xl-3
+                  #error8.form-outline
+                      label.form-label(for='exampleInputEmail1') Date of birth:
+                      input#DOB.DOB(type='date' name='dateofbirth' style='padding-right: 5px;')
+                      small.error
+                  
+              .row.mb-4 
+                .col-md-6.col-lg-3.col-xl-3
+                  #error9.form-outline
+                    label.form-label Unique number/ID::
+                    input#uniquenumber.uniquenumber(type='text' name='uniquenumber')
+                    small.error
+                .col-md-6.col-lg-3.col-xl-3
+                  #error10.form-outline.form-o
+                    label(for='gender') Gender:
+                    select#gender(name='gender')
+                      option(value='') Select gender
+                      option(value='male') Male
+                      option(value='female') Female
+                    small.error
+                .col-md-6.col-lg-3.col-xl-3
+                  #error11.form-outline.form-o
+                    label(for='ward') Ward:
+                    select#myward.values-for-wards(name='ward')
+                      option(value='') Select ward
+                      option(value='ward1') LC1
+                      option(value='ward2') LC2
+                      option(value='ward3') LC3
+                      option(value='ward4') LC4
+                    small.error
+                .col-md-6.col-lg-3.col-xl-3
+                  #error12.form-outline.form-o
+                    label(for='role') Role:
+                    select#role.values-for-wards(name='role')
+                      option(value='') Select role
+                      option(value='Urban farmer') urban farmer
+                    small.error
+              .row.mb-4
+                .col-md-6.col-lg-6.col-xl-3
+                  #error13.form-outline.radio
+                    label(for='lang') Activities:
+                    .radio
+                      input#horticulture(type='checkbox' name='horticulture' value='horticulture')
+                      span Horticulture
+                      input#dairy(type='checkbox' name='dairy' value='dairy')
+                      span Dairy 
+                      input#poultry(type='checkbox' name='poultry' value='poultry')
+                      span Poultry
+                      br
+                    small.error
+                .col-md-6.col-lg-6.col-xl-3
+                .col-md-6.col-lg-6.col-xl-3
+                    #error14.form-outline
+                      label.form-label Email:
+                      input#email.email(type='text' name='email')
+                      small.error
+              .row.mb-4
+                .col
+                  .mb-3.form-check
+                    input#exampleCheck1.form-check-input(type='checkbox')
+                    label.form-check-label(for='exampleCheck1') Comfirm
+                  .fo-signup
+                    button.btn(type='submit') Submit
+script(src='/bootstrap-5.2.0-dist/js/bootstrap.bundle.js')
 
-table.table.table-bordered
-  thead.table-dark
-    tr
-      th(scope='col') First Name
-      th(scope='col') Second Name
-      th(scope='col') Gender
-      th(scope='col') Unique Number
-      th(scope='col') Ward
-      th(scope='col') NIN
-      th(scope='col') Update
-      th(scope='col') Delete
-  tbody
-      if urbanfarmers.length 
-          each urbanfarmerlist in urbanfarmers
-              tr
-                td #{urbanfarmerlist.firstname}
-                td #{urbanfarmerlist.secondname}
-                td #{urbanfarmerlist.gender}
-                td #{urbanfarmerlist.uniquenumber}
-                td #{urbanfarmerlist.ward}
-                td #{urbanfarmerlist.nin}
-                td
-                    a
-                        button.btn.btn-primary.btn-block(href='/urbanfarmer/update/'+urbanfarmerlist._id) Update
-                td
-                    form(method="post" action='/urbanfarmer/delete')
-                        input(type="hidden", placeholder="", name="id", value=urbanfarmerlist._id)
-                        button.btn.btn-danger.btn-block(type="submit") Delete
-script(src='/public/bootstrap-5.2.0-dist/js/bootstrap.bundle.js')
+
+script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js')
+script.
+  var el = document.getElementById("wrapper");
+  var toggleButton = document.getElementById("menu-toggle");
+  toggleButton.onclick = function () {
+  el.classList.toggle("toggled");
+  };

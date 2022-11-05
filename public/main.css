@@ -21,7 +21,7 @@
 }
 
 body{
-  background-color: var(--green);
+  /* background-color: var(--green); */
 }
   .navbar-nav li a{
     color: #fff;

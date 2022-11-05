@@ -6,14 +6,6 @@ const uploadSchema = new mongoose.Schema({
         required : true,
         trim: true
     },
-    firstname: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Enrollment' 
-    },
-    secondname: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Enrollment' 
-    },
     category: {
         type: String,
     },
@@ -24,9 +16,14 @@ const uploadSchema = new mongoose.Schema({
         type: Number,
         trim: true
     },
+    totalamount:{
+        type: Number
+    },
+    direction:{
+        type: String 
+    },
     farmerid: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Enrollment' 
+        type: String
     },
     dateofupload: {
         type: Date,
@@ -34,13 +31,11 @@ const uploadSchema = new mongoose.Schema({
     uploadimage: {
         type: String,   
     },
-    fullname: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Enrollment' 
+    produceowner: {
+        type: String,
     },
-    ward: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Enrollment'
+    farmerward: {
+        type: String,
     },
     modeofpayment: {
         type: String,
@@ -51,10 +46,6 @@ const uploadSchema = new mongoose.Schema({
     producetype: {
         type: String,
     },
-    owner:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Enrollment'
-    },
     status: {
         type: String,
         default: "Pending",
@@ -64,8 +55,7 @@ const uploadSchema = new mongoose.Schema({
         type: String, 
         default: "available",
         enum: ["available", "booked", "N/A"] 
-      }
-    
+      },
 });
 
 module.exports = mongoose.model('Upload', uploadSchema)

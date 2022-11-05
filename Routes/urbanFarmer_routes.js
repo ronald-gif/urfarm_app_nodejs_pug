@@ -36,10 +36,40 @@ router.post('/urbanFarmer', async (req, res) => {
    
 });
 
+
+router.get('/urbanfarmer', (req, res) => {
+    res.render('demo');
+});
+
+router.post('/urbanfarmer', async (req, res) => {
+    console.log(req.body);
+    try {
+        const user = new Enrollment(req.body);
+        let uniquenumber = await Enrollment.findOne({uniquenumber:req.body.uniquenumber});
+        if(uniquenumber) {
+            return res.status(404).send('This number already exists');
+        }else{
+            await Enrollment.register(user, req.body.password, (error) => {
+                if(error){
+                    throw error
+                }
+                res.redirect('/FO-dashboard')
+                // res.send('Registration succussfull')
+            })
+        }
+       
+    } catch (error) {
+        res.status(404).send('sorry we are fixing something');
+        console.log(error);
+    }
+   
+});
+
 router.get('/urbanfarmerlist', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
+    req.session.user = req.user
     try {
         let urbanfarmerlist = await Enrollment.find({role: "Urban farmer"});
-        res.render('urbanfarmerlist', {urbanfarmers:urbanfarmerlist})
+        res.render('urbanfarmerlist', {urbanfarmers:urbanfarmerlist, currentuser:req.user})
     } catch (error) {
         res.status(404).send("we can not process your request now")
         
