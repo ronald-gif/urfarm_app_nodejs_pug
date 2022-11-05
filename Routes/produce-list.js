@@ -200,9 +200,9 @@ router.get("/reports", connectEnsureLogin.ensureLoggedIn(), async(req, res) =>
                }}
            ])
             
-            console.log("Poultry collections", totalPoultry)
-            console.log("Hort collections", totalHort)
-            console.log("Dairy collections", totalDairy)
+            // console.log("Poultry collections", totalPoultry)
+            // console.log("Hort collections", totalHort)
+            // console.log("Dairy collections", totalDairy)
             res.render("report", {
             title: 'Reports',
             totalP:totalPoultry[0],
@@ -218,4 +218,23 @@ router.get("/reports", connectEnsureLogin.ensureLoggedIn(), async(req, res) =>
    }
 });
         
+router.get('/numberOfFo', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
+req.session.user = req.user;
+if(req.user.role = 'Agriculture officer'){
+	try {
+		const totalFO = await Enrollment.aggregate([
+			{$match: {role: "farmerone"}},
+			{$group: {_id: "$all",
+			totalFarmers: {$count: "$farmerone"},
+			})
+			res.render('numberOfFO', {
+				title: 'Number of farmerone'
+		}}
+		])
+	} catch (error) {
+		
+	}
+
+}
+})
 module.exports = router
