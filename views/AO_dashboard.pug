@@ -54,8 +54,7 @@ head
         ul.navbar-nav.ms-auto.mb-2.mb-lg-0
           li.nav-item.dropdown
             a#navbarDropdown.nav-link.dropdown-toggle.second-text.fw-bold(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
-              i.fas.fa-user.me-2
-              | Agri Officer
+              i.fas.fa-user.me-2    #{currentuser.firstname+" " + currentuser.secondname}
             ul.dropdown-menu(aria-labelledby='navbarDropdown')
               form(action="/logout" method="POST") 
                  button(type='submit') logout
@@ -64,23 +63,23 @@ head
         .col-md-3
           .p-3.bg-white.shadow-sm.d-flex.justify-content-around.align-items-center.rounded
             div
-              a(href='') farmer ones
-            i.fas.fa-gift.fs-1.primary-text.border.rounded-full.secondary-bg.p-3
+              h4 farmer ones  #{farmerOnes}
+            //- i.fas.fa-gift.fs-1.primary-text.border.rounded-full.secondary-bg.p-3
         .col-md-3
           .p-3.bg-white.shadow-sm.d-flex.justify-content-around.align-items-center.rounded
             div
-              a(href='') Urban farmers
-            i.fas.fa-hand-holding-usd.fs-1.primary-text.border.rounded-full.secondary-bg.p-3
+              h4 Urban farmers #{urbanFarmers}
+            //- i.fas.fa-hand-holding-usd.fs-1.primary-text.border.rounded-full.secondary-bg.p-3
         .col-md-3
           .p-3.bg-white.shadow-sm.d-flex.justify-content-around.align-items-center.rounded
             div
-              a(href='') Customers
-            i.fas.fa-truck.fs-1.primary-text.border.rounded-full.secondary-bg.p-3
+              h4 Customers #{customers}
+            //- i.fas.fa-truck.fs-1.primary-text.border.rounded-full.secondary-bg.p-3
 
         .accordion-item
           h2#headingThree.accordion-header
             button.accordion-button.collapsed(type='button' data-bs-toggle='collapse' data-bs-target='#collapseThree' aria-expanded='false' aria-controls='collapseThree')
-              | View Report
+              | View Total Report
           #collapseThree.accordion-collapse.collapse(aria-labelledby='headingThree' data-bs-parent='#accordionExample')
             .accordion-body
               h1 Report
@@ -90,7 +89,7 @@ head
                           h4.mb-5 Poultry Report
                               .card.card-custom.mx-2.mb-3(style='width: 18rem;')
                                   .card-body
-                                      h6 Products Quantity: #{totalP.totalQuantity}
+                                      h6 Products Quantity: #{totalP.totalQuantity}  
                                       h6 Revenue Projection: #{new Intl.NumberFormat().format(totalP.totalCost)} UGX
 
                                     

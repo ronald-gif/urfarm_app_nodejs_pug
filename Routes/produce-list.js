@@ -302,34 +302,33 @@ router.get("/AO-dashboard", connectEnsureLogin.ensureLoggedIn(), async(req, res)
         try {
             let totalPoultry = await Upload.aggregate([
            { $match: { category: "poultry" } },
-           { $group: { _id: "$all",
-            totalQuantity: { $sum: "$qauntity" },
-            totalCost: { $sum: { $multiply: [ "$unitprice", "$qauntity" ] } },
+           { $group: { _id: "$all", totalQuantity: { $sum: "$qauntity" }, totalCost: { $sum: { $multiply: [ "$unitprice", "$qauntity" ] } },
            
            }}
            ])
-            let totalHort = await Upload.aggregate([
+            let totalHorticulture = await Upload.aggregate([
                { $match: { category: "horticulture" } },
-               { $group: { _id: "$all",
-                totalQuantity: { $sum: "$qauntity" },
-                totalCost: { $sum: { $multiply: [ "$unitprice", "$qauntity" ]
+               { $group: { _id: "$all", totalQuantity: { $sum: "$qauntity" }, totalCost: { $sum: { $multiply: [ "$unitprice", "$qauntity" ]
 } },            
                }}
            ])
             let totalDairy = await Upload.aggregate([
                { $match: { category: "dairy" } },
-               { $group: { _id: "$all",
-                totalQuantity: { $sum: "$qauntity" },
-                totalCost: { $sum: { $multiply: [ "$unitprice", "$qauntity" ]
+               { $group: { _id: "$all", totalQuantity: { $sum: "$qauntity" }, totalCost: { $sum: { $multiply: [ "$unitprice", "$qauntity" ]
 } },            
                }}
            ])
             
-            res.render("AO_dashboard", {
-            title: 'Reports',
+		   let farmerOnes = await Enrollment.countDocuments({role: "farmerone"})
+		   let urbanFarmers = await Enrollment.countDocuments({role: "Urban farmer"})
+		   let customers = await Enrollment.countDocuments({role: "customer"})
+            res.render("AO_dashboard", { currentuser:req.user,
             totalP:totalPoultry[0],
-            totalH:totalHort[0],
+            totalH:totalHorticulture[0],
             totalD:totalDairy[0],
+			farmerOnes,
+			urbanFarmers,
+			customers
            });
        } catch (error) {
             res.status(400).send("unable to find items in the database");
@@ -339,6 +338,8 @@ router.get("/AO-dashboard", connectEnsureLogin.ensureLoggedIn(), async(req, res)
         res.send("This page is only accessed by Agric Officers")
    }
 });
+
+
 
 router.get('/FO', async (req, res) =>{
 	try {
