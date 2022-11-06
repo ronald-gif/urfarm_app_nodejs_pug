@@ -2,12 +2,9 @@ const express = require("express");
 const router = express.Router();
 const multer = require("multer");
 const connectEnsureLogin = require('connect-ensure-login');
-
-
 // importing model
 const Upload = require('../Models/UploadSchema')
 const Enrollment = require('../Models/UserSchema')
-
 // image upload
 var storage = multer.diskStorage({
 	destination: (req, file, cb) => {
@@ -17,10 +14,8 @@ var storage = multer.diskStorage({
 		cb(null, file.originalname);
 	},
 });
-
 // instantiate variable upload to store multer functionality to upload image
 var upload = multer({ storage: storage });
-
 // route for listing the produce
 router.get('/producelist', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
 	req.session.user = req.user
@@ -31,18 +26,15 @@ router.get('/producelist', connectEnsureLogin.ensureLoggedIn(), async (req, res)
 		res.status(400).send('unable to get image')
 	}
 });
-
 //get route for update product
 router.get('/produce/update/:id', async (req, res) => {
 	try {
 		const updateProduct = await Upload.findOne({_id:req.params.id});
 		res.render('productUpdate',{product:updateProduct});
-
 	} catch (error) {
 		res.status(400).send('Unable to upadate product');
 	}
 });
-
 router.post('/produce/update', async (req, res) => {
 	try {
 		await Upload.findOneAndUpdate({_id:req.query.id}, req.body);
@@ -51,7 +43,6 @@ router.post('/produce/update', async (req, res) => {
 		res.status(400).send('Unable to upadate product');
 	}
 });
-
 // Delete product
 router.post('/produce/delete', async (req, res) => {
 	try {
@@ -61,10 +52,7 @@ router.post('/produce/delete', async (req, res) => {
 		res.status(400).send('Unable to delete product');
 	}
 });
-
-
 // approved and pending
-
 router.get('/produce/approved/:id', async (req, res) => {
 	try {
 		const updateProduct = await Upload.findOne({_id:req.params.id});
@@ -74,7 +62,6 @@ router.get('/produce/approved/:id', async (req, res) => {
 		res.status(400).send('Unable to approve product');
 	}
 });
-
 router.post('/produce/approved', async (req, res) => {
 	try {
 		await Upload.findOneAndUpdate({_id:req.query.id}, req.body);
@@ -83,8 +70,6 @@ router.post('/produce/approved', async (req, res) => {
 		res.status(400).send('Unable to approve product');
 	}
 });
-
-
 // products under inspection
 // router.get('/produce/inspect/:id', async (req, res) => {
 // 	try {
@@ -95,7 +80,6 @@ router.post('/produce/approved', async (req, res) => {
 // 		res.status(400).send('Unable to insepct product');
 // 	}
 // });
-
 // router.post('/produce/inspect', async (req, res) => {
 // 	try {
 // 		await Upload.findOneAndUpdate({_id:req.query.id}, req.body);
@@ -104,7 +88,6 @@ router.post('/produce/approved', async (req, res) => {
 // 		res.status(400).send('Unable to inspect product');
 // 	}
 // });
-
 // router.get('/inspected', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
 // 	req.session.user = req.user;
 // 	try {
@@ -115,9 +98,7 @@ router.post('/produce/approved', async (req, res) => {
 // 		res.status(400).send('unable to inspect product')
 // 	}
 // });
-
 // appointment routes
-
 router.get('/farmers/appointed/:id', async (req, res) => {
 	try {
 		const appointment = await Enrollment.findOne({_id:req.params.id});
@@ -127,7 +108,6 @@ router.get('/farmers/appointed/:id', async (req, res) => {
 		res.status(400).send('Unable to appoint farmerone');
 	}
 });
-
 router.post('/farmers/appointed', async (req, res) => {
 	try {
 		await Enrollment.findOneAndUpdate({_id:req.query.id}, req.body);
@@ -136,7 +116,6 @@ router.post('/farmers/appointed', async (req, res) => {
 		res.status(400).send('Unable to appoint farmerone');
 	}
 });
-
 router.get('/appointed', async (req, res) => {
 	try {
 		let farmerone = await Enrollment.find()
@@ -145,7 +124,6 @@ router.get('/appointed', async (req, res) => {
 		res.status(400).send('cant process your request at the moment')
 	}
 });
-
 router.get('/rejected', async (req, res) => {
 	try {
 		let farmerone = await Enrollment.find()
@@ -154,10 +132,7 @@ router.get('/rejected', async (req, res) => {
 		res.status(400).send('cant process your request at the moment')
 	}
 });
-
-
 // available products
-
 router.get('/produce/availability/:id', async (req, res) => {
 	try {
 		const saleProduct = await Upload.findOne({_id:req.params.id});
@@ -167,7 +142,6 @@ router.get('/produce/availability/:id', async (req, res) => {
 		res.status(400).send('Unable to approve product');
 	}
 });
-
 router.post('/produce/availability', async (req, res) => {
 	try {
 		await Upload.findOneAndUpdate({_id:req.query.id}, req.body);
@@ -176,7 +150,6 @@ router.post('/produce/availability', async (req, res) => {
 		res.status(400).send('Unable to approve product');
 	}
 });
-
 // router.get('/availableproducts',async (req, res) => {
 // 	try {
 // 		let product = await Upload.find().sort({$natural:-1})
@@ -185,17 +158,16 @@ router.post('/produce/availability', async (req, res) => {
 // 		res.status(400).send('unable to display products')
 // 	}
 // });
-
-
 router.get('/home', async (req, res) => {
+	req.session.user = req.user
 	try {
 		let availableproduct = await Upload.find()
-		res.render('index', {availableproducts:availableproduct})
+		let currentuser = await Enrollment.find()
+		res.render('index', {availableproducts:availableproduct, currentuser:req.user, loggedinuser:currentuser})
 	} catch (error) {
 		res.status(400).send('unable to display')
 	}
 })
-
 router.get('/dairy', async (req, res) => {
 	try {
 		let availableproduct = await Upload.find()
@@ -204,7 +176,6 @@ router.get('/dairy', async (req, res) => {
 		res.status(400).send('unable to display')
 	}
 })
-
 router.get('/horticulture', async (req, res) => {
 	try {
 		let availableproduct = await Upload.find()
@@ -213,7 +184,6 @@ router.get('/horticulture', async (req, res) => {
 		res.status(400).send('unable to display')
 	}
 })
-
 router.get('/poultry', async (req, res) => {
 	try {
 		let availableproduct = await Upload.find()
@@ -222,7 +192,6 @@ router.get('/poultry', async (req, res) => {
 		res.status(400).send('unable to display')
 	}
 })
-
 // route for approved product list
 router.get('/approvedlist', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
 	req.session.user = req.user
@@ -238,7 +207,6 @@ router.get('/approvedlist', connectEnsureLogin.ensureLoggedIn(), async (req, res
 	}
 	
 });
-
 router.get('/approvedproducts', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
 	req.session.user = req.user
 	if(req.user.role == "Urban farmer"){
@@ -253,7 +221,6 @@ router.get('/approvedproducts', connectEnsureLogin.ensureLoggedIn(), async (req,
 	}
 	
 });
-
 // route for listing the produce
 router.get('/pending', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
 	req.session.user = req.user;
@@ -265,7 +232,6 @@ router.get('/pending', connectEnsureLogin.ensureLoggedIn(), async (req, res) => 
 		res.status(400).send('unable to get image')
 	}
 });
-
 router.get('/FO-dashboard', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
 	req.session.user = req.user;
 	if(req.user.role == "farmerone"){
@@ -283,7 +249,6 @@ router.get('/FO-dashboard', connectEnsureLogin.ensureLoggedIn(), async (req, res
 	}
 	
 });
-
 router.get('/urban-dashboard', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
     req.session.user = req.user
     try {
@@ -293,7 +258,6 @@ router.get('/urban-dashboard', connectEnsureLogin.ensureLoggedIn(), async (req, 
        res.status(400).send("No products found in the database") 
     }
 });
-
 // aggregations
 router.get("/AO-dashboard", connectEnsureLogin.ensureLoggedIn(), async(req, res) =>
 {
@@ -338,41 +302,5 @@ router.get("/AO-dashboard", connectEnsureLogin.ensureLoggedIn(), async(req, res)
         res.send("This page is only accessed by Agric Officers")
    }
 });
-
-
-
-router.get('/FO', async (req, res) =>{
-	try {
-		let totalfarmerone = await Enrollment.aggregate(
-			[
-				{$match: {role: "farmerone"}},
-				{$group: {_id: "$farmerone",
-			}}
-			]
-		)
-	} catch (error) {
-		res.status(400).send("can not process your request now")
-	}
-	res.send('this page cannot be reached')
-})
         
-router.get('/numberOfFo', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
-req.session.user = req.user;
-if(req.user.role = 'Agriculture officer'){
-	try {
-		const totalFO = await Enrollment.aggregate([
-			{$match: {role: "farmerone"}},
-			{$group: {_id: "$all",
-			totalFarmers: {$count: "$farmerone"},
-			})
-			res.render('numberOfFO', {
-				title: 'Number of farmerone'
-		}}
-		])
-	} catch (error) {
-		
-	}
-
-}
-})
 module.exports = router

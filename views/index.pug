@@ -7,6 +7,10 @@ head
   link(rel='icon' type='image/x-icon' href='/images/favicon.ico')
   link(rel="stylesheet", href="/bootstrap-5.2.0-dist/css/bootstrap.css")
   link(rel='stylesheet' type="text/css" href='/main.css')
+  style.
+   body{
+    background-color: #000;
+     }
 // nav bar
 nav.navbar.navbar-expand-lg
   .container-fluid
@@ -30,35 +34,41 @@ nav.navbar.navbar-expand-lg
               a.dropdown-item(href='/poultry') Poultry
             li
               a.dropdown-item(href='/dairy') Dairy
+            
       // modal login
-      .buttonlogin
-        a(href='/login')
-          button.btn(type='button') Login
-      // Button trigger modal
-      button.btn(type='button' data-bs-toggle='modal' data-bs-target='#Backdrop')
-        | Sign up
-      // Modal
-      #Backdrop.modal.fade(data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true')
-        .modal-dialog
-          .modal-content
-            .modal-header
-              h3(style='color: #000;') Register as:
-              button.btn-close.mb-4.pb-4.btn-close-black(type='button' data-bs-dismiss='modal' aria-label='Close')
-            .modal-body(style='color: #000;')
-              .container
-                .row
-                  .col-2
-                  .col
-                    .navLinks
-                      ul
-                        li
-                          a(href='/AO') Agriculture Officer
-                        li
-                          a(href='/farmerone') FarmerOne
-                        li
-                          a(href='/urbanFarmer') Urban farmer
-                        li
-                          a(href='/public') Normal user
+      if !currentuser
+        .buttonlogin
+          a(href='/login')
+            button.btn(type='button') Login
+        // Button trigger modal
+        button.btn(type='button' data-bs-toggle='modal' data-bs-target='#Backdrop')
+          | Sign up
+        // Modal
+        #Backdrop.modal.fade(data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true')
+          .modal-dialog
+            .modal-content
+              .modal-header
+                h3(style='color: #000;') Register as:
+                button.btn-close.mb-4.pb-4.btn-close-black(type='button' data-bs-dismiss='modal' aria-label='Close')
+              .modal-body(style='color: #000;')
+                .container
+                  .row
+                    .col-2
+                    .col
+                      .navLinks
+                        ul
+                          li
+                            a(href='/AO') Agriculture Officer
+                          li
+                            a(href='/farmerone') FarmerOne
+                          li
+                            a(href='/urbanFarmer') Urban farmer
+                          li
+                            a(href='/public') Normal user
+                 
+      if currentuser
+        form(action="/logout" method="POST") 
+              button.btn(type='submit') Logout
 // SECOND SECTION
 .second-section
   .looking-for
@@ -120,6 +130,7 @@ nav.navbar.navbar-expand-lg
     span products
   .container-fluid.sellingItems
     .row.row-cols-2.row-cols-lg-5.g-2.g-lg-3.row2
+    
       if availableproducts.length > 0
         each availableproduct in availableproducts
           if availableproduct.status == "Approved"
@@ -133,7 +144,25 @@ nav.navbar.navbar-expand-lg
                       h6.card-text
                         | #{availableproduct.availability}
                       h6.card-text #{new Intl.NumberFormat().format(availableproduct.totalamount)} UGX 
-                      a.btn.btn-primary(href='/public') Shop with us  
+                      if !currentuser
+                        a.btn.btn-primary(href='/public') Shop with us  
+                      if currentuser
+                        a.btn.btn-primary(href='/poultry') Shop with us 
+    //- if currentuser
+    //-   if availableproducts.length > 0
+    //-     each availableproduct in availableproducts
+    //-       if availableproduct.status == "Approved"
+    //-         .d-flex
+    //-           .col
+    //-             .top-selling
+    //-               .card.mycard
+    //-                 img.card-img-top(src='/'+availableproduct.uploadimage, alt="image" width ='150px' height='150px')
+    //-                 .card-body
+    //-                   h5.card-title #{availableproduct.productname}
+    //-                   h6.card-text
+    //-                     | #{availableproduct.availability}
+    //-                   h6.card-text #{new Intl.NumberFormat().format(availableproduct.totalamount)} UGX 
+    //-                   a.btn.btn-primary(href='/poultry') Shop with us  
 
 // fifth section
 // footer
@@ -141,7 +170,7 @@ footer.footer(id='#foot_last')
   .container-last
     .logo
       a.navbar-brand(href='/home')
-        img(src='/images/onlinelogomaker-091022-1346-6665.png' alt='')
+        img(src='/images/onlinelogomaker-091022-1346-6665.png' alt='/home')
     .payment-method
       h5 Payment methods
       ul
