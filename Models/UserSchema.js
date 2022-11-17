@@ -62,8 +62,7 @@ const userSchema = new mongoose.Schema({
         trim: true
     },
     activities: {
-        type: String,
-        
+        type: String,   
     },
     role: {
         type: String,

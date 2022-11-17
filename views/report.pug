@@ -39,3 +39,27 @@ h1 Report
                             
                         p.card-text
     
+
+      //- .fouth-section
+            //- h1.heading
+            //- .container-fluid.sellingItems
+            //-     .row.row-cols-2.row-cols-lg-5.g-2.g-lg-3.row2
+            //-     if availableproducts.length > 0
+            //-         each availableproduct in availableproducts
+            //-         if availableproduct.status == "Approved" 
+            //-             .d-flex
+            //-             .col
+            //-                 .top-selling
+            //-                 .card.mycard
+            //-                     img.card-img-top(src='/'+availableproduct.uploadimage, alt="image" width ='150px' height='150px')
+            //-                     .card-body
+            //-                     h5.card-title #{availableproduct.productname}
+            //-                     h6.card-text
+            //-                         | #{availableproduct.availability}
+            //-                     h6.card-text #{availableproduct.producetype}
+            //-                     h6.card-text #{availableproduct.farmerward}
+                                
+            //-                     if !currentuser
+            //-                         a.btn.btn-primary(href='/public') Shop with us 
+            //-                     if currentuser 
+            //-                         a.btn.btn-primary(href='/sales') Shop with us 

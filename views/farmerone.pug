@@ -30,35 +30,41 @@ nav.navbar.navbar-expand-lg
               a.dropdown-item(href='/poultry') Poultry
             li
               a.dropdown-item(href='/dairy') Dairy
+            
       // modal login
-      .buttonlogin
-        a(href='/login')
-          button.btn(type='button') Login
-      // Button trigger modal
-      button.btn(type='button' data-bs-toggle='modal' data-bs-target='#Backdrop')
-        | Sign up
-      // Modal
-      #Backdrop.modal.fade(data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true')
-        .modal-dialog
-          .modal-content
-            .modal-header
-              h3(style='color: #000;') Register as:
-              button.btn-close.mb-4.pb-4.btn-close-black(type='button' data-bs-dismiss='modal' aria-label='Close')
-            .modal-body(style='color: #000;')
-              .container
-                .row
-                  .col-2
-                  .col
-                    .navLinks
-                      ul
-                        li
-                          a(href='/AO') Agriculture Officer
-                        li
-                          a(href='/farmerone') FarmerOne
-                        li
-                          a(href='/urbanFarmer') Urban farmer
-                        li
-                          a(href='/public') Normal user
+      if !currentuser
+        .buttonlogin
+          a(href='/login')
+            button.btn(type='button') Login
+        // Button trigger modal
+        button.btn(type='button' data-bs-toggle='modal' data-bs-target='#Backdrop')
+          | Sign up
+        // Modal
+        #Backdrop.modal.fade(data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true')
+          .modal-dialog
+            .modal-content
+              .modal-header
+                h3(style='color: #000;') Register as:
+                button.btn-close.mb-4.pb-4.btn-close-black(type='button' data-bs-dismiss='modal' aria-label='Close')
+              .modal-body(style='color: #000;')
+                .container
+                  .row
+                    .col-2
+                    .col
+                      .navLinks
+                        ul
+                          li
+                            a(href='/AO') Agriculture Officer
+                          li
+                            a(href='/farmerone') FarmerOne
+                          li
+                            a(href='/urbanFarmer') Urban farmer
+                          li
+                            a(href='/public') Normal user
+                 
+      if currentuser
+        form(action="/logout" method="POST") 
+              button.btn(type='submit') Logout
                       
 // farmerOne registration
 .myform1
@@ -99,7 +105,7 @@ nav.navbar.navbar-expand-lg
         .col-md-6.col-lg-3.col-xl-3
           #error8.form-outline
             label.form-label NIN Number:
-            input#nin.nin(type='text' name='nin' placeholder='CM12345678ABCD')
+            input#nin.nin(type='text' name='nin' placeholder='CM1234568ABCD')
             small.error
         .col-md-6.col-lg-3.col-xl-3
           #error9.form-outline
@@ -138,7 +144,7 @@ nav.navbar.navbar-expand-lg
             small.error
         .col-md-6.col-lg-3.col-xl-3
           #error15.form-outline.form-o
-            label(for='gender') Gender:
+            label.form-label(for='gender') Gender:
             select#gender(name='gender')
               option(value='') Select gender
               option(value='male' name='gender') Male
@@ -146,7 +152,7 @@ nav.navbar.navbar-expand-lg
             small.error
         .col-md-6.col-lg-3.col-xl-3
            #error16.form-outline.form-o
-            label(for='ward') Ward:
+            label.form-label(for='ward') Ward:
             select#myward(name='ward')
               option(value='') Select Ward
               option(value='ward1' name='ward1') LC1
@@ -156,23 +162,20 @@ nav.navbar.navbar-expand-lg
             small.error
         .col-md-6.col-lg-3.col-xl-3
           #error18.form-outline.form-o
-              label(for='role') Role:
+              label.form-label(for='role') Role:
               select#role.values-for-wards(name='role')
                 option(value='') Select role
                 option(value='farmerone') Farmerone
               small.error
       .row.mb-4
         .col-md-6.col-lg-3.col-xl-3
-          #error17.form-outline.radio
-            label(for='lang') Activities:
-            .radio
-              input#horticulture(type='checkbox' name='activities' value='horticulture')
-              span Horticulture
-              input#dairy(type='checkbox' name='activities' value='dairy')
-              span Dairy 
-              input#poultry(type='checkbox' name='activites' value='poultry')
-              span Poultry
-              br
+          #error17.form-outline
+            label.form-label Activities:
+            select#activities.activities(name="activities") 
+              option(value="") Select Activity
+              option(value="Horticulture") Horticulture
+              option(value="Dairy") Dairy 
+              option(value="Poultry") Poultry
             small.error
         .col-md-6.col-lg-6.col-xl-3
         .col-md-6.col-lg-6.col-xl-3
@@ -190,4 +193,4 @@ nav.navbar.navbar-expand-lg
   //- form(action="/logout" method="POST") 
   //-           button.btn-1(type='submit') logout
 script(src='/bootstrap-5.2.0-dist/js/bootstrap.bundle.js')
-//- script(src='/script.js')
+script(src='/script.js')

@@ -5,6 +5,8 @@ const connectEnsureLogin = require('connect-ensure-login');
 // importing model
 const Upload = require('../Models/UploadSchema')
 const Enrollment = require('../Models/UserSchema')
+const Order = require('../Models/Orders')
+const Public =require('../Models/publicSchema')
 // image upload
 var storage = multer.diskStorage({
 	destination: (req, file, cb) => {
@@ -168,26 +170,110 @@ router.get('/home', async (req, res) => {
 		res.status(400).send('unable to display')
 	}
 })
-router.get('/dairy', async (req, res) => {
+
+router.get('/sales', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
+	req.session.user = req.user
 	try {
 		let availableproduct = await Upload.find()
-		res.render('dairy', {availableproducts:availableproduct})
+		let currentuser = await Enrollment.find()
+		let productOwner = await Enrollment.find()
+		res.render('salesPage', {availableproducts:availableproduct, loggedinuser:productOwner, currentuser:req.user})
+	} catch (error) {
+		res.status(400).send('unable to display')
+	}
+})
+
+
+router.get('/about-us', async (req, res) => {
+	req.session.user = req.user
+	try {
+		let currentuser = await Enrollment.find()
+		res.render('about-us', {currentuser:req.user, loggedinuser:currentuser})
+	} catch (error) {
+		res.status(400).send('unable to display')
+	}
+})
+
+router.get('/contact-us', async (req, res) => {
+	req.session.user = req.user
+	try {
+		let currentuser = await Enrollment.find()
+		let currentuserpublic = await Public.find()
+		res.render('contact-us', {currentuser:req.user, loggedinuser:currentuser})
+	} catch (error) {
+		res.status(400).send('unable to display')
+	}
+})
+
+router.post('/contact-us', async (req, res) => {
+    console.log(req.body);
+    try {
+        const user = new Public(req.body);
+            await user.save()
+			res.redirect('/contact-us')
+    } catch (error) {
+        res.status(404).send('sorry we are fixing something');
+        console.log(error);
+    }
+   
+});
+
+router.get('/how-to-buy', async (req, res) => {
+	req.session.user = req.user
+	try {
+		let currentuser = await Enrollment.find()
+		res.render('how-to-buy', {currentuser:req.user, loggedinuser:currentuser})
+	} catch (error) {
+		res.status(400).send('unable to display')
+	}
+})
+
+router.get('/payment', async (req, res) => {
+	req.session.user = req.user
+	try {
+		let currentuser = await Enrollment.find()
+		res.render('payment', {currentuser:req.user, loggedinuser:currentuser})
+	} catch (error) {
+		res.status(400).send('unable to display')
+	}
+})
+
+router.get('/terms-and-conditions', async (req, res) => {
+	req.session.user = req.user
+	try {
+		let currentuser = await Enrollment.find()
+		res.render('termsandcondition', {currentuser:req.user, loggedinuser:currentuser})
+	} catch (error) {
+		res.status(400).send('unable to display')
+	}
+})
+
+router.get('/dairy', async (req, res) => {
+	req.session.user = req.user
+	try {
+		let availableproduct = await Upload.find()
+		let currentuser = await Enrollment.find()
+		res.render('dairy', {availableproducts:availableproduct, currentuser:req.user, loggedinuser:currentuser})
 	} catch (error) {
 		res.status(400).send('unable to display')
 	}
 })
 router.get('/horticulture', async (req, res) => {
+	req.session.user = req.user
 	try {
 		let availableproduct = await Upload.find()
-		res.render('horticulture', {availableproducts:availableproduct})
+		let currentuser = await Enrollment.find()
+		res.render('horticulture', {availableproducts:availableproduct, currentuser:req.user, loggedinuser:currentuser})
 	} catch (error) {
 		res.status(400).send('unable to display')
 	}
 })
 router.get('/poultry', async (req, res) => {
+	req.session.user = req.user
 	try {
 		let availableproduct = await Upload.find()
-		res.render('poultry', {availableproducts:availableproduct})
+		let currentuser = await Enrollment.find()
+		res.render('poultry', {availableproducts:availableproduct, currentuser:req.user, loggedinuser:currentuser})
 	} catch (error) {
 		res.status(400).send('unable to display')
 	}
@@ -232,6 +318,7 @@ router.get('/pending', connectEnsureLogin.ensureLoggedIn(), async (req, res) => 
 		res.status(400).send('unable to get image')
 	}
 });
+
 router.get('/FO-dashboard', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
 	req.session.user = req.user;
 	if(req.user.role == "farmerone"){
@@ -249,6 +336,23 @@ router.get('/FO-dashboard', connectEnsureLogin.ensureLoggedIn(), async (req, res
 	}
 	
 });
+
+
+router.get('/bookings', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
+	req.session.user = req.user;
+	if(req.user.role == "farmerone"){
+		try {
+			let totalorders = await Order.countDocuments()
+			res.render('bookingandorders', {currentuser:req.user,totalorders});
+		} catch (error) {
+			res.status(400).send('unable to get image')
+		}
+	}else{
+		res.send('This page is only accessed by Farmer ones')
+	}
+	
+});
+
 router.get('/urban-dashboard', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
     req.session.user = req.user
     try {

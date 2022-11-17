@@ -6,9 +6,16 @@ head
   link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css' rel='stylesheet')
   link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css')
   link(rel='stylesheet' href='/dashboard.css')
-  title Approved Products
+  title Orders
   link(rel='x-icon' type='image/x-icon' href='/img/images/favicon.ico')
-  //- link(rel='stylesheet' href='/main.css')
+  link(rel='stylesheet' href='/urban.css')
+  style.
+    h4 {
+        color: #22dae8;
+    }
+    span{
+        color: #2e0219;
+    }
 #wrapper.d-flex
   // Sidebar
   #sidebar-wrapper
@@ -51,41 +58,10 @@ head
     .container-fluid.px-4
       .row.g-3.my-2
         .col-md-3
-          .p-3.bg-white.shadow-sm.d-flex.justify-content-around.align-items-center.rounded
-            div
-              a(href='/pending') Pending Products
-            
-        .col-md-3
-          .p-3.bg-white.shadow-sm.d-flex.justify-content-around.align-items-center.rounded
-            div
-              a(href='/approvedlist') Approved products
-           
-      .row.my-5
-        h3.fs-4.mb-3 Approved Products
-        .col
-          table.table.table-bordered
-            thead.table-dark
-              tr
-                th(scope='col') product name
-                th(scope='col') category
-                th(scope='col') product price
-                th(scope='col') Qauntity
-                th(scope='col') Total Amount
-                th(scope='col') mode of payment
-                th(scope='col') product image
-            tbody
-                if products.length 
-                    each product in products
-                      if product.status == "Approved" && product.farmerward === currentuser.ward
-                        tr
-                          td #{product.productname}
-                          td #{product.category}
-                          td #{product.unitprice}
-                          td #{product.qauntity}
-                          td #{product.totalamount}
-                          td #{product.modeofpayment}
-                          td 
-                              img(src="/"+product.uploadimage, alt="image" width ='150px' height='150px')  
+          h4 Total orders                        
+                        span #{totalorders}
+               
+
 
 script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js')
 script.

@@ -29,9 +29,7 @@ const gender = document.getElementById('gender');
 const error15 = document.getElementById('error15');
 const myward = document.getElementById('myward');
 const error16 = document.getElementById('error16');
-const horticulture = document.getElementById('horticulture');
-const dairy = document.getElementById( 'dairy');
-const poultry = document.getElementById('poultry');
+const activities = document.getElementById('activities');
 const error17 = document.getElementById('error17')
 const role = document.getElementById('role')
 const error18 = document.getElementById('error18')
@@ -76,7 +74,7 @@ const isValidId = (id) =>{
 const isValidNin = (nin) =>{
     // should start with AO and folled by any number from 0 to 9 but less than 3 /^AO-([0-9]{3})+$/;
     // /^CM([0-9]{8})([A-Z]{4})+$/;
-    const ninNumber = /^CM([0-9]{8})([A-Z]{4})+$/;
+    const ninNumber = /^CM([0-9]{7})([A-Z]{4})+$/;
     return ninNumber.test(nin)
 }
 
@@ -252,17 +250,12 @@ const validateInputs = () => {
         error16.lastElementChild.innerText = '';   
     }
 
-    if(horticulture.checked){
-        valid = true;
-    }else if(dairy.checked){
-        valid = true;
-    }else if(poultry.checked){
-        valid = true
-    }
-    if(valid){
-        error17.lastElementChild.innerText = ''
+    if(activities.value === ''){
+        activities.style.border = '2px solid #ff3860';
+        error17.lastElementChild.innerText = 'Select Activity'; 
     }else{
-        error17.lastElementChild.innerText = 'choose an activity'
+        activities.style.border = '2px solid #09c372';
+        error17.lastElementChild.innerText = '';   
     }
 
     if(role.value === ''){

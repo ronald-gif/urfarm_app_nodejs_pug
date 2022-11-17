@@ -6,7 +6,7 @@ head
   link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css' rel='stylesheet')
   link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css')
   link(rel='stylesheet' href='/dashboard.css')
-  title urban farmer
+  title Orders
   link(rel='x-icon' type='image/x-icon' href='/img/images/favicon.ico')
   link(rel="stylesheet", href="/urbafarmer.css")
   link(rel="stylesheet", href="/urbafarmer.css")
@@ -53,7 +53,7 @@ head
         ul.navbar-nav.ms-auto.mb-2.mb-lg-0
           li.nav-item.dropdown
             a#navbarDropdown.nav-link.dropdown-toggle.second-text.fw-bold(href='/urbanfarmerlist' role='button' data-bs-toggle='dropdown' aria-expanded='false')
-              i.fas.fa-user.me-2     #{currentuser.firstname + " " + currentuser.secondname} 
+              i.fas.fa-user.me-2 
             ul.dropdown-menu(aria-labelledby='navbarDropdown')
               form(action="/logout" method="POST") 
                  button.btn-1(type='submit') logout
@@ -66,17 +66,17 @@ head
         .col-md-3
           .p-3.bg-white.shadow-sm.d-flex.justify-content-around.align-items-center.rounded
             div
-              a(href='/producelist') Pending products   
+              a(href='/producelist') Pending products  
     // farmerOne registration
     .myform1
-      h3 Urban farmer Upload
-      form#myFormToRegister(action='/upload' Method="POST" enctype="multipart/form-data")
+      h3 Order form
+      form#myFormToRegister(action='/orders' Method="POST")
         .container.thisForm
           .row.mb-4
             .col
               #error1.form-outline
-                label.form-label(for='form3Example1') Product Name:
-                input#productname.productname(type='text' name='productname')
+                label.form-label(for='form3Example1') Full Name:
+                input#fullname.fullname(type='text' name='fullname')
                 small.error
             .col
               #error10.form-outline
@@ -88,15 +88,10 @@ head
                   option#poultry(value='poultry') Poultry
             .col
               #error3.form-outline
-                label.form-label(for='form3Example1') Unit Price(ugx):
-                input#productprice.productprice(type='text' placeholder='Ugx' name='unitprice')
+                label.form-label(for='form3Example1') Product Name:
+                input#productname.productname(type='text' name='productname')
                 small.error
           .row.mb-4
-            .col-4
-              #error7.form-outline
-                label.form-label(for='qauntity') Qauntity:
-                input#location.location(type='text' name='qauntity')
-                small.error
             .col-4
               #error6.form-outline
                 label.form-label(for='totalamount') Total Amount:
@@ -104,42 +99,20 @@ head
                 small.error
             .col-4
               #error7.form-outline
-                label.form-label(for='date') Direction:
-                input#direction.direction(type='text' name='direction')
+                label.form-label Delivery Address:
+                input#adddress.adddress(type='text' name='adddress')
                 small.error
+            .col-4
+                #error7.form-outline
+                    label.form-label Division/city:
+                    input#division.division(type='text' name='division')
+                    small.error
           .row.mb-4
             .col-4
               #error7.form-outline
-                label.form-label(for='produceowner') Produce Owner:
-                select#produceowner.produceowner(type='text' name='produceowner')
-                  if currentuser
-                    option(value= currentuser.firstname) #{currentuser.firstname +" " + currentuser.secondname}
-                
-            .col-4
-              #error6.form-outline
-                label.form-label(for='farmerid') Farmer ID:
-                select#farmerid(type='text' name='farmerid')
-                  if currentuser 
-                    option(value= currentuser.uniquenumber type="text") #{currentuser.uniquenumber} 
-            .col-4
-              #error7.form-outline
-                label.form-label(for='date') Date:
-                input#dateofupload.dateofupload(type='date' name='dateofupload')
+                label.form-label(for='date') Date of Purchase:
+                input#dateofpurchase.dateofpurchase(type='date' name='dateofpurchase')
                 small.error
-          .row.mb-4
-            .col
-              #error8.form-outline
-                label.form-label(for='uploadimage') select image of the product:
-                input#uploadimage.uploadimage(type='file' name='uploadimage')
-                small.error
-            .col
-            .col-4
-              #error16.form-outline.form-o
-                label(for='farmerward') Ward:
-                select#my_ward.values-for-wards(name='farmerward')
-                  if currentuser 
-                    option(value = currentuser.ward) #{currentuser.ward}  
-          .row.mb-4
             .col
               #error15.form-outline.form-o
                 label Mode of payment:
@@ -153,33 +126,19 @@ head
                 select#gender.DeliveryMethod(name='deliveryMethod')
                   option(value='pick up') Pick Up
                   option(value=' Home Delivery') Home Delivery
-            .col
-              #error15.form-outline.form-o
-                label Produce Type:
-                select#producetype.producetype(name='producetype')
-                  option(value='organic') Organic
-                  option(value='nonorganic') Non Organic
           .row.mb-4
             .col
               #error15.form-outline.form-o
                 label Email:
-                select#email.email(name='email')
-                  if currentuser
-                    option(value= currentuser.email) #{currentuser.email}
+                input(type="text" name="email")
             .col
               #error15.form-outline.form-o
                 label Phone Number
-                select#telephone.telephone(name='telephone')
-                  if currentuser
-                    option(value= currentuser.telephone) #{currentuser.telephone} 
-            .col
-              #error15.form-outline.form-o
-                label Product description:
-                textarea(name="description")  
+                input(type="text" name="telephone") 
           .row.mb-4
             .col
               .fo-signup
-                button.btn-1(type='submit') Upload
+                button.btn-1(type='submit') Order
 
 script(src='/bootstrap-5.2.0-dist/js/bootstrap.bundle.js')
 script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js')

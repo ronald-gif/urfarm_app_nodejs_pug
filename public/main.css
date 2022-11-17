@@ -21,6 +21,7 @@
 }
 
 body{
+ 
   /* background-color: var(--green); */
 }
   .navbar-nav li a{
@@ -29,13 +30,13 @@ body{
 
 
   .navbar{
-    background-color:var(--green);
+    background-color:#4a001f;
     color: #fff;
 }
 
 .navbar .navbar-nav li a{
     color: #fff;
-    background-color:var(--green) ;
+    background-color:#4a001f ;
 }
 
   .buttonlogin{
@@ -44,16 +45,20 @@ body{
 
   .btn{
     color: #fff;
-    background-color: var(--pink);
-    border: 1px solid var(--pink);
+    background-color: #22dae8;
+    border: 1px solid #22dae8;
     border-radius: 15%;
   }
 
   .btn:hover{
-    background-color: var(--green);
-    border: 1px solid var(--green);
+    background-color: var(--pelette1);
+    border: none;
+    color: #fff;
   }
 
+  .dropdown-menu{
+    background-color: #4a001f;
+  }
   .dropdown:hover .dropdown-menu {
     display: block;
   }
@@ -140,6 +145,7 @@ p a:hover {
 .navLinks ul li{
   list-style: none;
   padding: 10px;
+  display: block;
 }
 
 .navLinks ul li a{
@@ -175,6 +181,10 @@ p a:hover {
   border-radius: 5px;
   box-shadow: 7px 7px 7px 7px rgba(0, 0, 0, 0.3);
   width: 1000px;
+}
+.form-label{
+  color: #fff;
+  font-weight: 800;
 }
 .ao-form{
   width: 800px;
@@ -427,7 +437,7 @@ ul li{
 }
 
 .footer{
-  background-color: var(--green);
+  background-color: #4a001f;
   color: grey;
   padding: 2rem;
   /* height: 50vh; */
@@ -527,6 +537,7 @@ ul li{
   margin: 10px 0px 3px 0px;
   padding-top: 0.5rem;
   border-top: 1px solid grey;
+  font-size: 13px;
 }
 
 /*  */

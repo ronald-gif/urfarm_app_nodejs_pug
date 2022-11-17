@@ -23,9 +23,7 @@ const myward = document.getElementById('myward');
 const error11 = document.getElementById('error11');
 const role = document.getElementById('role')
 const error12 = document.getElementById('error12')
-const dairy = document.getElementById( 'dairy');
-const poultry = document.getElementById('poultry');
-const error17 = document.getElementById('error17');
+const activities = document.getElementById('activities');
 const error13 = document.getElementById('error13');
 const email = document.getElementById('email');
 const error14 = document.getElementById('error14');
@@ -210,17 +208,12 @@ const validateInputs = () => {
         return true
     }
 
-    if(horticulture.checked){
-        valid = true;
-    }else if(dairy.checked){
-        valid = true;
-    }else if(poultry.checked){
-        valid = true
-    }
-    if(valid){
-        error13.lastElementChild.innerText = ''
+    if(activities.value === ''){
+        activities.style.border = '2px solid #ff3860';
+        error13.lastElementChild.innerText = 'Select Activity'; 
     }else{
-        error13.lastElementChild.innerText = 'choose an activity'
+        activities.style.border = '2px solid #09c372';
+        error13.lastElementChild.innerText = '';   
     }
 
     if(emailValue === ''){

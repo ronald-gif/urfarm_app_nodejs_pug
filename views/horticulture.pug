@@ -31,6 +31,41 @@ nav.navbar.navbar-expand-lg
               a.dropdown-item(href='/poultry') Poultry
             li
               a.dropdown-item(href='/dairy') Dairy
+            
+      // modal login
+      if !currentuser
+        .buttonlogin
+          a(href='/login')
+            button.btn(type='button') Login
+        // Button trigger modal
+        button.btn(type='button' data-bs-toggle='modal' data-bs-target='#Backdrop')
+          | Sign up
+        // Modal
+        #Backdrop.modal.fade(data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true')
+          .modal-dialog
+            .modal-content
+              .modal-header
+                h3(style='color: #000;') Register as:
+                button.btn-close.mb-4.pb-4.btn-close-black(type='button' data-bs-dismiss='modal' aria-label='Close')
+              .modal-body(style='color: #000;')
+                .container
+                  .row
+                    .col-2
+                    .col
+                      .navLinks
+                        ul
+                          li
+                            a(href='/AO') Agriculture Officer
+                          li
+                            a(href='/farmerone') FarmerOne
+                          li
+                            a(href='/urbanFarmer') Urban farmer
+                          li
+                            a(href='/public') Normal user
+                 
+      if currentuser
+        form(action="/logout" method="POST") 
+              button.btn(type='submit') Logout
       
 
 .fouth-section
@@ -52,25 +87,28 @@ nav.navbar.navbar-expand-lg
                       h6.card-text
                         | #{availableproduct.availability}
                       h6.card-text #{new Intl.NumberFormat().format(availableproduct.totalamount)} UGX 
-                      a.btn.btn-primary(href='/public') Shop with us 
+                      if !currentuser
+                        a.btn.btn-primary(href='/public') Shop with us 
+                      if currentuser
+                        a.btn.btn-primary(href='/sales') Shop with us 
 
 // footer
-footer.footer
+footer.footer(id='#foot_last')
   .container-last
     .logo
-      a.navbar-brand(href='index.html#')
-        img(src='/images/onlinelogomaker-091022-1346-6665.png' alt='')
+      a.navbar-brand(href='/home')
+        img(src='/images/onlinelogomaker-091022-1346-6665.png' alt='/home')
     .payment-method
       h5 Payment methods
       ul
         li
-          a(href='/payment.html')
+          a(href='/payment')
             img(src='/images/Payment_-_Airtel-02.png' alt='')
         li
-          a(href='/payment.html')
+          a(href='/payment')
             img(src='/images/mtn.png' alt='')
         li
-          a(href='/payment.html')
+          a(href='/payment')
             img(src='/images/money.jpg' alt='')
     .follow-us
       h5 Stay with us on
@@ -85,20 +123,21 @@ footer.footer
           a(href='https://www.instagram.com/ufarm_masajja/')
             img(src='/images/square-instagram.svg' alt='square-instagram')
         //
-          <li>
+          li>
           <a href="">
           <img src="/images/envelope-solid.svg" alt="email ">
           </a>
-          </li>
+          </li><
     .support
       h5 Support
       ul
         li
-          a(href='/contact-us.html') Contact us
+          a(href='/contact-us') Contact us
         li
-          a(href='/how-to-buy.html') Help
+          a(href='/how-to-buy') Help
         li
-          a(href='/termsandcondition.html') Terms and condition
+          a(href='/terms-and-conditions') Terms and condition
   .copyright
-    article &amp;copycopyright All rights reserved
+    article &copycopyright All rights reserved
+    article Designed by Ronald Biyinzika
 script(src='/bootstrap-5.2.0-dist/js/bootstrap.bundle.js')

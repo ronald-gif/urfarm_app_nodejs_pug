@@ -25,6 +25,9 @@ head
       a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='/producelist')
         i.fas.fa-gift.me-2
         | Pending products
+      a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='/orders')
+        i.fas.fa-shopping-cart.me-2
+        | Order form
       a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='/approvedproducts')
         i.fas.fa-gift.me-2
         | Approved products
@@ -49,11 +52,6 @@ head
           .p-3.bg-white.shadow-sm.d-flex.justify-content-around.align-items-center.rounded
             div
               a(href='/producelist') Pending Products
-            
-        .col-md-3
-          .p-3.bg-white.shadow-sm.d-flex.justify-content-around.align-items-center.rounded
-            div
-              a(href='/approvedlist') Approved products
            
       .row.my-5
         h3.fs-4.mb-3 Approved Products

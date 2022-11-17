@@ -9,7 +9,7 @@ head
   link(rel='stylesheet' type="text/css" href='/main.css')
   style.
    body{
-    background-color: #000;
+    background-color: #eaf0ce;
      }
 // nav bar
 nav.navbar.navbar-expand-lg
@@ -131,7 +131,7 @@ nav.navbar.navbar-expand-lg
   .container-fluid.sellingItems
     .row.row-cols-2.row-cols-lg-5.g-2.g-lg-3.row2
     
-      if availableproducts.length > 0
+      if availableproducts.length > 2
         each availableproduct in availableproducts
           if availableproduct.status == "Approved"
             .d-flex
@@ -145,9 +145,9 @@ nav.navbar.navbar-expand-lg
                         | #{availableproduct.availability}
                       h6.card-text #{new Intl.NumberFormat().format(availableproduct.totalamount)} UGX 
                       if !currentuser
-                        a.btn.btn-primary(href='/public') Shop with us  
+                        a.btn(href='/public') Shop with us  
                       if currentuser
-                        a.btn.btn-primary(href='/poultry') Shop with us 
+                        a.btn(href='/sales') Shop with us 
     //- if currentuser
     //-   if availableproducts.length > 0
     //-     each availableproduct in availableproducts
@@ -211,6 +211,8 @@ footer.footer(id='#foot_last')
         li
           a(href='/terms-and-conditions') Terms and condition
   .copyright
-    article &amp;copycopyright All rights reserved
+    article &copycopyright All rights reserved
+    article Designed by Ronald Biyinzika
+
 script(src='/bootstrap-5.2.0-dist/js/bootstrap.bundle.js')
 script(src='/script.js')

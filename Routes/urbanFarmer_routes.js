@@ -6,6 +6,7 @@ const connectEnsureLogin = require('connect-ensure-login')
 // importing model
 const Enrollment = require('../Models/UserSchema')
 const Upload = require('../Models/UploadSchema')
+const Order = require('../Models/Orders')
 // Ccreating routes
 
 router.get('/urbanFarmer', (req, res) => {
@@ -35,6 +36,8 @@ router.post('/urbanFarmer', async (req, res) => {
     }
    
 });
+
+
 
 
 router.get('/urbanfarmer', (req, res) => {
@@ -75,7 +78,25 @@ router.get('/urbanfarmerlist', connectEnsureLogin.ensureLoggedIn(), async (req, 
         
     }
    
-})
+});
+
+router.get('/orders', connectEnsureLogin.ensureLoggedIn(), (req, res) => {
+    res.render('orders')
+});
+
+router.post('/orders', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
+    console.log(req.body);
+    try {
+        const orders = new Order(req.body);
+        // let productname = await Order.find();
+            await orders.save()
+                res.redirect('back')
+    }catch (error) {
+        res.status(404).send('sorry we are fixing something');
+        console.log(error);
+    }
+   
+});
 
 
 

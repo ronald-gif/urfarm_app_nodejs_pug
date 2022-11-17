@@ -13,24 +13,24 @@ const router = express.Router();
 //     res.render('index');
 // });
 
-router.get('/about-us', (req, res) => {
-    res.render('about-us');
-});
+// router.get('/about-us', (req, res) => {
+//     res.render('about-us');
+// });
 
-router.get('/contact-us', (req, res) => {
-    res.render('contact-us')
-})
+// router.get('/contact-us', (req, res) => {
+//     res.render('contact-us')
+// })
 
-router.get('/how-to-buy', (req, res) => {
-    res.render('how-to-buy')
-});
+// router.get('/how-to-buy', (req, res) => {
+//     res.render('how-to-buy')
+// });
 
-router.get('/payment', (req, res) => {
-    res.render('payment')
-});
+// router.get('/payment', (req, res) => {
+//     res.render('payment')
+// });
 
-router.get('/terms-and-conditions', (req, res) => {
-    res.render('termsandcondition')
-});
+// router.get('/terms-and-conditions', (req, res) => {
+//     res.render('termsandcondition')
+// });
 
 module.exports = router

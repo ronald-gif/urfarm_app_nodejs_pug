@@ -39,7 +39,7 @@ head
 // nav bar
 nav.navbar.navbar-expand-lg
   .container-fluid
-    a.navbar-brand(href='/home')
+    a.navbar-brand(href='index.html#')
       img(src='/images/onlinelogomaker-091022-1346-6665.png' alt='')
     button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
       span.navbar-toggler-icon
@@ -59,35 +59,41 @@ nav.navbar.navbar-expand-lg
               a.dropdown-item(href='/poultry') Poultry
             li
               a.dropdown-item(href='/dairy') Dairy
+            
       // modal login
-      .buttonlogin
-        a(href='/login')
-          button.btn(type='button') Login
-      // Button trigger modal
-      button.btn(type='button' data-bs-toggle='modal' data-bs-target='#Backdrop')
-        | Sign up
-      // Modal
-      #Backdrop.modal.fade(data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true')
-        .modal-dialog
-          .modal-content
-            .modal-header
-              h3(style='color: #000;') Register as:
-              button.btn-close.mb-4.pb-4.btn-close-black(type='button' data-bs-dismiss='modal' aria-label='Close')
-            .modal-body(style='color: #000;')
-              .container
-                .row
-                  .col-2
-                  .col
-                    .navLinks
-                      ul
-                        li
-                          a(href='/AO') Agriculture Officer
-                        li
-                          a(href='/farmerone') FarmerOne
-                        li
-                          a(href='/urbanFarmer') Urban farmer
-                        li
-                          a(href='/public') Normal user
+      if !currentuser
+        .buttonlogin
+          a(href='/login')
+            button.btn(type='button') Login
+        // Button trigger modal
+        button.btn(type='button' data-bs-toggle='modal' data-bs-target='#Backdrop')
+          | Sign up
+        // Modal
+        #Backdrop.modal.fade(data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true')
+          .modal-dialog
+            .modal-content
+              .modal-header
+                h3(style='color: #000;') Register as:
+                button.btn-close.mb-4.pb-4.btn-close-black(type='button' data-bs-dismiss='modal' aria-label='Close')
+              .modal-body(style='color: #000;')
+                .container
+                  .row
+                    .col-2
+                    .col
+                      .navLinks
+                        ul
+                          li
+                            a(href='/AO') Agriculture Officer
+                          li
+                            a(href='/farmerone') FarmerOne
+                          li
+                            a(href='/urbanFarmer') Urban farmer
+                          li
+                            a(href='/public') Normal user
+                 
+      if currentuser
+        form(action="/logout" method="POST") 
+              button.btn(type='submit') Logout
 .container
   .row
     .col
@@ -121,7 +127,7 @@ footer.footer(id='#foot_last')
   .container-last
     .logo
       a.navbar-brand(href='/home')
-        img(src='/images/onlinelogomaker-091022-1346-6665.png' alt='')
+        img(src='/images/onlinelogomaker-091022-1346-6665.png' alt='/home')
     .payment-method
       h5 Payment methods
       ul
@@ -132,7 +138,7 @@ footer.footer(id='#foot_last')
           a(href='/payment')
             img(src='/images/mtn.png' alt='')
         li
-          a(href='payment')
+          a(href='/payment')
             img(src='/images/money.jpg' alt='')
     .follow-us
       h5 Stay with us on
@@ -162,5 +168,6 @@ footer.footer(id='#foot_last')
         li
           a(href='/terms-and-conditions') Terms and condition
   .copyright
-    article &amp;copycopyright All rights reserved
+    article &copycopyright All rights reserved
+    article Designed by Ronald Biyinzika
 script(src='/bootstrap-5.2.0-dist/js/bootstrap.bundle.js')

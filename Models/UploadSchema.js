@@ -46,6 +46,15 @@ const uploadSchema = new mongoose.Schema({
     producetype: {
         type: String,
     },
+    email: {
+        type: String,
+    },
+    telephone: {
+        type: String,
+    },
+    description: {
+        type: String,
+    },
     status: {
         type: String,
         default: "Pending",

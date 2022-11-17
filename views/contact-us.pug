@@ -8,18 +8,23 @@ head
   link(rel='stylesheet' href='/bootstrap-5.2.0-dist/css/bootstrap.css')
   link(rel='stylesheet' href='/main.css')
   style.
+    body{
+      background-color: #f0f0f9;
+    }
     .contacts{
-    background-image: url(/images/img-2.jpg);
+    background-image: url('/images/farm1.png.jfif');
+     object-fit: cover;
+     background-repeat: no-repeat:
     background-position: center;
     height: 40vh;
-    border: 1px solid #f0f0f0;
+    border: 1px solid #f0f0f7;
     }
     .color-section{
     width: 100%;
     height: 24vh;
     padding: 1rem auto;
     margin: 2rem 0;
-    background-color: #fff;
+    background-color: #f0f0f9;
     border: 1px solid #fff;
     border-radius: 5px;
     box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.3);
@@ -28,7 +33,7 @@ head
     text-align: center;
     /* padding: 1rem auto; */
     margin-top: 3.5rem;
-    color: #3db83a;
+    color: #2e0219;
     font-weight: 800;
     }
     .details-of-how-to-contact{
@@ -36,7 +41,7 @@ head
     height: 20vh;
     padding: 1rem auto;
     /* margin: 2rem 0; */
-    background-color: #fff;
+    background-color: #f0f0f9;
     border: 1px solid #fff;
     border-radius: 5px;
     box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.3);
@@ -44,7 +49,7 @@ head
     .call-us{
     width: 80%;
     height: 18vh;
-    background-color: #fff;
+    background-color: #f0f0f9;
     border: 3px solid #fff;
     border-radius: 5px;
     box-shadow: 7px 7px 7px 7px rgba(0, 0, 0, 0.3);
@@ -54,7 +59,7 @@ head
     .call{
     width: 80%;
     height: 18vh;
-    background-color: #fff;
+    background-color: #f0f0f9;
     border: 3px solid #fff;
     border-radius: 5px;
     box-shadow: 7px 7px 7px 7px rgba(0, 0, 0, 0.3);
@@ -69,7 +74,7 @@ head
     .reach-us h3{
     font-size: 20px;
     font-weight: 800;
-    color: #3db83a;
+    color: #2e0219;
     }
     .reach-us h5{
     font-size: 16px;
@@ -81,7 +86,7 @@ head
     }
     #myform-message{
     border-radius: 5px;
-    background-color: #fff;
+    background-color: #f0f0f9;
     width: 100%;
     border: 1px solid #f0f0ff;
     box-shadow: 3px 3px 3px 3px rgb(0, 0, 0, 0.3);
@@ -89,7 +94,7 @@ head
     .form-message h4{
     font-weight: bold;
     text-align: center;
-    color: #3db83a;
+    color: #2e0219;
     }
     .out-line-form{
     margin-left: 1rem;
@@ -163,35 +168,41 @@ nav.navbar.navbar-expand-lg
               a.dropdown-item(href='/poultry') Poultry
             li
               a.dropdown-item(href='/dairy') Dairy
+            
       // modal login
-      .buttonlogin
-        a(href='/login')
-          button.btn(type='button') Login
-      // Button trigger modal
-      button.btn(type='button' data-bs-toggle='modal' data-bs-target='#Backdrop')
-        | Sign up
-      // Modal
-      #Backdrop.modal.fade(data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true')
-        .modal-dialog
-          .modal-content
-            .modal-header
-              h3(style='color: #000;') Register as:
-              button.btn-close.mb-4.pb-4.btn-close-black(type='button' data-bs-dismiss='modal' aria-label='Close')
-            .modal-body(style='color: #000;')
-              .container
-                .row
-                  .col-2
-                  .col
-                    .navLinks
-                      ul
-                        li
-                          a(href='/AO') Agriculture Officer
-                        li
-                          a(href='/farmerone') FarmerOne
-                        li
-                          a(href='/urbanFarmer') Urban farmer
-                        li
-                          a(href='/public') Normal user
+      if !currentuser
+        .buttonlogin
+          a(href='/login')
+            button.btn(type='button') Login
+        // Button trigger modal
+        button.btn(type='button' data-bs-toggle='modal' data-bs-target='#Backdrop')
+          | Sign up
+        // Modal
+        #Backdrop.modal.fade(data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true')
+          .modal-dialog
+            .modal-content
+              .modal-header
+                h3(style='color: #000;') Register as:
+                button.btn-close.mb-4.pb-4.btn-close-black(type='button' data-bs-dismiss='modal' aria-label='Close')
+              .modal-body(style='color: #000;')
+                .container
+                  .row
+                    .col-2
+                    .col
+                      .navLinks
+                        ul
+                          li
+                            a(href='/AO') Agriculture Officer
+                          li
+                            a(href='/farmerone') FarmerOne
+                          li
+                            a(href='/urbanFarmer') Urban farmer
+                          li
+                            a(href='/public') Normal user
+                 
+      if currentuser
+        form(action="/logout" method="POST") 
+              button.btn(type='submit') Logout
 // nav bar stops here
 // contacts us section starts here
 .contacts
@@ -223,18 +234,18 @@ nav.navbar.navbar-expand-lg
       .col
         .form-message
           h4 Send us a message below 
-          form#myform-message(action='' name='myform-message' method='post')
+          form#myform-message(action='/contact-us' name='myform-message' method='POST')
             .out-line-form
-              label(for='' id='') Name:
-              input#fname(type='text' name='fname')
+              label(id='firstname') Name:
+              input#firstname(type='text' name='firstname')
               small#error
             .out-line-form
-              label(for='' id='') Phone number:
-              input#phone-number(type='text' name='phone-number')
+              label(id='telephone') Phone number:
+              input#phone-number(type='text' name='telephone')
               small#error
             .out-line-form
-              label(for='' id='') Message:
-              textarea(name='' id='' cols='30' rows='10')
+              label(id='massage') Message:
+              textarea(name='massage')
               small#error
             .fo-signup
               button.btn-1(type='submit' style='margin-left: 8rem; margin-bottom: 10px;') Submit
@@ -244,8 +255,8 @@ nav.navbar.navbar-expand-lg
 footer.footer(id='#foot_last')
   .container-last
     .logo
-      a.navbar-brand(href='index.html#')
-        img(src='/images/onlinelogomaker-091022-1346-6665.png' alt='')
+      a.navbar-brand(href='/home')
+        img(src='/images/onlinelogomaker-091022-1346-6665.png' alt='/home')
     .payment-method
       h5 Payment methods
       ul
@@ -256,7 +267,7 @@ footer.footer(id='#foot_last')
           a(href='/payment')
             img(src='/images/mtn.png' alt='')
         li
-          a(href='payment')
+          a(href='/payment')
             img(src='/images/money.jpg' alt='')
     .follow-us
       h5 Stay with us on
@@ -286,5 +297,6 @@ footer.footer(id='#foot_last')
         li
           a(href='/terms-and-conditions') Terms and condition
   .copyright
-    article &amp;copycopyright All rights reserved
+    article &copycopyright All rights reserved
+    article Designed by Ronald Biyinzika
 script(src='/bootstrap-5.2.0-dist/js/bootstrap.bundle.js')
