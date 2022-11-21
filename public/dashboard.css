@@ -88,6 +88,28 @@
     font-weight: bold;
     border: none;
   }
+
+  .accordion-body h1{
+    text-align: center;
+    color: #009d63;
+    padding: 15px 0;
+  }
+  h4{
+    color: #009d63;
+    text-align: center;
+
+  }
+  h6{
+    color: #000;
+    text-align: left;
+  }
+
+  span{
+    color: #009d63;
+  }
+  h5{
+    color: #000;
+  }
   
   @media (min-width: 768px) {
     #sidebar-wrapper {

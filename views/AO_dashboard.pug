@@ -15,10 +15,10 @@ head
       img(src='/images/onlinelogomaker-091022-1346-6665.png' alt='')
     .list-group.list-group-flush.my-3
       a.list-group-item.list-group-item-action.bg-transparent.second-text.active(href='#')
-        i.fas.fa-tachometer-alt.me-2
+        //- i.fas-solid.fa-user.me-2
         | Dashboard
       a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='/farmeronelist')
-        i.fas.fa-project-diagram.me-2
+        //- i.fas.fa-project-diagram.me-2
         | Farmer Ones 
       //- a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='/urbanfarmerlist')
       //-   i.fas.fa-chart-line.me-2
@@ -26,15 +26,16 @@ head
       //- a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='/approvedlist')
       //-   i.fas.fa-paperclip.me-2
       //-   | Approved Products
-      a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='')
-        i.fas.fa-shopping-cart.me-2
-        | Bookings and order
-      //- a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='/reports')
-      //-   i.fas.fa-gift.me-2
-      //-   | Reports
-      a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='#')
-        i.fas.fa-comment-dots.me-2
-        | Delivery
+      //- a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='')
+      //-   i.fas.fa-shopping-cart.me-2
+      //-   | Bookings and order
+      a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='/addfarmerone')
+        //- i.fas.fa-gift.me-2
+        | Register farmerone
+      
+      //- a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='#')
+      //-   i.fas.fa-comment-dots.me-2
+      //-   | Delivery
       //- a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='/appointed')
       //-   i.fas.fa-comment-dots.me-2
       //-   | Appoint farmerone
@@ -63,17 +64,25 @@ head
         .col-md-3
           .p-3.bg-white.shadow-sm.d-flex.justify-content-around.align-items-center.rounded
             div
-              h4 farmer ones  #{farmerOnes}
+              h5 farmer ones:   
+                span  #{farmerOnes}
             //- i.fas.fa-gift.fs-1.primary-text.border.rounded-full.secondary-bg.p-3
         .col-md-3
           .p-3.bg-white.shadow-sm.d-flex.justify-content-around.align-items-center.rounded
             div
-              h4 Urban farmers #{urbanFarmers}
+              h5  Urban farmers:    
+                span  #{urbanFarmers}
             //- i.fas.fa-hand-holding-usd.fs-1.primary-text.border.rounded-full.secondary-bg.p-3
         .col-md-3
           .p-3.bg-white.shadow-sm.d-flex.justify-content-around.align-items-center.rounded
             div
-              h4 Customers #{customers}
+              h5 Customers:  
+                span  #{customers}
+        .col-md-3
+          .p-3.bg-white.shadow-sm.d-flex.justify-content-around.align-items-center.rounded
+            div
+              h5 Total orders:  
+                span  #{totalorders}
             //- i.fas.fa-truck.fs-1.primary-text.border.rounded-full.secondary-bg.p-3
 
         .accordion-item

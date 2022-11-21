@@ -17,7 +17,7 @@ head
       a.list-group-item.list-group-item-action.bg-transparent.second-text.active(href='/FO-dashboard')
         i.fas.fa-tachometer-alt.me-2
         | Dashboard
-      a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='/urbanfarmerlist')
+      a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='/urbanfarmerdetails')
         i.fas.fa-project-diagram.me-2
         | Urban farmers
       a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='/urbanfarmerlist')
@@ -68,6 +68,10 @@ head
           .p-3.bg-white.shadow-sm.d-flex.justify-content-around.align-items-center.rounded
             div
               a(href='/approvedlist') Approved products
+        .col-md-3
+          .p-3.bg-white.shadow-sm.d-flex.justify-content-around.align-items-center.rounded
+            div
+              a(href='/urbanfarmerdetails') Urban Farmers
            
       .row.my-5
         //- h3.fs-4.mb-3 Pending Products

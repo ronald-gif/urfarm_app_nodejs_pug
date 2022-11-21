@@ -16,10 +16,10 @@ head
       img(src='/images/onlinelogomaker-091022-1346-6665.png' alt='')
     .list-group.list-group-flush.my-3
       a.list-group-item.list-group-item-action.bg-transparent.second-text.active(href='/AO-dashboard')
-        i.fas.fa-tachometer-alt.me-2
+        //- i.fas.fa-tachometer-alt.me-2
         | Dashboard
       a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='/farmeronelist')
-        i.fas.fa-project-diagram.me-2
+        //- i.fas.fa-project-diagram.me-2
         | Farmer Ones
       //- a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='/urbanfarmerlist')
       //-   i.fas.fa-chart-line.me-2
@@ -27,15 +27,16 @@ head
       //- a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='/approvedlist')
       //-   i.fas.fa-paperclip.me-2
       //-   | Approved Products
-      a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='')
-        i.fas.fa-shopping-cart.me-2
-        | Bookings and order
-      //- a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='/reports')
-      //-   i.fas.fa-gift.me-2
-      //-   | Reports
-      a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='#')
-        i.fas.fa-comment-dots.me-2
-        | Delivery
+      //- a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='')
+      //-   //- i.fas.fa-shopping-cart.me-2
+      //-   | Bookings and order
+      a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='/addfarmerone')
+        //- i.fas.fa-gift.me-2
+        | Register farmerone
+      
+      //- a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='#')
+      //-   i.fas.fa-comment-dots.me-2
+      //-   | Delivery
       //- a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='/appointed')
       //-   i.fas.fa-comment-dots.me-2
       //-   | Appoint farmerone
@@ -63,20 +64,20 @@ head
     .container-fluid.px-4
       .row.g-3.my-2
         .col-md-3
-          .p-3.bg-white.shadow-sm.d-flex.justify-content-around.align-items-center.rounded
-            div
-              a(href='/producelist') Farmer ones
-            i.fas.fa-gift.fs-1.primary-text.border.rounded-full.secondary-bg.p-3
-        .col-md-3
-          .p-3.bg-white.shadow-sm.d-flex.justify-content-around.align-items-center.rounded
-            div
-              a(href='') Urban farmers
-            i.fas.fa-hand-holding-usd.fs-1.primary-text.border.rounded-full.secondary-bg.p-3
-        .col-md-3
-          .p-3.bg-white.shadow-sm.d-flex.justify-content-around.align-items-center.rounded
-            div
-              a(href='') Customers
-            i.fas.fa-truck.fs-1.primary-text.border.rounded-full.secondary-bg.p-3
+        //-   .p-3.bg-white.shadow-sm.d-flex.justify-content-around.align-items-center.rounded
+        //-     div
+        //-       a(href='/producelist') Farmer ones
+        //-     i.fas.fa-gift.fs-1.primary-text.border.rounded-full.secondary-bg.p-3
+        //- .col-md-3
+        //-   .p-3.bg-white.shadow-sm.d-flex.justify-content-around.align-items-center.rounded
+        //-     div
+        //-       a(href='') Urban farmers
+        //-     i.fas.fa-hand-holding-usd.fs-1.primary-text.border.rounded-full.secondary-bg.p-3
+        //- .col-md-3
+        //-   .p-3.bg-white.shadow-sm.d-flex.justify-content-around.align-items-center.rounded
+        //-     div
+        //-       a(href='') Customers
+        //-     i.fas.fa-truck.fs-1.primary-text.border.rounded-full.secondary-bg.p-3
         h1 Farmer ones
         table.table.table-bordered
           thead.table-dark
@@ -101,162 +102,7 @@ head
                         td #{farmeronelist.activities}
                         td #{farmeronelist.telephone}
                         td
-                            a.btn.btn-primary.btn-block(href='/farmerone/update/'+farmeronelist._id) Update 
-        #accordionExample.accordion
-          //- .accordion-item
-          //-   h2#headingOne.accordion-header
-          //-     button.accordion-button(type='button' data-bs-toggle='collapse' data-bs-target='#collapseOne' aria-expanded='true' aria-controls='collapseOne')
-          //-       | Accordion Item #1
-          //-   #collapseOne.accordion-collapse.collapse.show(aria-labelledby='headingOne' data-bs-parent='#accordionExample')
-          //-     .accordion-body
-          //-       strong This is the first item&apos;s accordion body.
-          //-       |  It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It&apos;s also worth noting that just about any HTML can go within the 
-          //-       code .accordion-body
-          //-       | , though the transition does limit overflow.
-          .accordion-item
-            h2#headingTwo.accordion-header
-              button.accordion-button.collapsed(type='button' data-bs-toggle='collapse' data-bs-target='#collapseTwo' aria-expanded='false' aria-controls='collapseTwo')
-                | Add farmerone
-            #collapseTwo.accordion-collapse.collapse(aria-labelledby='headingTwo' data-bs-parent='#accordionExample')
-              .accordion-body
-                                                    
-              // farmerOne registration
-              .myform1
-                h3 farmerOne registration
-                form#myFormToRegister(action='/farmerone' name='registration' method='POST')
-                  .container.thisForm
-                    .row.mb-4
-                      .col-md-6.col-lg-3.col-xl-3
-                        #error1.form-outline
-                          label.form-label(for='form3Example1') First name:
-                          input#firstName.firstName(type='text' name='firstname')
-                          small.error
-                      .col-md-6.col-lg-3.col-xl-3
-                        #error2.form-outline
-                          label.form-label(for='form3Example1') Second name:
-                          input#secondname.secondName(type='text' name='secondname')
-                          small.error
-                      .col-md-6.col-lg-3.col-xl-3
-                        #error3.form-outline
-                          label.form-label(for='form3Example1') Phone number:
-                          input#telephone.telephone(type='text' name='telephone')
-                          small.error
-                      .col-md-6.col-lg-3.col-xl-3
-                        #error5.form-outline
-                          label.form-label(for='currentDate')  Current date:
-                          input#currentdate.currentDate(type='date' name='currentdate')
-                    .row.mb-4
-                      .col-md-6.col-lg-3.col-xl-3
-                        #error6.form-outline
-                          label.form-label(for='exampleInputEmail1') Date of birth:
-                          input#DOB.DOB(type='date' name='dateofbirth' style='padding-right: 5px;')
-                          small.error
-                      .col-md-6.col-lg-3.col-xl-3
-                        #error7.form-outline
-                          label.form-label(for='form3Example1') Unique number/ID:
-                          input#uniquenumber.uniqueNumber(type='text' name='uniquenumber' placeholder='UF-FO/1234')
-                          small.error
-                      .col-md-6.col-lg-3.col-xl-3
-                        #error8.form-outline
-                          label.form-label NIN Number:
-                          input#nin.nin(type='text' name='nin' placeholder='CM12345678ABCD')
-                          small.error
-                      .col-md-6.col-lg-3.col-xl-3
-                        #error9.form-outline
-                          label.form-label Location:
-                          input#farmerlocation.farmerlocation(type='text' name='farmerlocation')
-                          small.error
-                    .row.mb-4
-                      .col-md-6.col-lg-3.col-xl-3
-                        #error10.form-outline
-                          label.form-label Residence type:
-                          select#residence(name='residence')
-                            option(value='') select residence type
-                            option#permanent(value='permanent') Permanent
-                            option#temporary(value='temporary') Temporary
-                          small.error
-                      .col-md-6.col-lg-3.col-xl-3
-                        #error11.form-outline
-                          label.form-label Password:
-                          input#password.password(type='password' name='password')
-                          small.error
-                      .col-md-6.col-lg-3.col-xl-3
-                        #error12.form-outline
-                          label.form-label(for='form3Example1') Confirm Password:
-                          input#confirmpassword.confirmpassword(type='password' name='confirmpassword')
-                          small.error
-                      .col-md-6.col-lg-3.col-xl-3
-                        #error13.form-outline
-                          label.form-label(for='form3Example1') Direction to your home:
-                          input#directiontohome.directiontohome(type='text' name='direction')
-                          small.error        
-                    .row.mb-4
-                      .col-md-6.col-lg-3.col-xl-3
-                        #error14.form-outline
-                          label.form-label(for='form3Example1') Years spent in masajja :
-                          input#yearsspent.yearsspent(type='text' name='yearsspent')
-                          small.error
-                      .col-md-6.col-lg-3.col-xl-3
-                        #error15.form-outline.form-o
-                          label(for='gender') Gender:
-                          select#gender(name='gender')
-                            option(value='') Select gender
-                            option(value='male' name='gender') Male
-                            option(value='female' name='gender') Female
-                          small.error
-                      .col-md-6.col-lg-3.col-xl-3
-                        #error16.form-outline.form-o
-                          label(for='ward') Ward:
-                          select#myward(name='ward')
-                            option(value='') Select Ward
-                            option(value='ward1' name='ward1') LC1
-                            option(value='ward2' name='ward2') LC2
-                            option(value='ward3' name='ward3') LC3
-                            option(value='ward4' name='ward4') LC4
-                          small.error
-                      .col-md-6.col-lg-3.col-xl-3
-                        #error18.form-outline.form-o
-                            label(for='role') Role:
-                            select#role.values-for-wards(name='role')
-                              option(value='') Select role
-                              option(value='farmerone') Farmerone
-                            small.error
-                    .row.mb-4
-                      .col-md-6.col-lg-3.col-xl-3
-                        #error17.form-outline.radio
-                          label(for='lang') Activities:
-                          .radio
-                            input#horticulture(type='checkbox' name='activities' value='horticulture')
-                            span Horticulture
-                            input#dairy(type='checkbox' name='activities' value='dairy')
-                            span Dairy 
-                            input#poultry(type='checkbox' name='activites' value='poultry')
-                            span Poultry
-                            br
-                          small.error
-                      .col-md-6.col-lg-6.col-xl-3
-                      .col-md-6.col-lg-6.col-xl-3
-                        #error19.form-outline
-                            label.form-label Email:
-                            input#email.email(type='text' name='email')
-                            small.error
-                    .row.mb-4
-                      .col
-                        .mb-3.form-check
-                          input#exampleCheck1.form-check-input(type='checkbox')
-                          label.form-check-label(for='exampleCheck1') Comfirm
-                        .fo-signup
-                          button.btn-1(type='submit') Submit
-          //- .accordion-item
-          //-   h2#headingThree.accordion-header
-          //-     button.accordion-button.collapsed(type='button' data-bs-toggle='collapse' data-bs-target='#collapseThree' aria-expanded='false' aria-controls='collapseThree')
-          //-       | View Report
-          //-   #collapseThree.accordion-collapse.collapse(aria-labelledby='headingThree' data-bs-parent='#accordionExample')
-          //-     .accordion-body
-          //-       strong This is the third item&apos;s accordion body.
-          //-       |  It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It&apos;s also worth noting that just about any HTML can go within the 
-          //-       code .accordion-body
-          //-       | , though the transition does limit overflow.   
+                            a.btn.btn-primary.btn-block(href='/farmerone/update/'+farmeronelist._id) Update   
         script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js')
         script.
           var el = document.getElementById("wrapper");

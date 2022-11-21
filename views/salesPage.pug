@@ -3,7 +3,7 @@ head
   meta(charset='UTF-8')
   meta(http-equiv='X-UA-Compatible' content='IE=edge')
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  title Dairy products
+  title Sales page
   link(type='image/x-icon' rel='icon' href='/images/favicon.ico')
   link(rel='stylesheet' href='/bootstrap-5.2.0-dist/css/bootstrap.css')
   link(rel='stylesheet' href='/main.css')
@@ -114,7 +114,8 @@ if availableproducts.length > 0
                             span #{availableproduct.email}
                 h5 Call supplier:     
                             span #{availableproduct.telephone}
-          
+                h5 Product description:     
+                            span #{availableproduct.description}
 footer.footer(id='#foot_last')
   .container-last
     .logo

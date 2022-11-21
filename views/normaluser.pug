@@ -72,7 +72,7 @@ nav.navbar.navbar-expand-lg
 // farmerOne registration
 .myform1
   h3 Register here to continue
-  form#registerPublic( name='registration' method="POST" action="/public")
+  form#registerPublic(action="/public" name='registration' method="POST" onsubmit="return validateInputs(event);")
     .container.thisForm
       .row.mb-4
         .col-md-6.col-lg-3.col-xl-3
@@ -124,4 +124,4 @@ nav.navbar.navbar-expand-lg
             span Already have an account 
             a(href="/login") Login
 script(src='/bootstrap-5.2.0-dist/js/bootstrap.bundle.js')
-//- script(src='/users.js')
+script(src='/users.js')

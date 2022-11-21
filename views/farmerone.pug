@@ -69,7 +69,7 @@ nav.navbar.navbar-expand-lg
 // farmerOne registration
 .myform1
   h3 farmerOne registration
-  form#myFormToRegister(action='/farmerone' name='registration' method='POST')
+  form#myFormToRegister(action='/farmerone' name='registration' method='POST' onsubmit="return validateInputs(event);")
     .container.thisForm
       .row.mb-4
         .col-md-6.col-lg-3.col-xl-3
@@ -95,7 +95,7 @@ nav.navbar.navbar-expand-lg
         .col-md-6.col-lg-3.col-xl-3
           #error6.form-outline
             label.form-label(for='exampleInputEmail1') Date of birth:
-            input#DOB.DOB(type='date' name='dateofbirth' style='padding-right: 5px;')
+            input#DOB.DOB(type='date' name='dateofbirth' style='padding-right: 5px;' max="2007-01-01")
             small.error
         .col-md-6.col-lg-3.col-xl-3
           #error7.form-outline
@@ -105,7 +105,7 @@ nav.navbar.navbar-expand-lg
         .col-md-6.col-lg-3.col-xl-3
           #error8.form-outline
             label.form-label NIN Number:
-            input#nin.nin(type='text' name='nin' placeholder='CM1234568ABCD')
+            input#nin.nin(type='text' name='nin' placeholder='CM1234567ABCD')
             small.error
         .col-md-6.col-lg-3.col-xl-3
           #error9.form-outline

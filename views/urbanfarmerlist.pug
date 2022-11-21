@@ -9,6 +9,7 @@ head
   title Urban farmer List
   link(rel='x-icon' type='image/x-icon' href='/img/images/favicon.ico')
   link(rel='stylesheet' href='/urban.css')
+  script(src='/urban.js') 
 #wrapper.d-flex
   // Sidebar
   #sidebar-wrapper
@@ -18,7 +19,7 @@ head
       a.list-group-item.list-group-item-action.bg-transparent.second-text.active(href='/FO-dashboard')
         i.fas.fa-tachometer-alt.me-2
         | Dashboard
-      a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='/urbanfarmerlist')
+      a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='/urbanfarmerdetails')
         i.fas.fa-project-diagram.me-2
         | Urban farmers
       a.list-group-item.list-group-item-action.bg-transparent.second-text.fw-bold(href='/urbanfarmerlist')
@@ -60,28 +61,6 @@ head
             div
               a(href='/approvedlist') Approved products
            
-      .row.my-5
-        h3.fs-4.mb-3 Urban Farmer List
-        .col 
-          table.table.table-bordered
-              thead.table-dark
-                  tr
-                  th(scope='col') First Name
-                  th(scope='col') Second Name
-                  th(scope='col') Gender
-                  th(scope='col') Unique Number
-                  th(scope='col') Ward
-                  th(scope='col') NIN
-              tbody
-                  if urbanfarmers.length 
-                      each urbanfarmerlist in urbanfarmers
-                          tr
-                              td #{urbanfarmerlist.firstname}
-                              td #{urbanfarmerlist.secondname}
-                              td #{urbanfarmerlist.gender}
-                              td #{urbanfarmerlist.uniquenumber}
-                              td #{urbanfarmerlist.ward}
-                              td #{urbanfarmerlist.nin}
   
         // farmerOne registration
         .myform1
@@ -127,7 +106,7 @@ head
                 .col-md-6.col-lg-3.col-xl-3
                   #error8.form-outline
                       label.form-label(for='exampleInputEmail1') Date of birth:
-                      input#DOB.DOB(type='date' name='dateofbirth' style='padding-right: 5px;')
+                      input#DOB.DOB(type='date' name='dateofbirth' style='padding-right: 5px;' max="2007-01-01")
                       small.error
                   
               .row.mb-4 
@@ -163,17 +142,14 @@ head
                     small.error
               .row.mb-4
                 .col-md-6.col-lg-6.col-xl-3
-                  #error13.form-outline.radio
-                    label(for='lang') Activities:
-                    .radio
-                      input#horticulture(type='checkbox' name='horticulture' value='horticulture')
-                      span Horticulture
-                      input#dairy(type='checkbox' name='dairy' value='dairy')
-                      span Dairy 
-                      input#poultry(type='checkbox' name='poultry' value='poultry')
-                      span Poultry
-                      br
-                    small.error
+                  #error13.form-outline
+                      label.form-label Activities:
+                      select#activities.activities(name="activities") 
+                        option(value="") Select Activity
+                        option(value="Horticulture") Horticulture
+                        option(value="Dairy") Dairy 
+                        option(value="Poultry") Poultry
+                      small.error
                 .col-md-6.col-lg-6.col-xl-3
                 .col-md-6.col-lg-6.col-xl-3
                     #error14.form-outline
@@ -187,9 +163,8 @@ head
                     label.form-check-label(for='exampleCheck1') Comfirm
                   .fo-signup
                     button.btn(type='submit') Submit
+                   
 script(src='/bootstrap-5.2.0-dist/js/bootstrap.bundle.js')
-
-
 script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js')
 script.
   var el = document.getElementById("wrapper");

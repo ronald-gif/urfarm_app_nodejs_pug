@@ -53,7 +53,8 @@ body{
   .btn:hover{
     background-color: var(--pelette1);
     border: none;
-    color: #fff;
+    color: #22dae8;
+    font-weight: 900;
   }
 
   .dropdown-menu{

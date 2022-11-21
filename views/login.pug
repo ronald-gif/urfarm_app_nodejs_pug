@@ -16,16 +16,18 @@ section.vh-50(style='background-color: #2e0219;')
               img.img-fluid(src='/images/gardening (1).jpg' alt='login form' style='border-radius: 1rem 0 0 1rem;')
             .col-md-6.col-lg-7.d-flex.align-items-center
               .card-body.p-4.p-lg-5.text-black
-                form(action='/login' name='registration' method='POST')
+                form(action='/login' name='registration' method='POST' onsubmit="return validateLogin();")
                   .d-flex.align-items-center.mb-3.pb-1
                     img(src='/images/onlinelogomaker-091022-1346-6665.png' alt='')
                   h5.fw-normal.mb-3.pb-3(style='letter-spacing: 1px;') Login into your account
-                  .form-outline.mb-4
-                    label.form-label(for='form2Example17') Unique Number/ID
+                  .form-outline.mb-4#error1
+                    label.form-label#uniqueNumber(for='form2Example17') Unique Number/ID
                     input#form2Example17.form-control.form-control-lg(type='text' name='uniquenumber')
-                  .form-outline.mb-4
-                    label.form-label(for='form2Example27') Password
+                    small.error
+                  .form-outline.mb-4#error2
+                    label.form-label#password(for='form2Example27') Password
                     input#form2Example27.form-control.form-control-lg(type='password' name='password')
+                    small.error
                   .pt-1.mb-4
                     button.btn.btn-dark.btn-lg.btn-block(type='submit') Login
                   p.mb-5.pb-lg-2(style='color: #393f81;')
@@ -34,3 +36,5 @@ section.vh-50(style='background-color: #2e0219;')
                   a.small.text-muted(href='/terms-and-conditions') Terms of use.
                   a.small.text-muted(href='/terms-and-conditions') Privacy policy
 script(src='/bootstrap-5.2.0-dist/js/bootstrap.bundle.js')
+script(src='/public/login.js')
+

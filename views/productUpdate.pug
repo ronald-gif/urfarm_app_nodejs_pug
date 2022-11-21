@@ -73,7 +73,6 @@ head
               #error10.form-outline
                 label.form-label(for='form3Example1') Product category:
                 select#category.category(name='category')
-                  option(value='' id='') Change category
                   option#horticulture(value='horticulture') Horticuture
                   option#dairy(value='dairy' selected = product.category == "dairy") Dairy
                   option#poultry(value='poultry' selected = product.category == "poultry") Poultry
@@ -103,15 +102,14 @@ head
               #error15.form-outline.form-o
                 label Mode of payment:
                 select#Modeofpayment.Modeofpayment(name='modeofpayment')
-                  option(value='') change mode of payment
                   option(value='mobile' selected = product.modeofpayment === "mobile") Mobile Money
                   option(value='cash' selected = product.modeofpayment === "cash") Cash on Delivery
-            //- .col
-            //-   #error15.form-outline.form-o
-            //-     label Delivery Method:
-            //-     select#gender.DeliveryMethod(name='deliveryMethod')
-            //-       option(value='pickup' selected = product.deliveryMethod === "pickup") Pick Up
-            //-       option(value='delivery' selected = product.deliveryMethod === "delivery) Home Delivery
+            .col
+               #error15.form-outline.form-o
+                label Delivery Method:
+                select#Modeofpayment.Modeofpayment(name='deliveryMethod')
+                  option(value='pick up' selected = product.deliveryMethod === "pick up") pick up
+                  option(value='delivery' selected = product.deliveryMethod === "delivery") Home Delivery
             .col
               #error15.form-outline.form-o
                 label Produce Type:

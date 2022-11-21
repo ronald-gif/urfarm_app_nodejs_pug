@@ -234,21 +234,21 @@ nav.navbar.navbar-expand-lg
       .col
         .form-message
           h4 Send us a message below 
-          form#myform-message(action='/contact-us' name='myform-message' method='POST')
-            .out-line-form
+          form#myform(action='/contact-us' name='myform-message' method='POST' onsubmit='return validateInputs();')
+            .out-line-form#error1
               label(id='firstname') Name:
               input#firstname(type='text' name='firstname')
               small#error
-            .out-line-form
+            .out-line-form#error2
               label(id='telephone') Phone number:
-              input#phone-number(type='text' name='telephone')
+              input#phoneNumber(type='text' name='telephone')
               small#error
-            .out-line-form
+            .out-line-form#error3
               label(id='massage') Message:
-              textarea(name='massage')
+              textarea#message(name='massage')
               small#error
             .fo-signup
-              button.btn-1(type='submit' style='margin-left: 8rem; margin-bottom: 10px;') Submit
+              button.btn-1(type='submit' style='margin-left: 8rem; margin-bottom: 10px;' onclick="return validateInputs()") Submit
       .col
 // contact us section starts here
 // footer
@@ -300,3 +300,4 @@ footer.footer(id='#foot_last')
     article &copycopyright All rights reserved
     article Designed by Ronald Biyinzika
 script(src='/bootstrap-5.2.0-dist/js/bootstrap.bundle.js')
+script(src='/contact.js')
